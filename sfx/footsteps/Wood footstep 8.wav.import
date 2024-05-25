@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6u2ytfad7e3h"
+path="res://.godot/imported/Wood footstep 8.wav-24603e3275a792d393f2dc446d21646b.sample"
+
+[deps]
+
+source_file="res://sfx/footsteps/Wood footstep 8.wav"
+dest_files=["res://.godot/imported/Wood footstep 8.wav-24603e3275a792d393f2dc446d21646b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

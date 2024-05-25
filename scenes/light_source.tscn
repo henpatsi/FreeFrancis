@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2qibbmihdfpd"]
+
+[ext_resource type="Script" path="res://scripts/light_source.gd" id="1_5n2xk"]
+
+[node name="LightSource" type="Node3D"]
+script = ExtResource("1_5n2xk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.0
