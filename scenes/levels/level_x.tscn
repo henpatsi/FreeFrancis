@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxq1i3idutvpf"]
+[gd_scene load_steps=14 format=3 uid="uid://cxq1i3idutvpf"]
 
 [ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scripts/player.tscn" id="1_g7vh1"]
 
@@ -24,6 +24,26 @@ size = Vector3(100, 2, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwvhv"]
 size = Vector3(100, 2, 100)
 
+[sub_resource type="Gradient" id="Gradient_rx1ji"]
+colors = PackedColorArray(8.66354e-07, 0.424267, 0.442799, 1, 0, 0.358845, 0.359904, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vgf2r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cnv2p"]
+width = 5120
+color_ramp = SubResource("Gradient_rx1ji")
+noise = SubResource("FastNoiseLite_vgf2r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kh46k"]
+albedo_texture = SubResource("NoiseTexture2D_cnv2p")
+
+[sub_resource type="BoxMesh" id="BoxMesh_evjbo"]
+material = SubResource("StandardMaterial3D_kh46k")
+size = Vector3(1, 5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2avq"]
+size = Vector3(1, 5, 100)
+
 [node name="LevelX" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -41,5 +61,14 @@ mesh = SubResource("BoxMesh_04e8v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_qwvhv")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("BoxMesh_evjbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("BoxShape3D_u2avq")
 
 [node name="Player" parent="." instance=ExtResource("1_g7vh1")]
