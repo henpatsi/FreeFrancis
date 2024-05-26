@@ -1,38 +1,52 @@
 extends Node3D
 
 @onready var character_body_3d: CharacterBody3D = $".."
-@onready var area_3d: Area3D = $Area3D
+@onready var iv_collision_shape_3d: CollisionShape3D = $IVCollisionShape3D
 
 var max_distance_from_player: float = 2.0
-var distance_moved: Vector2
+
+var move_amount: Vector3
+var target_position: Vector3
 
 var collisions: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	area_3d.monitoring = true
+	self.monitoring = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var distance_vector: Vector3 = area_3d.global_position - character_body_3d.global_position
+	move_amount *= delta
+	target_position = position + move_amount
+
+	check_collision()
+	limit_to_distance()
+
+	position = target_position
+	move_amount = Vector3.ZERO
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		move_amount = Vector3(event.relative.x, -event.relative.y, 0)
+
+func check_collision() -> void:
+	var ray_origin = self.global_position + (Vector3.DOWN * iv_collision_shape_3d.shape.height / 2)
+	var ray_target_position = ray_origin + move_amount
+
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
+	query.collide_with_bodies = true
+	var result = space_state.intersect_ray(query)
+	if result:
+		print(result)
+		target_position.y += ray_origin.y - result.position.y + 0.01
+		if character_body_3d.velocity.y < 5:
+			character_body_3d.velocity.y += min(-move_amount.y * 10, 5)
+
+func limit_to_distance() -> void:
+	var distance_vector: Vector3 = target_position
 	var distance_magnitude: float = abs(distance_vector.length())
 	if distance_magnitude > max_distance_from_player:
 		var move_back_distance_vector: Vector3 = distance_vector * ((distance_magnitude - max_distance_from_player) / distance_magnitude)
 		move_back_distance_vector.z = 0
-		area_3d.global_position -= move_back_distance_vector
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		area_3d.position += Vector3(event.relative.x, -event.relative.y, 0) * 0.01
-		distance_moved.x = event.relative.x
-		distance_moved.y = -event.relative.y
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("Collided with: ", body.name)
-	collisions += 1
-	if collisions == 1:
-		var jump_height = min(-distance_moved.y * 0.1, 5)
-		character_body_3d.velocity.y += jump_height
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	collisions -= 1
+		target_position -= move_back_distance_vector

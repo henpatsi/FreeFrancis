@@ -44,10 +44,10 @@ size = Vector3(1, 5, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2avq"]
 size = Vector3(1, 5, 100)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jw7gs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmdbe"]
 size = Vector3(1, 1, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nmdbe"]
+[sub_resource type="BoxMesh" id="BoxMesh_jw7gs"]
 size = Vector3(1, 1, 2)
 
 [node name="LevelX" type="Node3D"]
@@ -58,6 +58,9 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bpsru")
+
+[node name="Player" parent="." instance=ExtResource("1_g7vh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14262, 1.01018, 0)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -77,24 +80,22 @@ mesh = SubResource("BoxMesh_evjbo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
 shape = SubResource("BoxShape3D_u2avq")
 
-[node name="Player" parent="." instance=ExtResource("1_g7vh1")]
-
-[node name="Box" type="MeshInstance3D" parent="."]
+[node name="Box" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box" type="MeshInstance3D" parent="Box"]
 mesh = SubResource("BoxMesh_jw7gs")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box2" type="MeshInstance3D" parent="."]
+[node name="Box2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6176, 1.4099, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Box2"]
 mesh = SubResource("BoxMesh_jw7gs")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Box2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2/StaticBody3D"]
-shape = SubResource("BoxShape3D_nmdbe")

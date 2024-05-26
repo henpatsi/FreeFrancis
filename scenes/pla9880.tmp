@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmlj3w4hb57tt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_klpkq"]
-[ext_resource type="Script" path="res://scripts/IVDrip.gd" id="2_xr661"]
+[ext_resource type="Script" path="res://scripts/IVDrip.gd" id="1_lm7ah"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3udxc"]
 
@@ -33,12 +33,18 @@ skeleton = NodePath("../..")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.980244, 0.197794, 0, -0.197794, 0.980244, 0, 4.9432, 9.95011)
 
-[node name="IVDrip" type="Area3D" parent="CharacterBody3D"]
+[node name="IVDrip" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.726)
-script = ExtResource("2_xr661")
+script = ExtResource("1_lm7ah")
 
-[node name="IVCollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/IVDrip"]
+[node name="IVArea3D" type="Area3D" parent="CharacterBody3D/IVDrip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541041, 0)
+
+[node name="IVCollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/IVDrip/IVArea3D"]
 shape = SubResource("CapsuleShape3D_mrdyv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/IVDrip"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/IVDrip/IVArea3D"]
 mesh = SubResource("CapsuleMesh_w744x")
+
+[connection signal="body_entered" from="CharacterBody3D/IVDrip/IVArea3D" to="CharacterBody3D/IVDrip" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="CharacterBody3D/IVDrip/IVArea3D" to="CharacterBody3D/IVDrip" method="_on_area_3d_body_exited"]
