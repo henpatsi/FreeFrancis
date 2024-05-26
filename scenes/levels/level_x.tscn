@@ -99,3 +99,13 @@ shape = SubResource("BoxShape3D_nmdbe")
 [node name="Box2" type="MeshInstance3D" parent="Box2"]
 mesh = SubResource("BoxMesh_jw7gs")
 skeleton = NodePath("")
+
+[node name="Box3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30143, 4.12051, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box3"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Box3"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")

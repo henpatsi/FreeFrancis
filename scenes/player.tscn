@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmlj3w4hb57tt"]
+[gd_scene load_steps=9 format=3 uid="uid://bmlj3w4hb57tt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_klpkq"]
+[ext_resource type="PackedScene" uid="uid://dx20vb5mj04r3" path="res://scenes/oldmantest.tscn" id="2_ekplp"]
 [ext_resource type="Script" path="res://scripts/IVDrip.gd" id="2_xr661"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3udxc"]
@@ -27,14 +28,19 @@ script = ExtResource("1_klpkq")
 shape = SubResource("CapsuleShape3D_3udxc")
 
 [node name="MeshInstanceBody" type="MeshInstance3D" parent="CharacterBody3D"]
+visible = false
 mesh = SubResource("CapsuleMesh_rnc42")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.980244, 0.197794, 0, -0.197794, 0.980244, 0, 4.9432, 9.95011)
+current = true
+
+[node name="oldmantest" parent="CharacterBody3D" instance=ExtResource("2_ekplp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 0)
 
 [node name="IVDrip" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.6)
 script = ExtResource("2_xr661")
 
 [node name="IVCollisionShape3D" type="CollisionShape3D" parent="IVDrip"]
