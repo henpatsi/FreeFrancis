@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cxq1i3idutvpf"]
 
-[ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scripts/player.tscn" id="1_g7vh1"]
+[ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scenes/player.tscn" id="1_g7vh1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ybt6k"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,7 +47,7 @@ size = Vector3(1, 5, 100)
 [node name="LevelX" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.595112, 0.233676, 0.76892, -0.801623, 0.104811, 0.588571, 0.0569433, -0.966649, 0.249694, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -63,7 +63,7 @@ mesh = SubResource("BoxMesh_04e8v")
 shape = SubResource("BoxShape3D_qwvhv")
 
 [node name="Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 2.5, -3.18622)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
 mesh = SubResource("BoxMesh_evjbo")

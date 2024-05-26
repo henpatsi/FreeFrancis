@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmlj3w4hb57tt"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_klpkq"]
+[ext_resource type="Script" path="res://scripts/IVDrip.gd" id="1_lm7ah"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrdyv"]
+radius = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w744x"]
+radius = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3udxc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ye8xh"]
+albedo_color = Color(0, 0.360784, 0.380392, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rnc42"]
+material = SubResource("StandardMaterial3D_ye8xh")
+
+[node name="Player" type="Node3D"]
+
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+node_a = NodePath("../CharacterBody3D")
+node_b = NodePath("../IVDrip/RigidBody3D")
+
+[node name="IVDrip" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78098, 2.07183, 0)
+script = ExtResource("1_lm7ah")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="IVDrip"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IVDrip/RigidBody3D"]
+shape = SubResource("CapsuleShape3D_mrdyv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IVDrip/RigidBody3D"]
+mesh = SubResource("CapsuleMesh_w744x")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_klpkq")
+
+[node name="CollisionShapeBody" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3udxc")
+
+[node name="MeshInstanceBody" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_rnc42")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.980244, 0.197794, 0, -0.197794, 0.980244, 0, 4.9432, 9.95011)
