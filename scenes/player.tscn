@@ -33,12 +33,12 @@ skeleton = NodePath("../..")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.980244, 0.197794, 0, -0.197794, 0.980244, 0, 4.9432, 9.95011)
 
-[node name="IVDrip" type="Area3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.726)
+[node name="IVDrip" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.75)
 script = ExtResource("2_xr661")
 
-[node name="IVCollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/IVDrip"]
+[node name="IVCollisionShape3D" type="CollisionShape3D" parent="IVDrip"]
 shape = SubResource("CapsuleShape3D_mrdyv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/IVDrip"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IVDrip"]
 mesh = SubResource("CapsuleMesh_w744x")

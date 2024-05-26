@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var last_pos: Vector3 = self.position
+var delta_pos: Vector3 = Vector3.ZERO
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -13,6 +15,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_lock_cursor"):
 		toggle_mouse_mode()
+	
+	delta_pos = self.position - last_pos
+	last_pos = self.position
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -42,3 +47,7 @@ func	toggle_mouse_mode() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func	get_delta_pos() -> Vector3:
+	return delta_pos
