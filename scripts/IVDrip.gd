@@ -56,6 +56,7 @@ func check_collision() -> void:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
 	query.collide_with_bodies = true
+	query.exclude = [character_body.get_rid()]
 	var result = space_state.intersect_ray(query)
 	if result:
 		#print(result)
