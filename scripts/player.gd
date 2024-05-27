@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var player: Node3D = $".."
+
 @onready var armature: Node3D = $Armature
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")

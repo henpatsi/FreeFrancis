@@ -60,7 +60,7 @@ shadow_enabled = true
 environment = SubResource("Environment_bpsru")
 
 [node name="Player" parent="." instance=ExtResource("1_g7vh1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44054, 4.95126, 4.76837e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4958, 2.21908, -4.76837e-07)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
