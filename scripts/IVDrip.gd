@@ -3,7 +3,7 @@ extends Node3D
 @onready var character_body_3d: CharacterBody3D = $"../CharacterBody3D"
 @onready var iv_collision_shape_3d: CollisionShape3D = $IVCollisionShape3D
 
-var max_distance_from_player: float = 1.5
+var max_distance_from_player: float = 1
 
 var move_amount: Vector3
 var target_position: Vector3

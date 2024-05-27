@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 
-@onready var camera_3d: Camera3D = $Camera3D
+@onready var skeleton_ik_3d: SkeletonIK3D = $Armature/Skeleton3D/SkeletonIK3D
 
 @onready var last_pos: Vector3 = self.position
 var delta_pos: Vector3 = Vector3.ZERO
@@ -22,7 +22,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	skeleton_ik_3d.start()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_lock_cursor"):
@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 	
 	delta_pos = self.position - last_pos
 	last_pos = self.position
-
 
 func _physics_process(delta: float) -> void:
 
