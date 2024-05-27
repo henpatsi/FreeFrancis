@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-@onready var player: Node3D = $".."
-
 @onready var armature: Node3D = $Armature
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
@@ -12,10 +10,9 @@ extends CharacterBody3D
 @onready var last_pos: Vector3 = self.position
 var delta_pos: Vector3 = Vector3.ZERO
 
-const ACCELERATION = 0.1
-const MAX_MOVE_SPEED = 5.0
-const ROTATE_SPEED = 3.0
-const JUMP_VELOCITY = 4.5
+@export var acceleration = 0.1
+@export var max_move_speed = 5.0
+@export var rotate_speed = 3.0
 
 var rad180: float = deg_to_rad(180)
 
@@ -58,11 +55,11 @@ func handle_horizontal_movement() -> void:
 	var move_input := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var move_dir := (transform.basis * Vector3(move_input.x, 0, move_input.y)).normalized()
 	if move_dir:
-		velocity.x = move_toward(velocity.x, move_dir.x * MAX_MOVE_SPEED, ACCELERATION)
-		velocity.z = move_toward(velocity.z, move_dir.z * MAX_MOVE_SPEED, ACCELERATION)
+		velocity.x = move_toward(velocity.x, move_dir.x * max_move_speed, acceleration)
+		velocity.z = move_toward(velocity.z, move_dir.z * max_move_speed, acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, 0, ACCELERATION)
-		velocity.z = move_toward(velocity.z, 0, ACCELERATION)
+		velocity.x = move_toward(velocity.x, 0, acceleration)
+		velocity.z = move_toward(velocity.z, 0, acceleration)
 	
 	var anim_velocity = velocity * armature.transform.basis
 	animation_tree.set("parameters/IWR/blend_position", Vector2(anim_velocity.x, -anim_velocity.z) * 20)
@@ -70,9 +67,9 @@ func handle_horizontal_movement() -> void:
 
 func handle_rotation(delta) -> void:
 	if velocity.x > 0:
-		armature.rotation.y = lerp_angle(armature.rotation.y, 0, ROTATE_SPEED * delta)
+		armature.rotation.y = lerp_angle(armature.rotation.y, 0, rotate_speed * delta)
 	elif velocity.x < 0:
-		armature.rotation.y = lerp_angle(armature.rotation.y, rad180, ROTATE_SPEED * delta)
+		armature.rotation.y = lerp_angle(armature.rotation.y, rad180, rotate_speed * delta)
 
 
 func toggle_mouse_mode() -> void:
