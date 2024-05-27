@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var armature: Node3D = $Armature
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var animation_state: AnimationTree = $AnimationTree.get("parameters")
+@onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 
 @onready var camera_3d: Camera3D = $Camera3D
 
@@ -27,23 +27,31 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_lock_cursor"):
 		toggle_mouse_mode()
+	if Input.is_action_just_pressed("rotate_right"):
+		animation_state.travel("Flair")
 	
 	delta_pos = self.position - last_pos
 	last_pos = self.position
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
 
-	handle_movement()
+	handle_vertical_movement(delta)
+	handle_horizontal_movement()
 	handle_rotation(delta)
 
 	move_and_slide()
 
+func handle_vertical_movement(delta) -> void:
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+		animation_tree.set("parameters/conditions/air", true)
+		animation_tree.set("parameters/conditions/grounded", false)
+	else:
+		animation_tree.set("parameters/conditions/air", false)
+		animation_tree.set("parameters/conditions/grounded", true)
 
-func	handle_movement() -> void:
+func handle_horizontal_movement() -> void:
 	var move_input := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var move_dir := (transform.basis * Vector3(move_input.x, 0, move_input.y)).normalized()
 	if move_dir:
@@ -57,19 +65,18 @@ func	handle_movement() -> void:
 	animation_tree.set("parameters/IWR/blend_position", Vector2(anim_velocity.x, -anim_velocity.z) * 20)
 
 
-func	handle_rotation(delta) -> void:
+func handle_rotation(delta) -> void:
 	if velocity.x > 0:
 		armature.rotation.y = lerp_angle(armature.rotation.y, 0, ROTATE_SPEED * delta)
 	elif velocity.x < 0:
 		armature.rotation.y = lerp_angle(armature.rotation.y, rad180, ROTATE_SPEED * delta)
 
 
-func	toggle_mouse_mode() -> void:
+func toggle_mouse_mode() -> void:
 	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
-func	get_delta_pos() -> Vector3:
+func get_delta_pos() -> Vector3:
 	return delta_pos
