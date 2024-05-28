@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		mouse_input = Vector3(event.relative.x, -event.relative.y, 0)
+		mouse_input = Vector3(event.relative.x, -event.relative.y, 0) * Global.mouse_sensitivity_modifier
 
 
 func move_with_player_model() -> void:

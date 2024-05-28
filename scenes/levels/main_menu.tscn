@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://by48vxpkphq6c"]
+
+[ext_resource type="Texture2D" uid="uid://kr0taq2paa3o" path="res://assets/images/Pug_in_a_blanket_(Unsplash)_small.jpg" id="1_kk818"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ukxt7"]
+[ext_resource type="Texture2D" uid="uid://c4yaf21tevspm" path="res://assets/images/Screenshot 2024-02-18 172154.png" id="2_q2gl7"]
+[ext_resource type="Texture2D" uid="uid://37bwxp3mjdvy" path="res://assets/images/Screenshot 2024-01-23 143242.png" id="3_amps8"]
+[ext_resource type="Texture2D" uid="uid://bmh43qxif0mh4" path="res://assets/images/Screenshot 2023-12-06 115855.png" id="4_3x67x"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="6_7qgnm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5s75v"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ukxt7")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_kk818")
+stretch_mode = 6
+
+[node name="StartButton" type="TextureButton" parent="."]
+offset_left = 555.0
+offset_top = 484.0
+offset_right = 637.0
+offset_bottom = 569.0
+texture_normal = ExtResource("2_q2gl7")
+texture_pressed = ExtResource("3_amps8")
+texture_hover = ExtResource("4_3x67x")
+stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="."]
+offset_right = 221.0
+offset_bottom = 195.0
+texture_normal = ExtResource("4_3x67x")
+texture_pressed = ExtResource("3_amps8")
+texture_hover = ExtResource("2_q2gl7")
+stretch_mode = 5
+
+[node name="Settings" type="Node2D" parent="." node_paths=PackedStringArray("mouse_sensitivtiy_value_label", "volume_value_label")]
+script = ExtResource("6_7qgnm")
+mouse_sensitivtiy_value_label = NodePath("SettingsVBox/MouseSensitivity/HBoxContainer/ValueLabel")
+volume_value_label = NodePath("SettingsVBox/Volume/HBoxContainer/ValueLabel")
+
+[node name="SettingsVBox" type="VBoxContainer" parent="Settings"]
+offset_left = 785.0
+offset_top = 87.0
+offset_right = 1066.0
+offset_bottom = 212.0
+
+[node name="MouseSensitivity" type="VBoxContainer" parent="Settings/SettingsVBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/SettingsVBox/MouseSensitivity"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Settings/SettingsVBox/MouseSensitivity/HBoxContainer"]
+layout_mode = 2
+text = "Mouse Sensitivity Modifier:"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="Settings/SettingsVBox/MouseSensitivity/HBoxContainer"]
+layout_mode = 2
+text = "1
+"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseSensitivitySlider" type="HSlider" parent="Settings/SettingsVBox/MouseSensitivity"]
+layout_mode = 2
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="Volume" type="VBoxContainer" parent="Settings/SettingsVBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/SettingsVBox/Volume"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Settings/SettingsVBox/Volume/HBoxContainer"]
+layout_mode = 2
+text = "Volume:"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="Settings/SettingsVBox/Volume/HBoxContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="Settings/SettingsVBox/Volume"]
+layout_mode = 2
+value = 100.0
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="value_changed" from="Settings/SettingsVBox/MouseSensitivity/MouseSensitivitySlider" to="Settings" method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="Settings/SettingsVBox/Volume/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
