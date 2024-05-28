@@ -1,0 +1,461 @@
+[gd_scene load_steps=19 format=3 uid="uid://cq3of2cx2ktfd"]
+
+[ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scenes/player.tscn" id="1_lxubh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ybt6k"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_teg64"]
+sky_material = SubResource("ProceduralSkyMaterial_ybt6k")
+
+[sub_resource type="Environment" id="Environment_bpsru"]
+background_mode = 2
+sky = SubResource("Sky_teg64")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmdbe"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jw7gs"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwvhv"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="Gradient" id="Gradient_rx1ji"]
+colors = PackedColorArray(8.66354e-07, 0.424267, 0.442799, 1, 0, 0.358845, 0.359904, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vgf2r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cnv2p"]
+width = 5120
+color_ramp = SubResource("Gradient_rx1ji")
+noise = SubResource("FastNoiseLite_vgf2r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kh46k"]
+albedo_texture = SubResource("NoiseTexture2D_cnv2p")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g703p"]
+material = SubResource("StandardMaterial3D_kh46k")
+size = Vector2(5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e25i"]
+size = Vector3(5, 1, 20)
+
+[sub_resource type="Gradient" id="Gradient_rught"]
+colors = PackedColorArray(0.419813, 0.419813, 0.419813, 1, 0.74978, 0.74978, 0.74978, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iuovo"]
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gvrgk"]
+width = 2000
+color_ramp = SubResource("Gradient_rught")
+noise = SubResource("FastNoiseLite_iuovo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r517v"]
+albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_gvrgk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_he5jv"]
+material = SubResource("StandardMaterial3D_r517v")
+size = Vector2(20, 2)
+
+[node name="LevelX" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.415226, -0.878726, 0.23543, 0.795254, -0.224942, 0.563004, -0.441768, 0.421, 0.792212, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bpsru")
+
+[node name="Player" parent="." instance=ExtResource("1_lxubh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60918, 0.0199188, -4.76837e-07)
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="Box" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4065, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box" type="MeshInstance3D" parent="Obstacles/Box"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box2" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7889, 0.508692, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box2"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box2"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box4" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8424, 0.508692, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box4"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box4"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box5" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8858, 4.51871, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box5"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box5"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box6" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9316, 0.52167, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box6"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box6"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box7" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03299, 0.52167, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box7"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box7"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box8" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00681, 1.51607, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box8"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box8"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box9" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02525, 0.500011, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box9"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box9"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box11" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64711, 0.500011, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box11"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box11"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box14" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.525383, 0.500011, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box14"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box14"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box15" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1466, 0.500011, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box15"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box15"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box30" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3243, 0.500011, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box30"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box30"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box16" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3187, 4.56684, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box16"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box16"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box17" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6058, 6.86289, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box17"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box17"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box18" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6196, 6.86289, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box18"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box18"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box19" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4873, 9.5046, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box19"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box19"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box20" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4485, 9.5046, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box20"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box20"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box26" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.84, 3.75555, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box26"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box26"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box29" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.84, 3.75555, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box29"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box29"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box27" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3501, 6.48431, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box27"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box27"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box28" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8385, 9.20587, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box28"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box28"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box21" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4832, 6.13127, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box21"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box21"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box22" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4432, 6.13127, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box22"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box22"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box23" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5085, 9.39064, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box23"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box23"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box24" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4966, 9.39064, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box24"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box24"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box25" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9784, 13.2339, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box25"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box25"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box12" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64711, 1.48952, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box12"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box12"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box13" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64711, 2.49614, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box13"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box13"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Box3" type="StaticBody3D" parent="Obstacles" groups=["Destructable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box3"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Box2" type="MeshInstance3D" parent="Obstacles/Box3"]
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="GroundCollider" type="StaticBody3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/GroundCollider"]
+shape = SubResource("BoxShape3D_qwvhv")
+
+[node name="Wall1" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -40, 2.5, -1)
+mesh = SubResource("PlaneMesh_g703p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Wall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Wall1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6e25i")
+
+[node name="Wall2" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -20, 2.5, -1)
+mesh = SubResource("PlaneMesh_g703p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Wall2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6e25i")
+
+[node name="Floor1" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+mesh = SubResource("PlaneMesh_he5jv")
+skeleton = NodePath("../..")
+
+[node name="Floor2" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+mesh = SubResource("PlaneMesh_he5jv")
+skeleton = NodePath("../..")
+
+[node name="Wall3" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.0233612, 2.5, -1)
+mesh = SubResource("PlaneMesh_g703p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Wall3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6e25i")
+
+[node name="Wall4" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 20.0234, 2.5, -1)
+mesh = SubResource("PlaneMesh_g703p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Wall4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6e25i")
+
+[node name="Wall5" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 20.0234, 7.45029, -1)
+mesh = SubResource("PlaneMesh_g703p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Wall5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Wall5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6e25i")
+
+[node name="Wall6" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 20.0234, 12.345, -1)
+mesh = SubResource("PlaneMesh_g703p")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Wall6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Wall6/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6e25i")
+
+[node name="Floor3" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0233612, 0, 0)
+mesh = SubResource("PlaneMesh_he5jv")
+skeleton = NodePath("../..")
+
+[node name="Floor4" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0234, 0, 0)
+mesh = SubResource("PlaneMesh_he5jv")
+skeleton = NodePath("../..")
