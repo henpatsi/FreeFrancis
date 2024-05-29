@@ -14,6 +14,11 @@ func _ready():
 	set_starting_values()
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		close_settings()
+
+
 func set_starting_values():
 	mouse_sensitivity_value_label.text = str(Global.mouse_sensitivity_modifier).pad_decimals(1)
 	mouse_sensitivity_slider.value = Global.mouse_sensitivity_modifier
