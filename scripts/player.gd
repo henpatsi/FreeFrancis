@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+var settings_scene = preload("res://scenes/levels/settings.tscn")
+
 @onready var player: Node3D = $".."
 
 @onready var armature: Node3D = $Armature
@@ -20,7 +22,6 @@ var move_input: Vector2
 
 var rad180: float = deg_to_rad(180)
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
@@ -31,8 +32,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_lock_cursor"):
-		toggle_mouse_mode()
+	if Input.is_action_just_pressed("pause"):
+		open_pause_menu()
 	if Input.is_action_just_pressed("rotate_right"):
 		animation_state.travel("Flair")
 	
@@ -41,7 +42,6 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-
 	handle_vertical_movement(delta)
 	handle_horizontal_movement()
 	handle_rotation(delta)
@@ -80,11 +80,10 @@ func handle_rotation(delta) -> void:
 		armature.rotation.y = lerp_angle(armature.rotation.y, rad180, rotate_speed * delta)
 
 
-func toggle_mouse_mode() -> void:
-	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+func open_pause_menu() -> void:
+	var settings_instance = settings_scene.instantiate()
+	add_child(settings_instance)
+	settings_instance.lock_mouse_on_exit = true
 
 
 func turn_player(amount: float, rot_pos: Vector3) -> void:

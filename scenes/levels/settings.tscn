@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1fuqmc5q6l4v"]
+
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_pfghs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_avjus"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5s75v"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Settings" type="Node2D" node_paths=PackedStringArray("mouse_sensitivity_value_label", "mouse_sensitivity_slider", "volume_value_label", "volume_slider")]
+process_mode = 3
+script = ExtResource("1_pfghs")
+mouse_sensitivity_value_label = NodePath("CenterContainer/SettingsVBox/MouseSensitivity/HBoxContainer/ValueLabel")
+mouse_sensitivity_slider = NodePath("CenterContainer/SettingsVBox/MouseSensitivity/MouseSensitivitySlider")
+volume_value_label = NodePath("CenterContainer/SettingsVBox/Volume/HBoxContainer/ValueLabel")
+volume_slider = NodePath("CenterContainer/SettingsVBox/Volume/VolumeSlider")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 1, 1, 0.815686)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="SettingsVBox" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PausedLabel" type="Label" parent="CenterContainer/SettingsVBox"]
+layout_mode = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_avjus")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseSensitivity" type="VBoxContainer" parent="CenterContainer/SettingsVBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SettingsVBox/MouseSensitivity"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsVBox/MouseSensitivity/HBoxContainer"]
+layout_mode = 2
+text = "Mouse Sensitivity Modifier:"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="CenterContainer/SettingsVBox/MouseSensitivity/HBoxContainer"]
+layout_mode = 2
+text = "1
+"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseSensitivitySlider" type="HSlider" parent="CenterContainer/SettingsVBox/MouseSensitivity"]
+layout_mode = 2
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="Volume" type="VBoxContainer" parent="CenterContainer/SettingsVBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/SettingsVBox/Volume"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsVBox/Volume/HBoxContainer"]
+layout_mode = 2
+text = "Volume:"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="CenterContainer/SettingsVBox/Volume/HBoxContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_5s75v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/SettingsVBox/Volume"]
+layout_mode = 2
+value = 100.0
+
+[node name="BackButton" type="Button" parent="CenterContainer/SettingsVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="value_changed" from="CenterContainer/SettingsVBox/MouseSensitivity/MouseSensitivitySlider" to="." method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingsVBox/Volume/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="CenterContainer/SettingsVBox/BackButton" to="." method="_on_back_button_pressed"]

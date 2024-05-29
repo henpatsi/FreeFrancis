@@ -1,14 +1,21 @@
 extends Node2D
 
 var level_scene = "res://scenes/levels/level_test.tscn"
+var settings_scene = preload("res://scenes/levels/settings.tscn")
+
 
 func _ready():
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 
 func _on_start_button_pressed():
-	await get_tree().create_timer(1.2).timeout
 	get_tree().change_scene_to_file(level_scene)
 
+
 func _on_exit_button_pressed():
-	await get_tree().create_timer(0.1).timeout
 	get_tree().quit()
+
+
+func _on_settings_button_pressed() -> void:
+	var settings_instance = settings_scene.instantiate()
+	add_child(settings_instance)
