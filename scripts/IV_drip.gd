@@ -51,33 +51,37 @@ func limit_to_distance() -> void:
 
 
 func check_bottom_collision() -> void:
-	var ray_origin = global_position + (Vector3.DOWN * pole_mesh.mesh.height / 2) + (Vector3.UP * 0.1)
-	var ray_target_position = target_position + (Vector3.DOWN * pole_mesh.mesh.height / 2)
+	var ray_origin: Vector3 = global_position + (Vector3.DOWN * pole_mesh.mesh.height / 2) + (Vector3.UP * 0.1)
+	var ray_target_position: Vector3 = target_position + (Vector3.DOWN * pole_mesh.mesh.height / 2)
 
-	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
+	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
 	query.collide_with_bodies = true
 	query.exclude = [character_body.get_rid()]
-	var result = space_state.intersect_ray(query)
+	var result: Dictionary = space_state.intersect_ray(query)
 	if result:
 		#print(result)
 		target_position.y = result.position.y + 0.01 + (pole_mesh.mesh.height / 2)
 		limit_to_distance()
 		if character_body.velocity.y < 5:
 			character_body.velocity.y += min(-move_amount.y * jump_multiplier, max_jump)
+		if move_amount.y < -0.2 and result.collider.is_in_group("PlayerDestructable"):
+			result.collider.get_parent().queue_free()
 
 
 func check_top_collision() -> void:
-	var ray_origin = global_position + (Vector3.UP * pole_mesh.mesh.height / 2) + (Vector3.DOWN * 0.1)
-	var ray_target_position = target_position + (Vector3.UP * pole_mesh.mesh.height / 2)
+	var ray_origin: Vector3 = global_position + (Vector3.UP * pole_mesh.mesh.height / 2) + (Vector3.DOWN * 0.1)
+	var ray_target_position: Vector3 = target_position + (Vector3.UP * pole_mesh.mesh.height / 2)
 	
-	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
+	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
 	query.collide_with_bodies = true
 	query.exclude = [character_body.get_rid()]
-	var result = space_state.intersect_ray(query)
+	var result: Dictionary = space_state.intersect_ray(query)
 	if result:
 		#print(result)
 		target_position.y = result.position.y - 0.01 - (pole_mesh.mesh.height / 2)
 		limit_to_distance()
+		if move_amount.y > 0.2 and result.collider.is_in_group("PlayerDestructable"):
+			result.collider.get_parent().queue_free()
 	

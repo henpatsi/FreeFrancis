@@ -21,8 +21,7 @@ offset_left = 34.0
 offset_top = 22.0
 offset_right = 362.0
 offset_bottom = 115.0
-text = "CAUGHT!
-NO SPACE FOR YOU :("
+text = "SPACE BABY!"
 label_settings = SubResource("LabelSettings_20xcj")
 horizontal_alignment = 1
 vertical_alignment = 1
