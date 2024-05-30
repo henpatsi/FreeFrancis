@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var character_body: CharacterBody3D = $"../CharacterBody3D"
 @onready var pole_mesh: MeshInstance3D = $Pole
-@onready var iv_armature_node: Node3D = $"../CharacterBody3D/Armature/IVHorizontalPos"
+@onready var iv_armature_node: Node3D = $"../CharacterBody3D/rig_001/IVHorizontalPos"
 
 @export var sensitivity: float = 0.5
 @export var jump_multiplier: float = 5

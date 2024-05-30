@@ -4,12 +4,12 @@ var settings_scene = preload("res://scenes/levels/settings.tscn")
 
 @onready var player: Node3D = $".."
 
-@onready var armature: Node3D = $Armature
+@onready var armature: Node3D = $rig_001
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 
-@onready var left_arm_ik: SkeletonIK3D = $Armature/Skeleton3D/LeftArmIK
-@onready var right_arm_ik: SkeletonIK3D = $Armature/Skeleton3D/RightArmIK
+@onready var left_arm_ik: SkeletonIK3D = $rig_001/Skeleton3D/left_hand_IK
+@onready var right_arm_ik: SkeletonIK3D = $rig_001/Skeleton3D/right_hand_IK
 
 @onready var last_pos: Vector3 = self.position
 var delta_pos: Vector3 = Vector3.ZERO
@@ -68,7 +68,7 @@ func handle_horizontal_movement() -> void:
 		velocity.z = move_toward(velocity.z, 0, acceleration)
 	
 	var anim_velocity = velocity * armature.transform.basis
-	animation_tree.set("parameters/IWR/blend_position", Vector2(anim_velocity.x, -anim_velocity.z) * 20)
+	animation_tree.set("parameters/Idle-Run/blend_position", anim_velocity.x * 20)
 
 
 func handle_rotation(delta) -> void:
