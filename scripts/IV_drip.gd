@@ -2,11 +2,11 @@ extends Node3D
 
 @onready var character_body: CharacterBody3D = $"../CharacterBody3D"
 @onready var pole_mesh: MeshInstance3D = $Pole
-@onready var iv_armature_node: Node3D = $"../CharacterBody3D/rig_001/IVHorizontalPos"
+@onready var iv_armature_node: Node3D = $"../CharacterBody3D/rig_002/IVHorizontalPos"
 
-@onready var left_hand_ik: SkeletonIK3D = $"../CharacterBody3D/rig_001/Skeleton3D/left_hand_IK"
-@onready var right_hand_ik: SkeletonIK3D = $"../CharacterBody3D/rig_001/Skeleton3D/right_hand_IK"
-@onready var head_ik: SkeletonIK3D = $"../CharacterBody3D/rig_001/Skeleton3D/head_IK"
+@onready var left_hand_ik: SkeletonIK3D = $"../CharacterBody3D/rig_002/Skeleton3D/left_hand_IK"
+@onready var right_hand_ik: SkeletonIK3D = $"../CharacterBody3D/rig_002/Skeleton3D/right_hand_IK"
+@onready var head_ik: SkeletonIK3D = $"../CharacterBody3D/rig_002/Skeleton3D/head_IK"
 @onready var head_ik_target: Node3D = $IKPositions/HeadPosition
 
 @export var head_rotation_zero: float = 30
@@ -85,8 +85,7 @@ func check_bottom_collision() -> void:
 		target_position.y = result.position.y + 0.01 + (pole_mesh.mesh.height / 2)
 		limit_to_distance()
 		if character_body.velocity.y < max_jump:
-			var jump_amount = -move_amount.y * jump_multiplier
-			character_body.velocity.y = min(character_body.velocity.y + jump_amount, max_jump)
+			character_body.jump(-move_amount.y * jump_multiplier, max_jump)
 		print(character_body.velocity.y)
 		if move_amount.y < -0.2 and result.collider.is_in_group("PlayerDestructable"):
 			result.collider.get_parent().queue_free()

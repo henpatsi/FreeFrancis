@@ -4,7 +4,7 @@ var settings_scene = preload("res://scenes/levels/settings.tscn")
 
 @onready var player: Node3D = $".."
 
-@onready var armature: Node3D = $rig_001
+@onready var armature: Node3D = $rig_002
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 
@@ -14,6 +14,7 @@ var delta_pos: Vector3 = Vector3.ZERO
 var move_input: Vector2
 
 @export var acceleration = 0.1
+@export var deceleration = 0.2
 @export var max_move_speed = 5.0
 @export var rotate_speed = 3.0
 
@@ -46,10 +47,13 @@ func handle_vertical_movement(delta) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		animation_tree.set("parameters/conditions/air", true)
-		animation_tree.set("parameters/conditions/grounded", false)
 	else:
+		if animation_tree.get("parameters/conditions/air"):
+			if animation_tree.get("parameters/conditions/running"):
+				animation_state.travel("Run")
+			else:
+				animation_state.travel("Idle")
 		animation_tree.set("parameters/conditions/air", false)
-		animation_tree.set("parameters/conditions/grounded", true)
 
 
 func handle_horizontal_movement() -> void:
@@ -59,11 +63,18 @@ func handle_horizontal_movement() -> void:
 		velocity.x = move_toward(velocity.x, move_dir.x * max_move_speed, acceleration)
 		velocity.z = move_toward(velocity.z, move_dir.z * max_move_speed, acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, 0, acceleration)
-		velocity.z = move_toward(velocity.z, 0, acceleration)
+		velocity.x = move_toward(velocity.x, 0, deceleration)
+		velocity.z = move_toward(velocity.z, 0, deceleration)
+
+	if abs(velocity.x) > 0:
+		animation_tree.set("parameters/conditions/running", true)
+		animation_tree.set("parameters/conditions/stopped", false)
+	else:
+		animation_tree.set("parameters/conditions/stopped", true)
+		animation_tree.set("parameters/conditions/running", false)
 	
-	var anim_velocity = velocity * armature.transform.basis
-	animation_tree.set("parameters/Idle-Run/blend_position", anim_velocity.x * 20)
+	#var anim_velocity = velocity * armature.transform.basis
+	#animation_tree.set("parameters/Idle-Run/blend_position", anim_velocity.x * 20)
 
 
 func handle_rotation(delta) -> void:
@@ -88,3 +99,13 @@ func turn_player(amount: float, rot_pos: Vector3) -> void:
 
 func get_delta_pos() -> Vector3:
 	return delta_pos
+
+
+func jump(force: float, max_force: float) -> void:
+	if force == 0:
+		return
+
+	velocity.y = min(velocity.y + force, max_force)
+	if not animation_tree.get("parameters/conditions/air"):
+		animation_state.travel("StartJump")
+		animation_tree.set("parameters/conditions/air", true)
