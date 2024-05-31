@@ -121,7 +121,7 @@ shadow_enabled = true
 environment = SubResource("Environment_bpsru")
 
 [node name="Player" parent="." instance=ExtResource("1_g7vh1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.9133, 6.63322, 1.43051e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.2884, 0.459862, 1.43051e-06)
 
 [node name="Obstacles" type="Node3D" parent="."]
 
@@ -347,14 +347,21 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box24/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
-[node name="CollisionShape2" type="CollisionShape3D" parent="Obstacles/Corridor/Box24/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198269, 0)
+[node name="Box25" type="MeshInstance3D" parent="Obstacles/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7654, 6, 0)
+mesh = SubResource("BoxMesh_jw7gs")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box25" groups=["Destructable"]]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box25/StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731573, 0)
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="Vent" type="Node3D" parent="Obstacles"]
 
 [node name="VentBox" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -364,7 +371,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox2" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.1934, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.1934, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -374,7 +381,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox3" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0754, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0754, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -384,7 +391,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox4" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4274, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4274, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -394,7 +401,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox5" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1934, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1934, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -404,7 +411,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox6" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.1934, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.1934, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -414,7 +421,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox7" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1934, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1934, 7.00456, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -424,7 +431,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox8" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1934, 6.06103, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1934, 6.59477, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -1259,7 +1266,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox183" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.38, 16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.491, 15.6498, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -1288,16 +1295,6 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox171/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
-[node name="VentBox184" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.456, 14, 0)
-mesh = SubResource("BoxMesh_2vf8h")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox184"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox184/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
 [node name="VentBox172" type="MeshInstance3D" parent="Obstacles/Vent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 13, 0)
 mesh = SubResource("BoxMesh_2vf8h")
@@ -1319,7 +1316,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox185" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.567, 12, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.888, 12, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2348,48 +2345,8 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox20/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
-[node name="VentBox29" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1934, 9.30706, 0)
-mesh = SubResource("BoxMesh_2vf8h")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox29"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox29/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="VentBox108" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.1934, 9.30706, 0)
-mesh = SubResource("BoxMesh_2vf8h")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox108"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox108/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="VentBox109" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1934, 9.30706, 0)
-mesh = SubResource("BoxMesh_2vf8h")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox109"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox109/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="VentBox110" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1934, 9.30706, 0)
-mesh = SubResource("BoxMesh_2vf8h")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox110"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox110/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
 [node name="VentBox111" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2398,8 +2355,38 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox111/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
+[node name="VentBox279" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1934, 10.5308, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox279"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox279/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="VentBox280" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1934, 10.5308, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox280"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox280/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="VentBox281" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.1934, 10.5308, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox281"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox281/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
 [node name="VentBox112" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2409,7 +2396,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox113" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2419,7 +2406,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox114" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2429,7 +2416,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox115" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2439,7 +2426,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox116" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2449,7 +2436,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox117" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2459,7 +2446,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox118" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 9.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 10.5308, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2469,7 +2456,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox119" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 8.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 9.25059, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2478,8 +2465,18 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox119/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
+[node name="VentBox282" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 9.80078, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox282"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox282/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
 [node name="VentBox120" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 7.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 8.25059, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2489,7 +2486,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox121" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 6.30706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1934, 7.25059, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2798,8 +2795,18 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox143/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
+[node name="VentBox283" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1934, 26.5835, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox283"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox283/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
 [node name="VentBox144" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2809,7 +2816,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox145" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2819,7 +2826,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox146" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2829,7 +2836,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox147" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2839,7 +2846,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox148" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2849,7 +2856,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox149" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2859,7 +2866,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox150" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2869,7 +2876,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox151" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.1934, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.1934, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2879,7 +2886,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox152" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.193, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.193, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2889,7 +2896,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox153" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 26.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 27.2511, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2899,7 +2906,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox154" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 26.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 26.6068, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2908,8 +2915,18 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox154/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
+[node name="VentBox284" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 25.8868, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox284"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox284/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
 [node name="VentBox155" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 25.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 25.6162, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2919,7 +2936,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox157" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.193, 25.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.193, 25.6162, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2929,7 +2946,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox158" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.193, 25.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.193, 25.6162, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2939,13 +2956,23 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox163" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.193, 25.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.193, 25.6162, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
 [node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox163"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox163/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="VentBox285" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.193, 24.8192, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox285"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox285/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox164" type="MeshInstance3D" parent="Obstacles/Vent"]
@@ -2989,7 +3016,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox179" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -2999,7 +3026,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox180" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3009,7 +3036,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox181" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3019,7 +3046,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox182" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3029,7 +3056,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox188" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3039,7 +3066,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox200" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3049,7 +3076,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox201" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3059,7 +3086,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox206" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.193, 20.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.193, 20.9036, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3076,6 +3103,16 @@ skeleton = NodePath("")
 [node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox202"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox202/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="VentBox286" type="MeshInstance3D" parent="Obstacles/Vent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.193, 19.9871, 0)
+mesh = SubResource("BoxMesh_2vf8h")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Vent/VentBox286"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Vent/VentBox286/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox203" type="MeshInstance3D" parent="Obstacles/Vent"]
@@ -3112,7 +3149,7 @@ shape = SubResource("BoxShape3D_nmdbe")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="VentBox156" type="MeshInstance3D" parent="Obstacles/Vent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 25.2043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.193, 25.6162, 0)
 mesh = SubResource("BoxMesh_2vf8h")
 skeleton = NodePath("")
 
@@ -3330,7 +3367,7 @@ mesh = SubResource("PlaneMesh_iyold")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.696, 6, 0)
 
 [node name="Grate3" parent="." instance=ExtResource("2_5sba5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2624, 6, -0.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2624, 6.94353, -0.01)
 
 [node name="Grate2" parent="." instance=ExtResource("2_5sba5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.693, 0, 0)
