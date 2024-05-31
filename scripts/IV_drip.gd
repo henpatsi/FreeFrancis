@@ -4,18 +4,17 @@ extends Node3D
 @onready var pole_mesh: MeshInstance3D = $Pole
 @onready var iv_armature_node: Node3D = $"../CharacterBody3D/rig_001/IVHorizontalPos"
 
-@export var sensitivity: float = 0.5
+@export var sensitivity: float = 0.3
 @export var jump_multiplier: float = 5
-@export var max_jump: float = 3
+@export var max_jump: float = 8
 
-@export var shoulder_height: float = 1.0
-@export var max_vertical_offset: float = 1
-@export var min_vertical_offset: float = -1
+@export var shoulder_height: float = 1.1
+@export var max_vertical_offset: float = 0.6
+@export var min_vertical_offset: float = -0.4
 
 var mouse_input: Vector3
 var move_amount: Vector3
 var target_position: Vector3
-
 
 func _process(delta: float) -> void:
 	move_amount = mouse_input * delta * sensitivity
@@ -63,8 +62,10 @@ func check_bottom_collision() -> void:
 		#print(result)
 		target_position.y = result.position.y + 0.01 + (pole_mesh.mesh.height / 2)
 		limit_to_distance()
-		if character_body.velocity.y < 5:
-			character_body.velocity.y += min(-move_amount.y * jump_multiplier, max_jump)
+		if character_body.velocity.y < max_jump:
+			var jump_amount = -move_amount.y * jump_multiplier
+			character_body.velocity.y = min(character_body.velocity.y + jump_amount, max_jump)
+		print(character_body.velocity.y)
 		if move_amount.y < -0.2 and result.collider.is_in_group("PlayerDestructable"):
 			result.collider.get_parent().queue_free()
 
