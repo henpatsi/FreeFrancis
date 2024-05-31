@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://57k3s71ee4hb"]
+
+[ext_resource type="PackedScene" uid="uid://ctaump1te3nsd" path="res://assets/Character/IVstand2.glb" id="1_5nlic"]
+
+[node name="IVstand2" instance=ExtResource("1_5nlic")]

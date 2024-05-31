@@ -3363,13 +3363,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 0)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 117.693, 25, -1.01)
 mesh = SubResource("PlaneMesh_iyold")
 
-[node name="Grate" parent="." instance=ExtResource("2_5sba5")]
+[node name="Grates" type="Node3D" parent="."]
+
+[node name="Grate" parent="Grates" instance=ExtResource("2_5sba5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.696, 6, 0)
 
-[node name="Grate3" parent="." instance=ExtResource("2_5sba5")]
+[node name="Grate3" parent="Grates" instance=ExtResource("2_5sba5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2624, 6.94353, -0.01)
 
-[node name="Grate2" parent="." instance=ExtResource("2_5sba5")]
+[node name="Grate2" parent="Grates" instance=ExtResource("2_5sba5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.693, 0, 0)
 
 [node name="Goal" type="MeshInstance3D" parent="."]
