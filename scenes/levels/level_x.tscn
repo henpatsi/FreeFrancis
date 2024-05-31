@@ -121,7 +121,7 @@ shadow_enabled = true
 environment = SubResource("Environment_bpsru")
 
 [node name="Player" parent="." instance=ExtResource("1_g7vh1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5847, 6.68909, -4.76837e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.9133, 6.63322, 1.43051e-06)
 
 [node name="Obstacles" type="Node3D" parent="."]
 
