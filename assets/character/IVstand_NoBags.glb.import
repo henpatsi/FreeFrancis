@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://docqla0xf712q"
-path="res://.godot/imported/IVstand_NoBags.glb-57d48eed530fbb0419350760fa2e4f4c.scn"
+path="res://.godot/imported/IVstand_NoBags.glb-f8be8ab4c842e0b75fe12f92d19d0c8c.scn"
 
 [deps]
 
-source_file="res://assets/character/IVstand_NoBags.glb"
-dest_files=["res://.godot/imported/IVstand_NoBags.glb-57d48eed530fbb0419350760fa2e4f4c.scn"]
+source_file="res://assets/Character/IVstand_NoBags.glb"
+dest_files=["res://.godot/imported/IVstand_NoBags.glb-f8be8ab4c842e0b75fe12f92d19d0c8c.scn"]
 
 [params]
 

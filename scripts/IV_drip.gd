@@ -28,6 +28,7 @@ var vertical_offset: float
 var mouse_input: Vector3
 var move_amount: Vector3
 var target_position: Vector3
+var target_delta_vector: Vector3
 
 
 func _ready() -> void:
@@ -38,7 +39,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	move_amount = mouse_input * delta * sensitivity
-	target_position = global_position + move_amount + character_body.get_delta_pos()
+	target_position = global_position + move_amount + character_body.get_delta_pos() 
+	target_delta_vector = target_position - global_position
 
 	move_with_player_model()
 	limit_to_distance()
@@ -71,11 +73,10 @@ func limit_to_distance() -> void:
 
 
 func check_bottom_collision() -> void:
-	var target_delta: Vector3 = target_position - global_position
-	if target_delta.y == 0:
-		target_delta = Vector3.DOWN * 0.01
+	if target_delta_vector.y == 0:
+		target_delta_vector = Vector3.DOWN * 0.01
 	var ray_origin: Vector3 = collision_shape_iv.global_position - (pole_height_vector / 2)
-	var ray_target_position: Vector3 = ray_origin + target_delta
+	var ray_target_position: Vector3 = ray_origin + target_delta_vector
 	
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
@@ -94,9 +95,8 @@ func check_bottom_collision() -> void:
 
 
 func check_top_collision() -> void:
-	var target_delta: Vector3 = target_position - global_position
 	var ray_origin: Vector3 = collision_shape_iv.global_position + (pole_height_vector / 2)
-	var ray_target_position: Vector3 = ray_origin + target_delta
+	var ray_target_position: Vector3 = ray_origin + target_delta_vector
 
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_target_position)
