@@ -4,17 +4,37 @@ extends Node3D
 @onready var pole_mesh: MeshInstance3D = $Pole
 @onready var iv_armature_node: Node3D = $"../CharacterBody3D/rig_001/IVHorizontalPos"
 
+@onready var left_hand_ik: SkeletonIK3D = $"../CharacterBody3D/rig_001/Skeleton3D/left_hand_IK"
+@onready var right_hand_ik: SkeletonIK3D = $"../CharacterBody3D/rig_001/Skeleton3D/right_hand_IK"
+@onready var head_ik: SkeletonIK3D = $"../CharacterBody3D/rig_001/Skeleton3D/head_IK"
+@onready var head_ik_target: Node3D = $IKPositions/HeadPosition
+
+@export var head_rotation_zero: float = 30
+@export var head_rotation_up: float = 40
+@export var head_rotation_down: float = 20
+@onready var head_rotation_range = head_rotation_up + head_rotation_down
+
 @export var sensitivity: float = 0.3
 @export var jump_multiplier: float = 5
 @export var max_jump: float = 8
 
-@export var shoulder_height: float = 1.1
+@export var shoulder_height: float = 1
 @export var max_vertical_offset: float = 0.6
 @export var min_vertical_offset: float = -0.4
+@onready var height_range = max_vertical_offset + -min_vertical_offset
+var arm_y: float
+var arm_offset: float
 
 var mouse_input: Vector3
 var move_amount: Vector3
 var target_position: Vector3
+
+
+func _ready() -> void:
+	left_hand_ik.start()
+	right_hand_ik.start()
+	head_ik.start()
+
 
 func _process(delta: float) -> void:
 	move_amount = mouse_input * delta * sensitivity
@@ -27,6 +47,8 @@ func _process(delta: float) -> void:
 
 	global_position = target_position
 	mouse_input = Vector3.ZERO
+
+	update_player_head_rotation()
 
 
 func _input(event: InputEvent) -> void:
@@ -41,8 +63,8 @@ func move_with_player_model() -> void:
 
 
 func limit_to_distance() -> void:
-	var arm_y: float = character_body.global_position.y + shoulder_height
-	var arm_offset: float = target_position.y - arm_y
+	arm_y = character_body.global_position.y + shoulder_height
+	arm_offset = target_position.y - arm_y
 	if arm_offset > max_vertical_offset:
 		target_position.y -= arm_offset - max_vertical_offset
 	if arm_offset < min_vertical_offset:
@@ -85,4 +107,8 @@ func check_top_collision() -> void:
 		limit_to_distance()
 		if move_amount.y > 0.2 and result.collider.is_in_group("PlayerDestructable"):
 			result.collider.get_parent().queue_free()
-	
+
+
+func update_player_head_rotation() -> void:
+	var height_ratio = (arm_offset + -min_vertical_offset) / height_range
+	head_ik_target.rotation.x = deg_to_rad(1 - (head_rotation_range * height_ratio) + head_rotation_zero)

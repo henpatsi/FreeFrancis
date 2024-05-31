@@ -8,9 +8,6 @@ var settings_scene = preload("res://scenes/levels/settings.tscn")
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 
-@onready var left_arm_ik: SkeletonIK3D = $rig_001/Skeleton3D/left_hand_IK
-@onready var right_arm_ik: SkeletonIK3D = $rig_001/Skeleton3D/right_hand_IK
-
 @onready var last_pos: Vector3 = self.position
 var delta_pos: Vector3 = Vector3.ZERO
 
@@ -27,11 +24,9 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	left_arm_ik.start()
-	right_arm_ik.start()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		open_pause_menu()
 	
