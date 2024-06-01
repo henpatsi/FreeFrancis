@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://crrimui1yiano"]
+
+[ext_resource type="Texture2D" uid="uid://cp1br8jjdjap6" path="res://assets/env/hospital_assets/hosp_wall/Hosp_Wall_Wall5_baseColor.jpg" id="1_21w1x"]
+[ext_resource type="Texture2D" uid="uid://dkdea8k4c34uf" path="res://assets/env/hospital_assets/hosp_wall/Hosp_Wall_Wall5_metallicRoughness.png" id="2_n8dpj"]
+[ext_resource type="Texture2D" uid="uid://bfbwbf26ymjlu" path="res://assets/env/hospital_assets/hosp_wall/Hosp_Wall_Wall5_normal.png" id="3_j8d7u"]
+
+[resource]
+resource_name = "Wall5"
+cull_mode = 2
+albedo_texture = ExtResource("1_21w1x")
+metallic = 1.0
+metallic_texture = ExtResource("2_n8dpj")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_n8dpj")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_j8d7u")
+ao_enabled = true
+ao_texture = ExtResource("2_n8dpj")
+uv1_offset = Vector3(1, 0, 0)

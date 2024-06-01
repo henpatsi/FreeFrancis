@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cafhk2gy5oe4k"]
+
+[ext_resource type="PackedScene" uid="uid://x4nx6mjbvt2d" path="res://assets/env/hospital_assets/hosp_door2/Hosp_Door2.glb" id="1_78xqu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxjw6"]
+size = Vector3(0.96875, 2.30092, 0.0761719)
+
+[node name="Hosp_Door2" instance=ExtResource("1_78xqu")]
+
+[node name="Door-material_001" parent="." index="0"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door-material_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door-material_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483398, 1.14835, 0.00390625)
+shape = SubResource("BoxShape3D_nxjw6")

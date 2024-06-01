@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ijjlq48uliu"]
+
+[ext_resource type="PackedScene" uid="uid://coa8j7jkindg0" path="res://assets/env/hospital_assets/hosp_doorway/Hosp_Doorway.glb" id="1_usw1x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4c341"]
+size = Vector3(0.836029, 3.90698, 0.163269)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xlslp"]
+size = Vector3(1, 1.60242, 0.170166)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y2kri"]
+size = Vector3(0.780334, 3.9231, 0.189941)
+
+[node name="Hosp_Doorway" instance=ExtResource("1_usw1x")]
+
+[node name="Door-material" parent="." index="0"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door-material" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door-material/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.907028, 1.96936, 0.0017395)
+shape = SubResource("BoxShape3D_4c341")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Door-material/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1319, 0.00744629)
+shape = SubResource("BoxShape3D_xlslp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door-material/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901947, 1.97156, 0.00415039)
+shape = SubResource("BoxShape3D_y2kri")

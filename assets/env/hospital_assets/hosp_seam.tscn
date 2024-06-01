@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c48p6efhkloc3"]
+
+[ext_resource type="PackedScene" uid="uid://og0hr22l46fi" path="res://assets/env/hospital_assets/hosp_seam/Hosp_Seam.glb" id="1_uwgq1"]
+
+[node name="Hosp_Seam" instance=ExtResource("1_uwgq1")]
+
+[node name="Wall5-material" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)

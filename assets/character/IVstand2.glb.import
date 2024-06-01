@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctaump1te3nsd"
-path="res://.godot/imported/IVstand2.glb-d2108aafefbaf930d354275da7c50eb4.scn"
+path="res://.godot/imported/IVstand2.glb-ccdb5638ea071024cbb92fb9a5824aa2.scn"
 
 [deps]
 
-source_file="res://assets/Character/IVstand2.glb"
-dest_files=["res://.godot/imported/IVstand2.glb-d2108aafefbaf930d354275da7c50eb4.scn"]
+source_file="res://assets/character/IVstand2.glb"
+dest_files=["res://.godot/imported/IVstand2.glb-ccdb5638ea071024cbb92fb9a5824aa2.scn"]
 
 [params]
 

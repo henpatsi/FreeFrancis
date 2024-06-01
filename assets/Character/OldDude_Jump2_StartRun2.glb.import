@@ -4,12 +4,12 @@ importer="animation_library"
 importer_version=1
 type="AnimationLibrary"
 uid="uid://2vnja5fsqiv8"
-path="res://.godot/imported/OldDude_Jump2_StartRun2.glb-46c428aef926d9156d58e3f87d27b302.res"
+path="res://.godot/imported/OldDude_Jump2_StartRun2.glb-e184d061f7aaea8395c9eb623173298e.res"
 
 [deps]
 
-source_file="res://assets/Character/OldDude_Jump2_StartRun2.glb"
-dest_files=["res://.godot/imported/OldDude_Jump2_StartRun2.glb-46c428aef926d9156d58e3f87d27b302.res"]
+source_file="res://assets/character/OldDude_Jump2_StartRun2.glb"
+dest_files=["res://.godot/imported/OldDude_Jump2_StartRun2.glb-e184d061f7aaea8395c9eb623173298e.res"]
 
 [params]
 

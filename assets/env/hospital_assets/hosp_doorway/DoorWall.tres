@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://5of7wna3qxh0"]
+
+[ext_resource type="Texture2D" uid="uid://lla7vamq8rfj" path="res://assets/env/hospital_assets/hosp_doorway/Hosp_Doorway_DoorWall_baseColor.jpg" id="1_sjoq4"]
+[ext_resource type="Texture2D" uid="uid://byle68ke0xa42" path="res://assets/env/hospital_assets/hosp_doorway/Hosp_Doorway_DoorWall_metallicRoughness.png" id="2_utfla"]
+
+[resource]
+resource_name = "DoorWall"
+cull_mode = 2
+albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
+albedo_texture = ExtResource("1_sjoq4")
+metallic = 1.0
+metallic_texture = ExtResource("2_utfla")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_utfla")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_utfla")

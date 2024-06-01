@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c81yqxiv0iy7x"]
+
+[ext_resource type="PackedScene" uid="uid://gw6o5nns472i" path="res://assets/env/hospital_assets/hosp_floor/Hosp_Floor.glb" id="1_1xtdx"]
+[ext_resource type="Material" uid="uid://exem748f1e3s" path="res://assets/env/hospital_assets/hosp_floor/Ground.tres" id="2_lnkal"]
+
+[node name="Hosp_Floor" instance=ExtResource("1_1xtdx")]
+
+[node name="Ground-material" parent="." index="0"]
+transform = Transform3D(12.72, 0, 0, 0, 1, 0, 0, 0, 2.3, 0, 0, 0)
+material_override = ExtResource("2_lnkal")

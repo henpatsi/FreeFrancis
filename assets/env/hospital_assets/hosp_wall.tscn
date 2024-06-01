@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr1560ig8n1vb"]
+
+[ext_resource type="PackedScene" uid="uid://c08bvms8w1pfo" path="res://assets/env/hospital_assets/hosp_wall/Hosp_Wall.glb" id="1_wh3rc"]
+[ext_resource type="Material" uid="uid://crrimui1yiano" path="res://assets/env/hospital_assets/hosp_wall/Wall5.tres" id="2_cg3h3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqr84"]
+size = Vector3(2.62848, 3.96344, 0.1604)
+
+[node name="Hosp_Wall" instance=ExtResource("1_wh3rc")]
+
+[node name="Wall5-material" parent="." index="0"]
+transform = Transform3D(4, -2.26494e-07, -1.50996e-07, -6.03983e-07, -1.5, 1.32005e-14, -6.03983e-07, 1.43989e-14, -1, 0, 5.85, 0)
+material_override = ExtResource("2_cg3h3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall5-material" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall5-material/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000823975, 1.9725, 0.00354004)
+shape = SubResource("BoxShape3D_pqr84")
