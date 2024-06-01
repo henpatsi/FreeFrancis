@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0gi7tufy4y3m"]
+
+[ext_resource type="Script" path="res://scripts/sewer_water.gd" id="1_m7ra1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14l0n"]
+albedo_color = Color(0.0627451, 0.156863, 0.0392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ibyf"]
+material = SubResource("StandardMaterial3D_14l0n")
+size = Vector3(50, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpj3i"]
+size = Vector3(50, 5, 1)
+
+[node name="SewerWater" type="Node3D"]
+script = ExtResource("1_m7ra1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
+mesh = SubResource("BoxMesh_8ibyf")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_xpj3i")
