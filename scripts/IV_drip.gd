@@ -91,7 +91,7 @@ func check_bottom_collision() -> void:
 			character_body.jump(-move_amount.y * jump_multiplier, max_jump)
 		#print(character_body.velocity.y)
 		if move_amount.y < -0.2 and result.collider.is_in_group("PlayerDestructable"):
-			result.collider.get_parent().queue_free()
+			result.collider.get_parent().destroy(move_amount.y)
 
 
 func check_top_collision() -> void:
