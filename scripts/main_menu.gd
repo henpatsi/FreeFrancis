@@ -1,6 +1,6 @@
 extends Node2D
 
-var level_scene = "res://scenes/levels/level_x.tscn"
+var level_scene = "res://scenes/levels/level_final.tscn"
 var settings_scene = preload("res://scenes/levels/settings.tscn")
 
 

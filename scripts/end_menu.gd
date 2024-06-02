@@ -1,7 +1,7 @@
 extends Node2D
 
 var main_menu_scene = "res://scenes/levels/main_menu.tscn"
-var level_scene = "res://scenes/levels/level_test.tscn"
+var level_scene = "res://scenes/levels/level_final.tscn"
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

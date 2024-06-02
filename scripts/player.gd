@@ -61,10 +61,8 @@ func handle_horizontal_movement() -> void:
 	var move_dir := (transform.basis * Vector3(move_input.x, 0, move_input.y)).normalized()
 	if move_dir:
 		velocity.x = move_toward(velocity.x, move_dir.x * max_move_speed, acceleration)
-		velocity.z = move_toward(velocity.z, move_dir.z * max_move_speed, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
-		velocity.z = move_toward(velocity.z, 0, deceleration)
 
 	if abs(velocity.x) > 0:
 		animation_tree.set("parameters/conditions/running", true)
@@ -88,13 +86,6 @@ func open_pause_menu() -> void:
 	var settings_instance = settings_scene.instantiate()
 	add_child(settings_instance)
 	settings_instance.lock_mouse_on_exit = true
-
-
-func turn_player(amount: float, rot_pos: Vector3) -> void:
-	velocity = Vector3.ZERO
-	global_position.x = rot_pos.x
-	global_position.z = rot_pos.z
-	rotation = Vector3.UP * deg_to_rad(amount)
 
 
 func get_delta_pos() -> Vector3:
