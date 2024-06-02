@@ -7,6 +7,7 @@ extends Node2D
 
 var lock_mouse_on_exit = false
 
+var level_scene = "res://scenes/levels/level_final.tscn"
 
 func _ready():
 	get_tree().paused = true
@@ -45,3 +46,9 @@ func close_settings() -> void:
 	if lock_mouse_on_exit:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	queue_free()
+
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().change_scene_to_file(level_scene)

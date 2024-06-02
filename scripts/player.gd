@@ -25,15 +25,16 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Global.timer = 0
 
-
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		open_pause_menu()
 	
 	delta_pos = self.position - last_pos
 	last_pos = self.position
 
+	Global.timer += delta
 
 func _physics_process(delta: float) -> void:
 	handle_vertical_movement(delta)

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/sewer_water.gd" id="1_m7ra1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14l0n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbcga"]
 albedo_color = Color(0.0627451, 0.156863, 0.0392157, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ibyf"]
-material = SubResource("StandardMaterial3D_14l0n")
+material = SubResource("StandardMaterial3D_nbcga")
 size = Vector3(50, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xpj3i"]
@@ -19,7 +19,9 @@ script = ExtResource("1_m7ra1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 mesh = SubResource("BoxMesh_8ibyf")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="MeshInstance3D"]
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 shape = SubResource("BoxShape3D_xpj3i")
+
+[connection signal="body_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]

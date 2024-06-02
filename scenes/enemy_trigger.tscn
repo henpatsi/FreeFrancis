@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1u4p0slgvgot"]
+
+[ext_resource type="Script" path="res://scripts/enemy_trigger.gd" id="1_rdckv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dv61x"]
+size = Vector3(1, 10, 1)
+
+[node name="EnemyTrigger" type="Node3D"]
+script = ExtResource("1_rdckv")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_dv61x")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

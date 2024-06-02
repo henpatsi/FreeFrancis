@@ -41,6 +41,8 @@ func handle_rotation(delta) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		get_tree().change_scene_to_file(end_menu_scene)
+	elif body.is_in_group("Immovable"):
+		return
 	else:
 		var body_parent = body.get_parent()
 		var target_position = body_parent.global_position + Vector3(0, 0, 3)

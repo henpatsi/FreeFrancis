@@ -96,6 +96,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
 
+[node name="Restart" type="Button" parent="."]
+offset_left = 1057.0
+offset_top = 23.0
+offset_right = 1122.0
+offset_bottom = 54.0
+text = "Restart"
+
 [connection signal="value_changed" from="CenterContainer/SettingsVBox/MouseSensitivity/MouseSensitivitySlider" to="." method="_on_mouse_sensitivity_slider_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SettingsVBox/Volume/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="pressed" from="CenterContainer/SettingsVBox/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmdgvrysu17nw"]
+[gd_scene load_steps=5 format=3 uid="uid://bmdgvrysu17nw"]
 
 [ext_resource type="Texture2D" uid="uid://kr0taq2paa3o" path="res://assets/images/Pug_in_a_blanket_(Unsplash)_small.jpg" id="1_sm2dm"]
 [ext_resource type="Script" path="res://scripts/end_menu.gd" id="1_xawui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_20xcj"]
 font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_shgh2"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="EndMenu" type="Node2D"]
@@ -39,6 +42,27 @@ text = "Restart"
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="Timer" type="HBoxContainer" parent="."]
+offset_left = 94.0
+offset_top = 98.0
+offset_right = 317.0
+offset_bottom = 121.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Timer"]
+layout_mode = 2
+text = "Time:"
+label_settings = SubResource("LabelSettings_shgh2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="Timer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_shgh2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

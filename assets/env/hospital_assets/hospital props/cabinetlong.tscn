@@ -10,7 +10,7 @@ size = Vector3(1.16528, 2.97363, 0.93335)
 [node name="Cabinet1-material_002" parent="." index="0"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cabinet1-material_002" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Cabinet1-material_002" index="0" groups=["Immovable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cabinet1-material_002/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00378418, 1.46045, 0.0230713)

@@ -6,4 +6,3 @@ var volume: float = 100
 
 # Stats
 var timer: float = 0
-

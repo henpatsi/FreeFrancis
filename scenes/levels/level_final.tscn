@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b4jqqi0cdsrwm"]
+[gd_scene load_steps=45 format=3 uid="uid://b4jqqi0cdsrwm"]
 
 [ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scenes/player.tscn" id="1_kj4r6"]
 [ext_resource type="PackedScene" uid="uid://cr1560ig8n1vb" path="res://assets/env/hospital_assets/hosp_wall.tscn" id="2_4ccrv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://epk7cq7ugf81" path="res://assets/env/hospital_assets/hospital props/chair.tscn" id="17_2n8n1"]
 [ext_resource type="PackedScene" uid="uid://ea47t2gwgtpb" path="res://assets/env/hospital_assets/hospital props/iv_prop.tscn" id="18_vwted"]
 [ext_resource type="PackedScene" uid="uid://35ur40dltw6w" path="res://assets/env/hospital_assets/hospital props/cabinetlong.tscn" id="19_fauq4"]
+[ext_resource type="PackedScene" uid="uid://d1u4p0slgvgot" path="res://scenes/enemy_trigger.tscn" id="19_impu3"]
 [ext_resource type="PackedScene" uid="uid://7k2a24vulc0f" path="res://scenes/camera_unlock_trigger.tscn" id="20_hd151"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ybt6k"]
@@ -96,7 +97,7 @@ material = SubResource("StandardMaterial3D_mwxxi")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ifq3"]
 size = Vector3(1, 2, 1)
 
-[node name="LevelX" type="Node3D"]
+[node name="Level" type="Node3D"]
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -124,130 +125,254 @@ spot_angle = 41.0336
 environment = SubResource("Environment_bpsru")
 
 [node name="Player" parent="." instance=ExtResource("1_kj4r6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.3937, 0.118311, 1.43051e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.0723, 0.488467, 0)
 
 [node name="Skeleton3D" parent="Player/CharacterBody3D/rig_002" index="0"]
-bones/1/position = Vector3(-0.000271655, 0.0603531, 0.631579)
-bones/1/rotation = Quaternion(0.824621, 0.00698192, 0.00577574, 0.565614)
-bones/3/rotation = Quaternion(0.092785, -0.00160878, -0.00276384, 0.995681)
-bones/4/rotation = Quaternion(0.149836, -0.00520599, -0.00232605, 0.988695)
-bones/5/rotation = Quaternion(0.109816, 0.00409215, 0.00157194, 0.993942)
-bones/6/rotation = Quaternion(0.050836, -0.000177582, -9.01526e-06, 0.998707)
-bones/7/rotation = Quaternion(-0.364889, 0.00402868, 0.00157878, 0.931041)
-bones/8/position = Vector3(0.378242, -0.0791781, 0.765211)
-bones/8/rotation = Quaternion(0.397302, 0.607915, 0.127377, 0.675549)
-bones/8/scale = Vector3(1, 24.1408, 1)
-bones/9/position = Vector3(-0.413457, -0.107004, 0.76408)
-bones/9/rotation = Quaternion(0.385644, -0.591648, -0.147265, 0.692491)
-bones/9/scale = Vector3(1, 24.5264, 1)
-bones/10/position = Vector3(0.200944, -0.031104, 0.380234)
-bones/10/rotation = Quaternion(0.932682, -0.0219372, 0.0138708, -0.359764)
-bones/10/scale = Vector3(1, 13.4793, 1)
-bones/11/position = Vector3(-0.244186, -0.0524539, 0.397295)
-bones/11/rotation = Quaternion(0.904924, 0.16275, -0.155096, -0.361345)
-bones/11/scale = Vector3(1, 13.763, 1)
-bones/13/position = Vector3(0, 0.0240531, -0.0134491)
-bones/13/rotation = Quaternion(0.235085, 0.00133113, 0.00896054, 0.971933)
-bones/15/rotation = Quaternion(0.141418, 0.00547558, -0.00683168, 0.989911)
-bones/26/rotation = Quaternion(0.932859, 0.0264385, -0.00644464, 0.359212)
-bones/26/scale = Vector3(0.997625, 0.997625, 0.997625)
-bones/27/rotation = Quaternion(0.139276, 4.23175e-07, -4.29037e-08, 0.990254)
-bones/27/scale = Vector3(1.00008, 1.00008, 1.00008)
-bones/28/rotation = Quaternion(-0.468417, -0.0995815, -0.0329528, 0.877259)
-bones/28/scale = Vector3(1.00216, 1.00216, 1.00216)
-bones/33/scale = Vector3(1.00216, 1.00216, 1.00216)
-bones/35/rotation = Quaternion(-1.26299e-07, -0.0528234, 1.49346e-08, 0.998604)
-bones/35/scale = Vector3(1.00216, 1.00216, 1.00216)
-bones/37/scale = Vector3(1.00238, 1.00238, 1.00238)
-bones/38/scale = Vector3(1.00238, 1.00238, 1.00238)
-bones/40/rotation = Quaternion(0.899331, -0.0698653, 0.152455, 0.403831)
-bones/40/scale = Vector3(0.982362, 0.982361, 0.982361)
-bones/41/rotation = Quaternion(0.41613, -3.7229e-07, 1.56566e-07, 0.909305)
-bones/42/rotation = Quaternion(-0.550197, 0.145285, -0.0179977, 0.822102)
-bones/42/scale = Vector3(1.01654, 1.01653, 1.01654)
-bones/47/scale = Vector3(1.01653, 1.01653, 1.01653)
-bones/49/rotation = Quaternion(-6.30048e-08, 0.0796499, 1.37949e-08, 0.996823)
-bones/49/scale = Vector3(1.01653, 1.01653, 1.01654)
-bones/51/scale = Vector3(1.01796, 1.01796, 1.01796)
-bones/52/scale = Vector3(1.01796, 1.01796, 1.01796)
-bones/62/rotation = Quaternion(-0.903959, -0.00764553, -0.047736, 0.424878)
-bones/63/rotation = Quaternion(-0.0734841, -0.0403949, -0.00297883, 0.996474)
-bones/63/scale = Vector3(0.997625, 0.997625, 0.997625)
-bones/64/rotation = Quaternion(0.139276, 4.23449e-07, -4.28788e-08, 0.990254)
-bones/64/scale = Vector3(1.00008, 1.00008, 1.00008)
-bones/65/rotation = Quaternion(0.932437, 0.0399958, 0.0288163, 0.357956)
-bones/67/rotation = Quaternion(0.932436, 0.0399958, 0.0288163, 0.357956)
-bones/67/scale = Vector3(1.00118, 0.997648, 1.00118)
-bones/69/rotation = Quaternion(0.139251, -0.0188039, 0.0026369, 0.990075)
-bones/70/rotation = Quaternion(-1.28934e-08, -0.020387, 1.32331e-08, 0.999792)
-bones/71/rotation = Quaternion(-0.46918, -0.0815185, -0.0233592, 0.879022)
-bones/71/scale = Vector3(0.999127, 0.999549, 1.00133)
-bones/81/rotation = Quaternion(-0.850015, 0.0326223, 0.0697355, 0.521102)
-bones/82/rotation = Quaternion(-0.220453, 0.19251, 0.0444307, 0.955179)
-bones/82/scale = Vector3(0.982361, 0.982362, 0.982361)
-bones/83/rotation = Quaternion(0.41613, -3.74983e-07, 1.5449e-07, 0.909305)
-bones/84/rotation = Quaternion(0.91169, -0.148935, -0.0298704, 0.381769)
-bones/86/rotation = Quaternion(0.911673, -0.14896, -0.0298711, 0.3818)
-bones/86/scale = Vector3(1.00891, 0.982421, 1.00891)
-bones/87/rotation = Quaternion(-6.54066e-08, 0.095532, -1.96655e-09, 0.995426)
-bones/88/rotation = Quaternion(0.413852, 0.0948101, -0.0432489, 0.90436)
-bones/88/scale = Vector3(0.999302, 0.986378, 1.01487)
-bones/89/rotation = Quaternion(2.42495e-08, 0.0472572, -1.66378e-08, 0.998883)
-bones/90/rotation = Quaternion(-0.548653, 0.10634, -0.0441016, 0.828086)
-bones/90/scale = Vector3(0.9928, 0.995712, 1.01178)
-bones/95/rotation = Quaternion(0.0708991, 0.00274533, -0.00342508, 0.997474)
-bones/97/rotation = Quaternion(-0.0574546, 0.00163693, 0.00146096, 0.998346)
-bones/100/rotation = Quaternion(-0.643373, -0.000412909, -0.00437015, 0.76554)
-bones/102/rotation = Quaternion(0.109816, 0.00409215, 0.00157194, 0.993942)
-bones/103/rotation = Quaternion(0.050836, -0.000177582, -9.01542e-06, 0.998707)
-bones/104/rotation = Quaternion(-0.364889, 0.00402868, 0.00157878, 0.931041)
-bones/105/rotation = Quaternion(-0.795753, 0.000758166, 0.00432335, 0.605605)
-bones/107/rotation = Quaternion(-0.903263, 0.00162998, 0.00406936, 0.429065)
-bones/108/rotation = Quaternion(0.702226, 4.96e-05, -4.33126e-05, 0.711954)
-bones/111/rotation = Quaternion(-0.0537514, -1.15785e-06, -3.25186e-05, 0.998554)
-bones/116/rotation = Quaternion(0.127588, 0.701969, -0.676202, 0.183607)
-bones/117/rotation = Quaternion(0.0555632, 0.0132003, 0.232879, 0.970827)
-bones/126/rotation = Quaternion(-3.30337e-08, -0.327915, -2.95587e-08, 0.944707)
-bones/130/rotation = Quaternion(-0.350579, -0.178328, 0.594337, 0.701467)
-bones/131/rotation = Quaternion(0.450485, 0.686384, -0.360111, -0.443013)
-bones/132/rotation = Quaternion(0.0555657, 0.0131959, 0.232894, 0.970824)
-bones/135/rotation = Quaternion(0.372093, 0.421361, -0.452897, 0.692016)
-bones/136/scale = Vector3(1.05232, 1.05232, 1.05232)
-bones/138/rotation = Quaternion(-0.320669, 0.435474, -0.608847, 0.580378)
-bones/140/rotation = Quaternion(-0.320669, 0.435474, -0.608847, 0.580379)
-bones/141/rotation = Quaternion(-4.84964e-09, 0.33081, -8.35378e-08, 0.943698)
-bones/142/rotation = Quaternion(0.128869, 0.330809, 0.201808, 0.912815)
-bones/240/rotation = Quaternion(0.259512, -0.690692, 0.668542, 0.0930078)
-bones/241/rotation = Quaternion(0.00168967, 0.0842853, -0.246953, 0.965353)
-bones/242/rotation = Quaternion(-0.0241903, 0.0294372, -0.07256, 0.996636)
-bones/247/rotation = Quaternion(-7.78722e-08, 0.014838, 3.85841e-08, 0.99989)
-bones/250/rotation = Quaternion(5.78898e-08, 0.433484, 2.35475e-08, 0.901161)
-bones/254/rotation = Quaternion(-0.361909, 0.162984, -0.598153, 0.696183)
-bones/255/rotation = Quaternion(0.518495, -0.582734, 0.313392, -0.541636)
-bones/256/rotation = Quaternion(0.00168967, 0.0842853, -0.246953, 0.965353)
-bones/258/rotation = Quaternion(-0.00596013, 0.0307953, -0.081446, 0.996184)
-bones/259/rotation = Quaternion(0.365883, -0.427685, 0.454152, 0.690624)
-bones/260/scale = Vector3(1.07012, 1.07012, 1.07012)
-bones/262/rotation = Quaternion(-0.297435, -0.415645, 0.652551, 0.559419)
-bones/264/rotation = Quaternion(-0.297435, -0.415645, 0.652551, 0.559419)
-bones/265/rotation = Quaternion(-2.20533e-08, -0.342509, -6.05235e-08, 0.939515)
-bones/266/rotation = Quaternion(0.108575, -0.342509, -0.221811, 0.906476)
-bones/267/rotation = Quaternion(-5.75148e-08, 0.0147525, -7.65037e-09, 0.999891)
-bones/268/rotation = Quaternion(-0.0231215, 0.0148382, -0.072965, 0.996956)
-bones/375/position = Vector3(0.590736, 1.23796, -0.366303)
-bones/375/rotation = Quaternion(-0.395209, 0.00908032, -0.00436577, 0.918536)
-bones/380/position = Vector3(-0.588707, 1.25587, -0.350727)
-bones/380/rotation = Quaternion(-0.395209, 0.00908033, -0.00436578, 0.918536)
-bones/394/position = Vector3(0.189465, 0.13101, 0.305725)
-bones/394/rotation = Quaternion(-0.52103, 0.00727731, 0.00539481, 0.85349)
-bones/408/position = Vector3(-0.17505, 0.130426, 0.312269)
-bones/408/rotation = Quaternion(-0.52103, 0.00727731, 0.00539481, 0.85349)
+bones/1/position = Vector3(-0.000268902, 0.0602609, 0.630043)
+bones/1/rotation = Quaternion(0.824198, 0.00684128, 0.005596, 0.566232)
+bones/3/rotation = Quaternion(0.094415, -0.00164188, -0.00285061, 0.995528)
+bones/4/rotation = Quaternion(0.151376, -0.00531094, -0.00239981, 0.988459)
+bones/5/rotation = Quaternion(0.108189, 0.0041883, 0.00163478, 0.99412)
+bones/6/rotation = Quaternion(0.0508361, -9.9255e-05, -5.02448e-06, 0.998707)
+bones/7/rotation = Quaternion(-0.364498, 0.00410989, 0.0016499, 0.931194)
+bones/8/position = Vector3(0.378081, -0.0825508, 0.761923)
+bones/8/rotation = Quaternion(0.397576, 0.607599, 0.127897, 0.675573)
+bones/8/scale = Vector3(1, 24.277, 1)
+bones/9/position = Vector3(-0.414885, -0.110606, 0.761708)
+bones/9/rotation = Quaternion(0.384806, -0.590517, -0.148606, 0.693636)
+bones/9/scale = Vector3(1, 24.6577, 1)
+bones/10/position = Vector3(0.200983, -0.0348625, 0.380266)
+bones/10/rotation = Quaternion(0.931457, -0.0229515, 0.0149454, -0.362819)
+bones/10/scale = Vector3(1, 13.4341, 1)
+bones/11/position = Vector3(-0.244638, -0.0537482, 0.396659)
+bones/11/rotation = Quaternion(0.904608, 0.16336, -0.155714, -0.361594)
+bones/11/scale = Vector3(1, 13.7594, 1)
+bones/13/position = Vector3(0, 0.0240531, -0.0149494)
+bones/13/rotation = Quaternion(0.234373, 0.00134643, 0.00873518, 0.972107)
+bones/15/rotation = Quaternion(0.144676, 0.00565357, -0.00697553, 0.989438)
+bones/26/rotation = Quaternion(0.93035, 0.0267467, -0.00623711, 0.365642)
+bones/26/scale = Vector3(0.996562, 0.996562, 0.996562)
+bones/27/rotation = Quaternion(0.15382, 4.23538e-07, -4.97107e-08, 0.988099)
+bones/27/scale = Vector3(1.00021, 1.00021, 1.00021)
+bones/28/rotation = Quaternion(-0.474375, -0.100099, -0.0322776, 0.874018)
+bones/28/scale = Vector3(1.00313, 1.00313, 1.00313)
+bones/29/position = Vector3(-7.08888e-07, 0.199728, -7.81696e-05)
+bones/29/rotation = Quaternion(-0.0332606, 0.968761, -0.245613, -0.00842759)
+bones/33/scale = Vector3(1.00313, 1.00313, 1.00313)
+bones/35/rotation = Quaternion(-9.34083e-08, -0.0531366, 1.56296e-08, 0.998587)
+bones/35/scale = Vector3(1.00313, 1.00313, 1.00313)
+bones/37/scale = Vector3(1.00345, 1.00345, 1.00345)
+bones/38/rotation = Quaternion(-1.34335e-07, 0.0190378, 9.72594e-08, 0.999819)
+bones/38/scale = Vector3(1.00345, 1.00345, 1.00345)
+bones/40/rotation = Quaternion(0.898322, -0.0706319, 0.152233, 0.406022)
+bones/40/scale = Vector3(0.982066, 0.982065, 0.982065)
+bones/41/rotation = Quaternion(0.421905, -3.9459e-07, 1.64722e-07, 0.90664)
+bones/41/scale = Vector3(1.00144, 1.00144, 1.00144)
+bones/42/rotation = Quaternion(-0.552557, 0.144918, -0.01868, 0.820567)
+bones/42/scale = Vector3(1.01682, 1.01682, 1.01682)
+bones/43/position = Vector3(-9.3292e-09, 0.199798, 7.91624e-09)
+bones/43/rotation = Quaternion(0.0340302, 0.932409, -0.359773, 0.00438651)
+bones/47/scale = Vector3(1.01682, 1.01682, 1.01682)
+bones/49/rotation = Quaternion(-8.03667e-08, 0.0794851, 1.78216e-08, 0.996836)
+bones/49/scale = Vector3(1.01682, 1.01682, 1.01682)
+bones/51/scale = Vector3(1.01826, 1.01826, 1.01826)
+bones/52/rotation = Quaternion(-8.04821e-08, -0.105179, -3.85466e-10, 0.994453)
+bones/52/scale = Vector3(1.01826, 1.01826, 1.01826)
+bones/62/rotation = Quaternion(-0.903672, -0.00777653, -0.0478502, 0.425472)
+bones/63/rotation = Quaternion(-0.0812102, -0.0403764, -0.00329249, 0.995873)
+bones/63/scale = Vector3(0.996562, 0.996562, 0.996562)
+bones/64/rotation = Quaternion(0.15382, 4.23666e-07, -4.95462e-08, 0.988099)
+bones/64/scale = Vector3(1.00021, 1.00021, 1.00021)
+bones/65/rotation = Quaternion(0.929921, 0.0405533, 0.0289455, 0.36437)
+bones/67/rotation = Quaternion(0.929921, 0.0405533, 0.0289454, 0.36437)
+bones/67/scale = Vector3(1.00167, 0.996677, 1.00167)
+bones/68/rotation = Quaternion(9.29847e-09, -0.0187879, 5.44647e-08, 0.999824)
+bones/69/rotation = Quaternion(0.153794, -0.0187897, 0.00291278, 0.98792)
+bones/69/scale = Vector3(0.999812, 0.999762, 1.00043)
+bones/70/rotation = Quaternion(-3.68958e-09, -0.0207005, 6.00148e-09, 0.999786)
+bones/71/rotation = Quaternion(-0.475113, -0.0817731, -0.0223929, 0.875831)
+bones/71/scale = Vector3(0.998783, 0.999499, 1.00173)
+bones/72/rotation = Quaternion(-0.0332604, 0.968809, -0.245423, -0.00842072)
+bones/72/scale = Vector3(0.999827, 1.00023, 0.999944)
+bones/81/rotation = Quaternion(-0.849632, 0.0326694, 0.0697586, 0.52172)
+bones/82/rotation = Quaternion(-0.223741, 0.192377, 0.0450984, 0.954409)
+bones/82/scale = Vector3(0.982065, 0.982066, 0.982066)
+bones/83/rotation = Quaternion(0.421905, -3.9511e-07, 1.64346e-07, 0.90664)
+bones/83/scale = Vector3(1.00144, 1.00144, 1.00144)
+bones/84/rotation = Quaternion(0.910638, -0.150159, -0.0299138, 0.38379)
+bones/86/rotation = Quaternion(0.910638, -0.150159, -0.0299138, 0.38379)
+bones/86/scale = Vector3(1.00907, 0.982099, 1.00907)
+bones/87/rotation = Quaternion(-8.88524e-08, 0.0953886, 1.70496e-08, 0.99544)
+bones/88/rotation = Quaternion(0.419584, 0.0946573, -0.0439203, 0.901698)
+bones/88/scale = Vector3(0.999291, 0.985862, 1.01542)
+bones/89/rotation = Quaternion(2.09081e-08, 0.047092, -1.37069e-08, 0.998891)
+bones/90/rotation = Quaternion(-0.551061, 0.106146, -0.0448549, 0.82647)
+bones/90/scale = Vector3(0.992664, 0.995545, 1.0121)
+bones/91/rotation = Quaternion(0.0340277, 0.932416, -0.359754, 0.00438657)
+bones/91/scale = Vector3(0.999979, 1.00001, 1.00001)
+bones/95/rotation = Quaternion(0.0724531, 0.00283009, -0.00349368, 0.997362)
+bones/97/rotation = Quaternion(-0.058094, 0.00166338, 0.00149732, 0.998309)
+bones/100/rotation = Quaternion(-0.642179, -0.000399805, -0.00447841, 0.766542)
+bones/102/rotation = Quaternion(0.108189, 0.0041883, 0.00163478, 0.99412)
+bones/103/rotation = Quaternion(0.0508361, -9.92551e-05, -5.02465e-06, 0.998707)
+bones/104/rotation = Quaternion(-0.364498, 0.00410989, 0.0016499, 0.931194)
+bones/105/rotation = Quaternion(-0.796695, 0.000753693, 0.0044323, 0.604364)
+bones/106/rotation = Quaternion(0.870617, 5.90834e-08, 1.03641e-07, 0.491962)
+bones/107/rotation = Quaternion(-0.903964, 0.00164931, 0.00418257, 0.427585)
+bones/108/rotation = Quaternion(0.703792, 1.81941e-05, -1.51633e-05, 0.710407)
+bones/111/rotation = Quaternion(-0.0527911, -3.47974e-07, -1.40843e-05, 0.998606)
+bones/116/rotation = Quaternion(0.131292, 0.699363, -0.67632, 0.190382)
+bones/117/rotation = Quaternion(0.0559162, 0.0125887, 0.234883, 0.970332)
+bones/118/rotation = Quaternion(0.0422248, -0.00432699, -0.0292461, 0.998671)
+bones/123/rotation = Quaternion(-9.09675e-09, -0.00216539, 3.22193e-08, 0.999998)
+bones/126/rotation = Quaternion(1.0955e-07, -0.32439, 1.5219e-07, 0.945923)
+bones/130/rotation = Quaternion(-0.352041, -0.179837, 0.594271, 0.700405)
+bones/131/rotation = Quaternion(0.452954, 0.68415, -0.364229, -0.440578)
+bones/132/rotation = Quaternion(0.0559162, 0.0125887, 0.234883, 0.970333)
+bones/134/rotation = Quaternion(0.0602229, -0.00322974, -0.0198792, 0.997982)
+bones/135/rotation = Quaternion(0.372915, 0.420404, -0.452065, 0.6927)
+bones/136/rotation = Quaternion(-2.38425e-05, -0.00550961, 2.90311e-09, 0.999985)
+bones/136/scale = Vector3(1.05288, 1.05288, 1.05288)
+bones/137/rotation = Quaternion(4.82537e-05, -2.43378e-07, 2.62319e-09, 1)
+bones/137/scale = Vector3(1.00204, 1.00204, 1.00204)
+bones/138/rotation = Quaternion(-0.31285, 0.433965, -0.613816, 0.580542)
+bones/140/rotation = Quaternion(-0.31285, 0.433965, -0.613816, 0.580542)
+bones/141/rotation = Quaternion(-2.38954e-09, 0.326687, 2.63541e-08, 0.945133)
+bones/142/rotation = Quaternion(0.129144, 0.32663, 0.204148, 0.913761)
+bones/143/rotation = Quaternion(-2.54061e-08, -0.00207991, 4.50279e-08, 0.999998)
+bones/144/rotation = Quaternion(0.0421636, -0.0022503, -0.0293346, 0.998677)
+bones/147/rotation = Quaternion(0.364506, -0.000827713, -0.0028243, 0.931197)
+bones/148/rotation = Quaternion(0.380846, 0.00213655, 0.00642648, 0.924614)
+bones/149/rotation = Quaternion(-0.263886, -0.0556933, 0.131258, 0.953957)
+bones/150/rotation = Quaternion(0.231789, -0.104162, 0.0238942, 0.966878)
+bones/151/rotation = Quaternion(0.146, 0.000263646, 0.00237034, 0.989282)
+bones/153/rotation = Quaternion(0.364506, -0.000827713, -0.0028243, 0.931197)
+bones/154/rotation = Quaternion(0.380846, 0.00213655, 0.00642648, 0.924614)
+bones/155/scale = Vector3(1, 0.790668, 1)
+bones/156/rotation = Quaternion(-0.263886, -0.0556933, 0.131258, 0.953957)
+bones/157/rotation = Quaternion(0.231789, -0.104162, 0.0238942, 0.966878)
+bones/158/rotation = Quaternion(0.146, 0.000263646, 0.00237034, 0.989282)
+bones/159/rotation = Quaternion(-0.248308, -0.157559, 0.15877, 0.942502)
+bones/159/scale = Vector3(1, 0.927332, 1)
+bones/163/rotation = Quaternion(0.364506, -0.000828976, -0.00282701, 0.931196)
+bones/165/rotation = Quaternion(0.380846, 0.0021385, 0.0064303, 0.924614)
+bones/171/rotation = Quaternion(-0.24831, -0.157557, 0.158769, 0.942502)
+bones/173/rotation = Quaternion(0.233012, 1.06546e-05, -0.00107112, 0.972473)
+bones/175/rotation = Quaternion(0.146003, 0.000261017, 0.00236968, 0.989281)
+bones/177/rotation = Quaternion(0.0698339, 3.09442e-09, 0.997559, -8.56746e-10)
+bones/180/rotation = Quaternion(-0.263886, -0.0556933, 0.131258, 0.953957)
+bones/183/rotation = Quaternion(0.405941, 0.00158489, 0.00491916, 0.913885)
+bones/184/rotation = Quaternion(0.385186, -0.00384184, -0.010085, 0.922776)
+bones/186/rotation = Quaternion(0.405941, 0.00158489, 0.00491916, 0.913885)
+bones/187/rotation = Quaternion(0.385186, -0.00384184, -0.010085, 0.922776)
+bones/188/scale = Vector3(1, 0.767616, 1)
+bones/192/rotation = Quaternion(0.405941, 0.00158392, 0.00491657, 0.913885)
+bones/194/rotation = Quaternion(0.385185, -0.00384366, -0.0100886, 0.922776)
+bones/196/rotation = Quaternion(0.999792, -9.89736e-10, -0.0203813, 2.96193e-09)
+bones/202/rotation = Quaternion(0.347395, 0.00110142, 0.00389714, 0.93771)
+bones/203/rotation = Quaternion(0.353604, -0.00255346, -0.00786396, 0.935359)
+bones/205/rotation = Quaternion(0.347395, 0.00110142, 0.00389714, 0.93771)
+bones/206/rotation = Quaternion(0.353604, -0.00255346, -0.00786396, 0.935359)
+bones/207/scale = Vector3(1, 0.799547, 1)
+bones/211/rotation = Quaternion(0.347395, 0.00110314, 0.0039006, 0.93771)
+bones/213/rotation = Quaternion(0.353604, -0.00255395, -0.00786497, 0.935359)
+bones/221/rotation = Quaternion(0.327697, 0.00072837, 0.00290083, 0.944778)
+bones/222/rotation = Quaternion(0.343696, -0.00175331, -0.00590402, 0.939061)
+bones/224/rotation = Quaternion(0.327697, 0.00072837, 0.00290083, 0.944778)
+bones/225/rotation = Quaternion(0.343696, -0.00175331, -0.00590402, 0.939061)
+bones/226/scale = Vector3(1, 0.815296, 1)
+bones/230/rotation = Quaternion(0.327697, 0.000727336, 0.0028987, 0.944778)
+bones/232/rotation = Quaternion(0.343695, -0.00175603, -0.00590872, 0.939061)
+bones/240/position = Vector3(-0.0234731, 0.328505, -0.0438531)
+bones/240/rotation = Quaternion(0.263173, -0.690519, 0.666114, 0.101073)
+bones/241/rotation = Quaternion(0.00217572, 0.0828776, -0.238243, 0.967661)
+bones/242/rotation = Quaternion(-0.0241923, 0.0282905, -0.0695049, 0.996887)
+bones/247/rotation = Quaternion(-5.75508e-08, 0.0144025, 7.38175e-09, 0.999896)
+bones/250/rotation = Quaternion(1.23756e-08, 0.428238, -1.58402e-08, 0.903666)
+bones/254/rotation = Quaternion(-0.363675, 0.16423, -0.597426, 0.695594)
+bones/255/position = Vector3(-0.0551892, 7.32528e-09, -2.23361e-08)
+bones/255/rotation = Quaternion(0.522945, -0.581953, 0.315812, -0.536771)
+bones/256/rotation = Quaternion(0.00217572, 0.0828776, -0.238243, 0.967661)
+bones/258/rotation = Quaternion(-0.00596898, 0.0295938, -0.0784146, 0.996464)
+bones/259/rotation = Quaternion(0.366606, -0.42689, 0.453641, 0.691068)
+bones/260/rotation = Quaternion(-1.68833e-06, 0.00550952, -1.37217e-07, 0.999985)
+bones/260/scale = Vector3(1.07037, 1.07037, 1.07037)
+bones/261/rotation = Quaternion(3.25218e-06, 2.35056e-07, 9.78211e-09, 1)
+bones/261/scale = Vector3(1.00266, 1.00266, 1.00266)
+bones/262/position = Vector3(-0.023473, 0.328505, -0.0438533)
+bones/262/rotation = Quaternion(-0.287236, -0.414828, 0.656096, 0.561206)
+bones/264/position = Vector3(-0.023473, 0.328505, -0.0438531)
+bones/264/rotation = Quaternion(-0.287236, -0.414828, 0.656096, 0.561206)
+bones/265/rotation = Quaternion(3.52652e-09, -0.339517, -3.88807e-08, 0.9406)
+bones/266/rotation = Quaternion(0.103992, -0.339494, -0.21436, 0.909934)
+bones/267/rotation = Quaternion(-3.08906e-08, 0.014317, -2.47271e-08, 0.999898)
+bones/268/rotation = Quaternion(-0.0232113, 0.0142512, -0.069838, 0.997186)
+bones/271/rotation = Quaternion(0.345432, 0.0007698, 0.00284047, 0.938439)
+bones/272/rotation = Quaternion(0.361903, -0.00200483, -0.00646881, 0.932191)
+bones/273/rotation = Quaternion(-0.168534, -0.00347593, -0.274927, 0.946573)
+bones/274/rotation = Quaternion(0.198027, -0.105734, 0.0225605, 0.974216)
+bones/275/rotation = Quaternion(0.111761, -0.000181737, -0.00237766, 0.993732)
+bones/277/rotation = Quaternion(0.345432, 0.0007698, 0.00284047, 0.938439)
+bones/278/rotation = Quaternion(0.361903, -0.00200483, -0.00646881, 0.932191)
+bones/279/scale = Vector3(1, 0.803657, 1)
+bones/280/rotation = Quaternion(-0.168534, -0.00347593, -0.274927, 0.946573)
+bones/281/rotation = Quaternion(0.198027, -0.105734, 0.0225605, 0.974216)
+bones/282/rotation = Quaternion(0.111761, -0.000181737, -0.00237766, 0.993732)
+bones/283/rotation = Quaternion(-0.197204, -0.105547, -0.255148, 0.940675)
+bones/283/scale = Vector3(1, 0.949314, 1)
+bones/287/rotation = Quaternion(0.345432, 0.000771137, 0.00284332, 0.938439)
+bones/289/rotation = Quaternion(0.361903, -0.00200686, -0.00647262, 0.932191)
+bones/295/rotation = Quaternion(-0.197205, -0.105549, -0.255146, 0.940675)
+bones/297/rotation = Quaternion(0.199302, -4.76304e-05, 0.00107014, 0.979938)
+bones/299/rotation = Quaternion(0.111764, -0.000179048, -0.00237728, 0.993732)
+bones/301/rotation = Quaternion(-0.0698339, -2.07143e-08, 0.997559, 3.96781e-09)
+bones/304/rotation = Quaternion(-0.168534, -0.00347593, -0.274927, 0.946573)
+bones/307/rotation = Quaternion(0.429847, -0.00171356, -0.00487593, 0.902887)
+bones/308/rotation = Quaternion(0.409333, 0.00410626, 0.00998034, 0.912321)
+bones/310/rotation = Quaternion(0.429847, -0.00171356, -0.00487593, 0.902887)
+bones/311/rotation = Quaternion(0.409333, 0.00410626, 0.00998034, 0.912321)
+bones/312/scale = Vector3(1, 0.750863, 1)
+bones/316/rotation = Quaternion(0.429847, -0.00171273, -0.00487318, 0.902887)
+bones/318/rotation = Quaternion(0.409333, 0.0041078, 0.00998401, 0.912321)
+bones/326/rotation = Quaternion(0.403335, -0.00133501, -0.00382331, 0.915043)
+bones/327/rotation = Quaternion(0.409391, 0.00302341, 0.00769543, 0.912322)
+bones/329/rotation = Quaternion(0.403335, -0.00133501, -0.00382331, 0.915043)
+bones/330/rotation = Quaternion(0.409391, 0.00302341, 0.00769543, 0.912322)
+bones/331/scale = Vector3(1, 0.761115, 1)
+bones/335/rotation = Quaternion(0.403336, -0.00133645, -0.00382695, 0.915043)
+bones/337/rotation = Quaternion(0.409391, 0.0030238, 0.00769658, 0.912322)
+bones/345/rotation = Quaternion(0.353865, -0.00080888, -0.00287959, 0.935292)
+bones/346/rotation = Quaternion(0.369698, 0.00191728, 0.00585259, 0.929132)
+bones/348/rotation = Quaternion(0.353865, -0.00080888, -0.00287959, 0.935292)
+bones/349/rotation = Quaternion(0.369698, 0.00191728, 0.00585259, 0.929132)
+bones/350/scale = Vector3(1, 0.797576, 1)
+bones/354/rotation = Quaternion(0.353864, -0.000807715, -0.00287734, 0.935292)
+bones/356/rotation = Quaternion(0.369697, 0.00191977, 0.00585757, 0.929132)
+bones/365/position = Vector3(-0.145012, -0.0419835, -0.0987753)
+bones/368/position = Vector3(-0.145012, -0.0419835, -0.0987753)
+bones/375/position = Vector3(0.591198, 1.23815, -0.364907)
+bones/375/rotation = Quaternion(-0.393023, 0.00893734, -0.00480878, 0.919472)
+bones/380/position = Vector3(-0.588281, 1.25673, -0.350028)
+bones/380/rotation = Quaternion(-0.393023, 0.00893734, -0.00480879, 0.919472)
+bones/383/position = Vector3(0, -0.0632913, 0)
+bones/383/rotation = Quaternion(0, 0, 0.0825789, 0.996585)
+bones/391/position = Vector3(-1.98338e-09, -6.0536e-09, 1.58325e-08)
+bones/392/rotation = Quaternion(0.968761, 0.0332605, -0.00842773, 0.245613)
+bones/393/rotation = Quaternion(4.91738e-07, 5.69943e-15, 1, 1.94285e-16)
+bones/394/position = Vector3(0.189196, 0.130112, 0.306827)
+bones/394/rotation = Quaternion(-0.521656, 0.00712878, 0.00522464, 0.85311)
+bones/397/position = Vector3(-0.0150353, 0.0640855, 0)
+bones/397/rotation = Quaternion(0, 0, -0.250272, 0.968176)
+bones/399/rotation = Quaternion(0.119663, 2.49925e-17, -2.08292e-25, 0.992815)
+bones/403/rotation = Quaternion(0.119663, 5.96559e-09, -2.25135e-08, 0.992815)
+bones/406/rotation = Quaternion(0.932409, -0.03403, 0.00438699, 0.359773)
+bones/407/rotation = Quaternion(-5.15021e-07, 1.69873e-15, 1, -3.0892e-14)
+bones/408/position = Vector3(-0.175299, 0.129673, 0.313107)
+bones/408/rotation = Quaternion(-0.521656, 0.00712878, 0.00522464, 0.85311)
 
-[node name="Enemy" parent="." instance=ExtResource("6_5si1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1921, 0, 0)
-
-[node name="Enemy2" parent="." instance=ExtResource("6_5si1e")]
+[node name="StandingEnemy" parent="." instance=ExtResource("6_5si1e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53.5307, 0, 0)
+max_speed = 0.0
 
 [node name="Obstacles" type="Node3D" parent="."]
 
@@ -3805,7 +3930,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox71" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -17, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -3815,7 +3940,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox72" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -16, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -3825,7 +3950,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox73" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -15, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -3835,7 +3960,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox74" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.304, -15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -15, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -3845,7 +3970,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox75" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.304, -16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -16, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -3855,33 +3980,13 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox76" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.304, -17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -17, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
 [node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox76"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox76/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox109" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -17, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox109"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox109/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox110" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -16, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox110"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox110/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox77" type="MeshInstance3D" parent="Obstacles/Sewer"]
@@ -4024,56 +4129,6 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox118/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
-[node name="SewerBox120" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -19, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox120"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox120/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox121" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.304, -19, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox121"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox121/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox124" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.304, -19, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox124"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox124/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox129" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.304, -19, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox129"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox129/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox130" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.304, -19, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox130"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox130/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
 [node name="SewerBox119" type="MeshInstance3D" parent="Obstacles/Sewer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -18, 0)
 mesh = SubResource("BoxMesh_lmnnl")
@@ -4092,6 +4147,136 @@ skeleton = NodePath("")
 [node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox125"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox125/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox129" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox129"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox129/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox130" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox130"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox130/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox146" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox146"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox146/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox226" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox226"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox226/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox227" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox227"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox227/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox228" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox228"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox228/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox229" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox229"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox229/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox230" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox230"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox230/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox231" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox231"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox231/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox232" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox232"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox232/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox233" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox233"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox233/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox234" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox234"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox234/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox235" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox235"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox235/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox126" type="MeshInstance3D" parent="Obstacles/Sewer"]
@@ -4494,18 +4679,8 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox208/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
-[node name="SewerBox122" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.304, -17, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox122"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox122/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
 [node name="SewerBox209" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.304, -17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -17, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -4515,7 +4690,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox210" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.304, -16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -16, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -4525,7 +4700,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox215" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.304, -17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -17, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -4535,23 +4710,13 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox214" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.304, -15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -15, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
 [node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox214"]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox214/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="SewerBox123" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.304, -16, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox123"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox123/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox25" type="MeshInstance3D" parent="Obstacles/Sewer"]
@@ -5520,8 +5685,68 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox46/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
+[node name="SewerBox93" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -8, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox93"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox93/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox109" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -9, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox109"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox109/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox110" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -10, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox110"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox110/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox115" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox115"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox115/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox116" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.752, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox116"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox116/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox120" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox120"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox120/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
 [node name="SewerBox51" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.304, -8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -8, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5531,7 +5756,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox52" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.304, -9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -9, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5541,7 +5766,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox54" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.304, -10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -10, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5551,7 +5776,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox55" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.304, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5560,18 +5785,8 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox55/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
-[node name="SewerBox93" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.752, -11, 0)
-mesh = SubResource("BoxMesh_lmnnl")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox93"]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox93/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
 [node name="SewerBox94" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.856, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.856, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5580,8 +5795,18 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox94/StaticBody"]
 shape = SubResource("BoxShape3D_nmdbe")
 
+[node name="SewerBox102" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox102"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox102/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
 [node name="SewerBox142" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.304, -8, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5591,7 +5816,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox143" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.304, -9, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5601,7 +5826,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox144" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.304, -10, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5611,7 +5836,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox145" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.304, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5621,7 +5846,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox147" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.856, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.856, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5631,7 +5856,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox211" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.304, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.304, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5641,7 +5866,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox212" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.752, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.752, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5651,7 +5876,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox213" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.856, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.856, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5661,7 +5886,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox216" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.304, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.304, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5671,7 +5896,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox217" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.752, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.752, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5681,7 +5906,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox218" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.856, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.856, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5691,7 +5916,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox219" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.304, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.304, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5701,7 +5926,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox220" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.752, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.752, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5711,7 +5936,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="SewerBox221" type="MeshInstance3D" parent="Obstacles/Sewer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.856, -11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.856, -11, 0)
 mesh = SubResource("BoxMesh_lmnnl")
 skeleton = NodePath("")
 
@@ -5730,9 +5955,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2624, 6.94353, -0.01)
 
 [node name="Grate2" parent="Obstacles/Grates" instance=ExtResource("4_vgvw7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.804, 0, 0)
-
-[node name="Grate4" parent="Obstacles/Grates" instance=ExtResource("4_vgvw7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.804, -16, 0)
 
 [node name="Building" type="Node3D" parent="."]
 
@@ -6036,30 +6258,41 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 158.69
 mesh = SubResource("PlaneMesh_a6pmf")
 skeleton = NodePath("../../Vent")
 
-[node name="WaterTrigger" parent="Building/Sewer" instance=ExtResource("2_wr4td")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142, -11.8455, 0)
-
 [node name="SewerWater" parent="Building/Sewer" instance=ExtResource("3_hropb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, -16, 0)
 move_speed = 20.0
 reset_distance = 140.0
 
-[node name="CameraUnlockTrigger" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("20_hd151")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6176, 3.77012, 9.53674e-07)
-player_camera = NodePath("../Player/Camera3D")
+[node name="Areas" type="Node3D" parent="."]
 
-[node name="Goal" type="MeshInstance3D" parent="."]
+[node name="EnemyTrigger" parent="Areas" instance=ExtResource("19_impu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 2, 0)
+enemy_spawn_location = Vector3(-49, 0, 0)
+
+[node name="CameraUnlockTrigger" parent="Areas" node_paths=PackedStringArray("player_camera") instance=ExtResource("20_hd151")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6176, 3.77012, 9.53674e-07)
+player_camera = NodePath("../../Player/Camera3D")
+
+[node name="WaterTrigger" parent="Areas" node_paths=PackedStringArray("sewer_water") instance=ExtResource("2_wr4td")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142, -11.8455, 0)
+sewer_water = NodePath("../../Building/Sewer/SewerWater")
+
+[node name="SewerCheckpoint" type="Node3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121, -10, 0)
+
+[node name="Goal" type="MeshInstance3D" parent="Areas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.762, -17.4943, 0)
 mesh = SubResource("PlaneMesh_8whcn")
+skeleton = NodePath("../..")
 script = ExtResource("5_av4vl")
 next_scene_path = "res://scenes/levels/end_menu.tscn"
 
-[node name="Area3D" type="Area3D" parent="Goal"]
+[node name="Area3D" type="Area3D" parent="Areas/Goal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Goal/Area3D"]
 shape = SubResource("BoxShape3D_0ifq3")
 
-[connection signal="body_entered" from="Goal/Area3D" to="Goal" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Areas/Goal/Area3D" to="Areas/Goal" method="_on_area_3d_body_entered"]
 
 [editable path="Player"]

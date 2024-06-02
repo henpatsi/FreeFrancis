@@ -4,7 +4,7 @@ extends Camera3D
 @onready var player_offset: Vector3 = position - character_body.position
 
 var target_position: Vector3
-var y_locked: bool = true
+@export var y_locked: bool = true
 var y_unlocking: bool = false
 var unlock_speed: float = 2
 
