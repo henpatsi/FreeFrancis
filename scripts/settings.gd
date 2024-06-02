@@ -9,6 +9,8 @@ var lock_mouse_on_exit = false
 
 var level_scene = "res://scenes/levels/level_final.tscn"
 
+signal volume_changed
+
 func _ready():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -33,8 +35,10 @@ func _on_mouse_sensitivity_slider_value_changed(value: float) -> void:
 
 
 func _on_volume_slider_value_changed(value: float) -> void:
-	volume_value_label.text = str(value)
+	volume_value_label.text = str(round((value + 60) / 60 * 100))
 	Global.volume = value
+	volume_changed.emit()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 
 
 func _on_back_button_pressed() -> void:

@@ -89,7 +89,8 @@ vertical_alignment = 1
 
 [node name="VolumeSlider" type="HSlider" parent="CenterContainer/SettingsVBox/Volume"]
 layout_mode = 2
-value = 100.0
+min_value = -60.0
+max_value = 0.0
 
 [node name="BackButton" type="Button" parent="CenterContainer/SettingsVBox"]
 layout_mode = 2

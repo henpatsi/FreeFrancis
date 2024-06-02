@@ -1,4 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://doxj8fxff1ytf"]
+[gd_scene load_steps=16 format=3 uid="uid://doxj8fxff1ytf"]
+
+[ext_resource type="Script" path="res://scripts/broken_grate.gd" id="1_vuf8o"]
+[ext_resource type="AudioStream" uid="uid://6s6emogknxmm" path="res://assets/audio/sfx/JDSherbert - Ultimate UI SFX Pack - Cancel - 2.wav" id="2_lwkjp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vauh6"]
 resource_name = "Material"
@@ -147,46 +150,54 @@ shadow_mesh = SubResource("ArrayMesh_nyq04")
 points = PackedVector3Array(0.0755916, 0.1, -0.399232, -1.01096, -0.110962, -1.01096, -1.01096, -0.110962, -0.879398, 0.392162, -0.110962, -1.01096, -0.957994, 0.1, -0.986963, 0.0632189, -0.110962, -0.375234, 0.339194, 0.1, -0.986963, -1.01096, 0.108276, -0.879398, 0.0413809, 0.108276, -0.375234, 0.339194, 0.1, -0.946343, -0.835571, -0.0890295, -0.791647, 0.249269, 0.0193204, -0.724088, -0.00256971, -0.0890295, -0.39714, -0.791621, 0.108276, -0.769678, 0.269909, -0.0841024, -0.765375, 0.217551, 0.1, -0.683, -0.046383, -0.110962, -0.419109, -0.791621, -0.00134285, -0.769678, 0.0413809, 0.0205466, -0.375234, -0.879385, -0.110962, -0.813615)
 
 [node name="BrokenGrate" type="Node3D"]
+script = ExtResource("1_vuf8o")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="Pieces" type="Node3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Pieces"]
+collision_layer = 0
+collision_mask = 0
 axis_lock_linear_z = true
 
-[node name="Cube_005" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Cube_005" type="MeshInstance3D" parent="Pieces/RigidBody3D"]
 mesh = SubResource("ArrayMesh_nttav")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pieces/RigidBody3D"]
 shape = SubResource("ConvexPolygonShape3D_igxwu")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+[node name="RigidBody3D2" type="RigidBody3D" parent="Pieces"]
 collision_layer = 0
 collision_mask = 0
 
-[node name="Cube_001" type="MeshInstance3D" parent="RigidBody3D2"]
+[node name="Cube_001" type="MeshInstance3D" parent="Pieces/RigidBody3D2"]
 mesh = SubResource("ArrayMesh_2xhob")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pieces/RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_6d0j6")
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+[node name="RigidBody3D3" type="RigidBody3D" parent="Pieces"]
 collision_layer = 0
 collision_mask = 0
 
-[node name="Cube_002" type="MeshInstance3D" parent="RigidBody3D3"]
+[node name="Cube_002" type="MeshInstance3D" parent="Pieces/RigidBody3D3"]
 mesh = SubResource("ArrayMesh_faiqg")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pieces/RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_051ey")
 
-[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+[node name="RigidBody3D4" type="RigidBody3D" parent="Pieces"]
 collision_layer = 0
 collision_mask = 0
 
-[node name="Cube_003" type="MeshInstance3D" parent="RigidBody3D4"]
+[node name="Cube_003" type="MeshInstance3D" parent="Pieces/RigidBody3D4"]
 mesh = SubResource("ArrayMesh_8rnp8")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pieces/RigidBody3D4"]
 shape = SubResource("ConvexPolygonShape3D_w2hy1")
+
+[node name="BreakSoundEffectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lwkjp")

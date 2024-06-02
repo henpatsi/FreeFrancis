@@ -9,6 +9,8 @@ extends Node3D
 @onready var head_ik: SkeletonIK3D = $"../CharacterBody3D/rig_002/Skeleton3D/head_IK"
 @onready var head_ik_target: Node3D = $IKPositions/HeadPosition
 
+@onready var hit_sound_effect_player: AudioStreamPlayer = $HitSoundEffectPlayer
+
 @onready var pole_height_vector: Vector3 = Vector3.UP * collision_shape_iv.shape.height
 
 @export var head_rotation_zero: float = 30
@@ -84,14 +86,12 @@ func check_bottom_collision() -> void:
 	query.exclude = [character_body.get_rid()]
 	var result: Dictionary = space_state.intersect_ray(query)
 	if result:
-		#print(result)
 		target_position.y = result.position.y + 0.01
-		limit_to_distance()
 		if character_body.velocity.y < max_jump:
 			character_body.jump(-move_amount.y * jump_multiplier, max_jump)
-		#print(character_body.velocity.y)
-		if move_amount.y < -0.2 and result.collider.is_in_group("PlayerDestructable"):
-			result.collider.get_parent().destroy(move_amount.y)
+		limit_to_distance()
+		try_destroy_object(result)
+		play_hit_sound()
 
 
 func check_top_collision() -> void:
@@ -107,10 +107,22 @@ func check_top_collision() -> void:
 		#print(result)
 		target_position.y = result.position.y - pole_height_vector.y - 0.01
 		limit_to_distance()
-		if move_amount.y > 0.2 and result.collider.is_in_group("PlayerDestructable"):
-			result.collider.get_parent().queue_free()
+		try_destroy_object(result)
+		play_hit_sound()
 
 
 func update_player_head_rotation() -> void:
 	var height_ratio = (vertical_offset + -min_vertical_offset) / height_range
 	head_ik_target.rotation.x = deg_to_rad(1 - (head_rotation_range * height_ratio) + head_rotation_zero)
+
+
+func try_destroy_object(hit: Dictionary) -> void:
+	if abs(move_amount.y) > 0.2 and hit.collider.is_in_group("PlayerDestructable"):
+		hit.collider.get_parent().destroy(move_amount.y)
+		hit.collider.get_parent().destroy(move_amount.y)
+
+
+func play_hit_sound() -> void:
+	if not hit_sound_effect_player.playing and abs(move_amount.y) > 0.1:
+		hit_sound_effect_player.play()
+	
