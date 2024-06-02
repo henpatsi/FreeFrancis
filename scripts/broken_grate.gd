@@ -4,7 +4,7 @@ extends Node3D
 @onready var pieces: Node3D = $Pieces
 
 var rng = RandomNumberGenerator.new()
-var angle_rot: float = 5
+var angle_rot: float = 2
 
 var break_force: float = 10
 

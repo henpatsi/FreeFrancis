@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cy6wa2mfvcbyj"
-path="res://.godot/imported/break_test.glb-9c362bbc7aebb8f2357613d94e5147a4.scn"
+uid="uid://cqav64wkx26t1"
+path="res://.godot/imported/vent_shortfan.glb-031ab6a52a47bfad740bffdb7e2f5d14.scn"
 
 [deps]
 
-source_file="res://assets/break_test.glb"
-dest_files=["res://.godot/imported/break_test.glb-9c362bbc7aebb8f2357613d94e5147a4.scn"]
+source_file="res://assets/env/vent/vent_shortfan.glb"
+dest_files=["res://.godot/imported/vent_shortfan.glb-031ab6a52a47bfad740bffdb7e2f5d14.scn"]
 
 [params]
 

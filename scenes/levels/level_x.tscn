@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scenes/player.tscn" id="1_g7vh1"]
 [ext_resource type="PackedScene" uid="uid://cjxvegl7xlr4f" path="res://scenes/water_trigger.tscn" id="2_4jkwe"]
-[ext_resource type="PackedScene" uid="uid://iqs62r6gqdm8" path="res://scenes/grate.tscn" id="2_5sba5"]
+[ext_resource type="PackedScene" uid="uid://iqs62r6gqdm8" path="res://scenes/objects/grate.tscn" id="2_5sba5"]
 [ext_resource type="PackedScene" uid="uid://b42krxj2fa1dv" path="res://scenes/enemy.tscn" id="3_hupcx"]
 [ext_resource type="Script" path="res://scripts/goal.gd" id="3_wyvwu"]
 [ext_resource type="PackedScene" uid="uid://c0gi7tufy4y3m" path="res://scenes/sewer_water.tscn" id="4_0c7oh"]
