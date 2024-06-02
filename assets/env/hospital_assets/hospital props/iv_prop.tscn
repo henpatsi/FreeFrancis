@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ea47t2gwgtpb"]
+
+[ext_resource type="PackedScene" uid="uid://ccoqegbfb6f6b" path="res://assets/env/hospital_assets/hospital props/IV stand prop/IVprop.glb" id="1_s2nuc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gcomu"]
+size = Vector3(0.872437, 2.36121, 0.105989)
+
+[node name="IVprop" instance=ExtResource("1_s2nuc")]
+
+[node name="IvPole-material" parent="." index="0"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.002, 0.083)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="IvPole-material" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IvPole-material/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00543213, 1.16938, 0.0030546)
+shape = SubResource("BoxShape3D_gcomu")
+
+[node name="Serum-material" parent="." index="1"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.29998, 2.21098, 0.0828381)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc55wp0j1phak"]
+
+[ext_resource type="PackedScene" uid="uid://bbhird8qmqho8" path="res://assets/env/hospital_assets/hospital props/light small/light_small.glb" id="1_gyahl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kseqj"]
+size = Vector3(2.28369, 0.356506, 0.285583)
+
+[node name="light_small" instance=ExtResource("1_gyahl")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Light1-material" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Light1-material/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0183105, 0.0279236, 0.00650024)
+shape = SubResource("BoxShape3D_kseqj")

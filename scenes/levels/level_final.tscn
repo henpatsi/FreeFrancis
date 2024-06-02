@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b4jqqi0cdsrwm"]
+[gd_scene load_steps=47 format=3 uid="uid://b4jqqi0cdsrwm"]
 
 [ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scenes/player.tscn" id="1_kj4r6"]
 [ext_resource type="PackedScene" uid="uid://cr1560ig8n1vb" path="res://assets/env/hospital_assets/hosp_wall.tscn" id="2_4ccrv"]
@@ -11,6 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://c6ijjlq48uliu" path="res://assets/env/hospital_assets/hosp_doorway.tscn" id="9_cufje"]
 [ext_resource type="PackedScene" uid="uid://cafhk2gy5oe4k" path="res://assets/env/hospital_assets/hosp_door.tscn" id="10_y3c46"]
 [ext_resource type="PackedScene" uid="uid://c48p6efhkloc3" path="res://assets/env/hospital_assets/hosp_seam.tscn" id="11_rgd1a"]
+[ext_resource type="PackedScene" uid="uid://cbldiw28dgjkt" path="res://assets/env/hospital_assets/hospital props/wheelchair.tscn" id="12_i2bbn"]
+[ext_resource type="PackedScene" uid="uid://cwco4f1qerris" path="res://assets/env/hospital_assets/hospital props/vitalsign.tscn" id="13_1ttqr"]
+[ext_resource type="PackedScene" uid="uid://hbdbouv3aagd" path="res://assets/env/hospital_assets/hospital props/gurney.tscn" id="14_5x4ei"]
+[ext_resource type="PackedScene" uid="uid://bosakq6vm0lyh" path="res://assets/env/hospital_assets/hospital props/exitsign.tscn" id="15_sbuma"]
+[ext_resource type="PackedScene" uid="uid://dewh6aiva5unk" path="res://assets/env/hospital_assets/hospital props/foodtable.tscn" id="16_2i0q2"]
+[ext_resource type="PackedScene" uid="uid://epk7cq7ugf81" path="res://assets/env/hospital_assets/hospital props/chair.tscn" id="17_2n8n1"]
+[ext_resource type="PackedScene" uid="uid://ea47t2gwgtpb" path="res://assets/env/hospital_assets/hospital props/iv_prop.tscn" id="18_vwted"]
+[ext_resource type="PackedScene" uid="uid://35ur40dltw6w" path="res://assets/env/hospital_assets/hospital props/cabinetlong.tscn" id="19_fauq4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ybt6k"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -52,26 +60,6 @@ size = Vector3(131.201, 2, 5.25873)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pj6x6"]
 size = Vector3(125.999, 0.584961, 5.38855)
-
-[sub_resource type="Gradient" id="Gradient_rx1ji"]
-colors = PackedColorArray(8.66354e-07, 0.424267, 0.442799, 1, 0, 0.358845, 0.359904, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vgf2r"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8wuuc"]
-width = 5120
-color_ramp = SubResource("Gradient_rx1ji")
-noise = SubResource("FastNoiseLite_vgf2r")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8266k"]
-albedo_texture = SubResource("NoiseTexture2D_8wuuc")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_g703p"]
-material = SubResource("StandardMaterial3D_8266k")
-size = Vector2(6, 20)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6e25i"]
-size = Vector3(5, 1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onxiy"]
 albedo_color = Color(0.698039, 0.698039, 0.698039, 1)
@@ -131,7 +119,7 @@ size = Vector3(1, 2, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-0.415226, -0.878726, 0.23543, 0.795254, -0.224942, 0.563003, -0.441768, 0.421, 0.792212, 0, 0, 0)
-light_energy = 0.5
+light_energy = 0.05
 shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/DirectionalLight3D"]
@@ -159,156 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.739, 0.118311, 1.43051e-0
 
 [node name="Corridor" type="Node3D" parent="Obstacles"]
 
-[node name="Box" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3268, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box2" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2525, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box2" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box2/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box4" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33018, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box4" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box4/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box5" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33018, 4.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box5" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box5/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box6" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66982, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box6" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box6/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box8" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4748, 1.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box8" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box8/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box17" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4748, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box17" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box17/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box9" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4165, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box9" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box9/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box10" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6353, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box10" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box10/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box11" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6354, 1.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box11" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box11/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box12" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6354, 2.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box12" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box12/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box14" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5594, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box14" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box14/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box15" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.559, 1.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box15" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box15/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box21" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.559, 1.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box21" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box21/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box26" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.559, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box26" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box26/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
 [node name="Box27" type="MeshInstance3D" parent="Obstacles/Corridor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.559, 1.5, 0)
 mesh = SubResource("BoxMesh_jw7gs")
@@ -327,107 +165,6 @@ skeleton = NodePath("")
 [node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box28" groups=["Destructable"]]
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box28/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box29" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.559, 1.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box29" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box29/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box30" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.559, 0.5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box30" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box30/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box16" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.559, 5, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box16" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box16/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box18" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7654, 2.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box18" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box18/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box19" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.7654, 2.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box19" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box19/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box20" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7654, 2.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box20" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box20/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box22" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7654, 2.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box22" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box22/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box23" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7654, 3.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box23" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box23/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box24" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7654, 4.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box24" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box24/StaticBody"]
-shape = SubResource("BoxShape3D_nmdbe")
-
-[node name="Box25" type="MeshInstance3D" parent="Obstacles/Corridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7654, 5.37653, 0)
-mesh = SubResource("BoxMesh_jw7gs")
-skeleton = NodePath("")
-
-[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Corridor/Box25" groups=["Destructable"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Corridor/Box25/StaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731573, 0)
 shape = SubResource("BoxShape3D_nmdbe")
 
 [node name="Vent" type="Node3D" parent="Obstacles"]
@@ -5941,7 +5678,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, 0, -1)
 
 [node name="Hosp_Wall19" parent="Building/HospitalHallway/WallFront" instance=ExtResource("2_4ccrv")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.7489, 0, 8.18414)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.1077, 0, 4.04658)
 
 [node name="Hosp_Wall13" parent="Building/HospitalHallway/WallFront" instance=ExtResource("2_4ccrv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 0, -1)
@@ -6031,10 +5768,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2666, -0.0429893, -1.5360
 [node name="Hosp_Door2" parent="Building/HospitalHallway/Hosp_DoorwayClosed" instance=ExtResource("10_y3c46")]
 transform = Transform3D(0.991416, 0, 0, 0, 0.991057, 0, 0, 0, 1, 0.732506, 0.0817754, 0)
 
-[node name="Hosp_DoorwayClosed2" parent="Building/HospitalHallway" instance=ExtResource("9_cufje")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.7334, -0.0429893, 0.463984)
+[node name="Hosp_Wall20" parent="Building/HospitalHallway" instance=ExtResource("2_4ccrv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.2666, 0, 7.64642)
 
-[node name="Hosp_Door2" parent="Building/HospitalHallway/Hosp_DoorwayClosed2" instance=ExtResource("10_y3c46")]
+[node name="Hosp_DoorwayClosed3" parent="Building/HospitalHallway" instance=ExtResource("9_cufje")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.2511, -0.0429893, 0.485398)
+
+[node name="Hosp_Door2" parent="Building/HospitalHallway/Hosp_DoorwayClosed3" instance=ExtResource("10_y3c46")]
 transform = Transform3D(0.991416, 0, 0, 0, 0.991057, 0, 0, 0, 1, 0.732506, 0.0817754, 0)
 
 [node name="Hosp_DoorwayHalfOpen" parent="Building/HospitalHallway" instance=ExtResource("9_cufje")]
@@ -6047,6 +5787,9 @@ transform = Transform3D(0.751288, 0, 0.652495, 0, 0.974519, 0, -0.646894, 0, 0.7
 
 [node name="Hosp_Seam" parent="Building/HospitalHallway/Seams" instance=ExtResource("11_rgd1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7639, 0, -1.47183)
+
+[node name="Hosp_Seam17" parent="Building/HospitalHallway/Seams" instance=ExtResource("11_rgd1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.2499, 0, 2.52817)
 
 [node name="Hosp_Seam2" parent="Building/HospitalHallway/Seams" instance=ExtResource("11_rgd1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2715, 0, -1.47183)
@@ -6081,6 +5824,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.2285, 0, -1.47183)
 [node name="Hosp_Seam5" parent="Building/HospitalHallway/Seams" instance=ExtResource("11_rgd1a")]
 transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, -13.5856, 0, -1.47183)
 
+[node name="Hosp_Seam16" parent="Building/HospitalHallway/Seams" instance=ExtResource("11_rgd1a")]
+transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, -50.246, 0, -1.47183)
+
 [node name="Hosp_Seam6" parent="Building/HospitalHallway/Seams" instance=ExtResource("11_rgd1a")]
 transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, -10.3745, 0, -1.47183)
 
@@ -6100,17 +5846,6 @@ shape = SubResource("BoxShape3D_qwvhv")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Building/GroundCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62556, 7.19552, 0.605896)
 shape = SubResource("BoxShape3D_pj6x6")
-
-[node name="StartWall" type="MeshInstance3D" parent="Building"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -49, 2.5, 0)
-mesh = SubResource("PlaneMesh_g703p")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Building/StartWall"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/StartWall/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_6e25i")
 
 [node name="Roof" type="MeshInstance3D" parent="Building"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 5, 0)
@@ -6209,5 +5944,56 @@ shape = SubResource("BoxShape3D_0ifq3")
 
 [node name="Enemy" parent="." instance=ExtResource("6_5si1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1921, 0, 0)
+
+[node name="wheelchair" parent="." instance=ExtResource("12_i2bbn")]
+transform = Transform3D(0.977142, 0, -0.212587, 0, 1, 0, 0.212587, 0, 0.977142, 9.95007, 0.011658, 0.225273)
+
+[node name="wheelchair2" parent="." instance=ExtResource("12_i2bbn")]
+transform = Transform3D(-0.869124, 0, -0.494594, 0, 1, 0, 0.494594, 0, -0.869124, 37.4002, 0.011658, -0.226029)
+
+[node name="vitalsign" parent="." instance=ExtResource("13_1ttqr")]
+transform = Transform3D(0.410496, 0, -0.911862, 0, 1, 0, 0.911862, 0, 0.410496, 17.4529, 0, 0.0232062)
+
+[node name="gurney2" parent="." instance=ExtResource("14_5x4ei")]
+transform = Transform3D(-0.974236, 0, -0.225529, 0, 1, 0, 0.225529, 0, -0.974236, 49.9669, 0, 0.155199)
+
+[node name="gurney3" parent="." instance=ExtResource("14_5x4ei")]
+transform = Transform3D(0.0658038, 0, 0.997833, 0, 1, 0, -0.997833, 0, 0.0658038, 56.3961, 0, 0.648807)
+
+[node name="gurney4" parent="." instance=ExtResource("14_5x4ei")]
+transform = Transform3D(-0.254484, 0, -0.967077, 0, 1, 0, 0.967077, 0, -0.254484, 58.0696, 0, 1.4212)
+
+[node name="gurney5" parent="." instance=ExtResource("14_5x4ei")]
+transform = Transform3D(0.928123, 0, 0.372275, 0, 1, 0, -0.372275, 0, 0.928123, 61.0773, 0, 0.607449)
+
+[node name="exitsign" parent="." instance=ExtResource("15_sbuma")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.4831, 5.3328, -0.070312)
+
+[node name="exitsign2" parent="." instance=ExtResource("15_sbuma")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.274091, 5.32968, -0.070312)
+
+[node name="foodtable" parent="." instance=ExtResource("16_2i0q2")]
+transform = Transform3D(-0.739032, 0, -0.673671, 0, 1, 0, 0.673671, 0, -0.739032, -21.1758, 0, 0.206929)
+
+[node name="chair" parent="." instance=ExtResource("17_2n8n1")]
+transform = Transform3D(0.97208, 0, 0.23465, 0, 1, 0, -0.23465, 0, 0.97208, -34.1009, 0, -0.274186)
+
+[node name="chair2" parent="." instance=ExtResource("17_2n8n1")]
+transform = Transform3D(0.970148, 0, 0.242515, 0, 1, 0, -0.242515, 0, 0.970148, 15.6897, 0, 0.103977)
+
+[node name="chair3" parent="." instance=ExtResource("17_2n8n1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84021, 0, -0.265256)
+
+[node name="chair4" parent="." instance=ExtResource("17_2n8n1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04824, 0, -0.265256)
+
+[node name="chair5" parent="." instance=ExtResource("17_2n8n1")]
+transform = Transform3D(0.958392, 0, -0.285454, 0, 1, 0, 0.285454, 0, 0.958392, 66.1253, 0, 0.158925)
+
+[node name="IVprop" parent="." instance=ExtResource("18_vwted")]
+transform = Transform3D(0.080099, -0.940917, -0.329028, -0.0220815, -0.331683, 0.943133, -0.996542, -0.0682787, -0.0473442, 48.5687, 0.976855, 0.201262)
+
+[node name="cabinetlong" parent="." instance=ExtResource("19_fauq4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 71.3579, 0.111868, 0)
 
 [connection signal="body_entered" from="Goal/Area3D" to="Goal" method="_on_area_3d_body_entered"]

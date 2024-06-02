@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bosakq6vm0lyh"]
+
+[ext_resource type="PackedScene" uid="uid://b8o67tko313nx" path="res://assets/env/hospital_assets/hospital props/exit sign/exitsign.glb" id="1_swe3k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7bhj"]
+size = Vector3(1.72076, 0.857971, 0.260437)
+
+[node name="exitsign" instance=ExtResource("1_swe3k")]
+
+[node name="Exit" parent="." index="0"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Exit" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00595093, -0.00942993, -0.00296021)
+shape = SubResource("BoxShape3D_d7bhj")

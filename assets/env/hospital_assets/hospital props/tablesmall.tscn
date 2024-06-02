@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcfpw0r6tt0jv"]
+
+[ext_resource type="PackedScene" path="res://assets/env/hospital_assets/hospital props/table/tablesmall.glb" id="1_jw4f2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sla5"]
+size = Vector3(1.4184, 0.883057, 1.40967)
+
+[node name="tablesmall" instance=ExtResource("1_jw4f2")]
+
+[node name="table_small" parent="." index="0"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table_small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table_small/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00161743, 0.429077, -0.00366211)
+shape = SubResource("BoxShape3D_3sla5")

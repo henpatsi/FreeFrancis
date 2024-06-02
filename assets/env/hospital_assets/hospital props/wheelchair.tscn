@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbldiw28dgjkt"]
+
+[ext_resource type="PackedScene" uid="uid://cxi5qbxdajsoe" path="res://assets/env/hospital_assets/hospital props/wheelchair/wheelchair.glb" id="1_ot551"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5npb"]
+size = Vector3(1.52785, 2.09265, 1.83099)
+
+[node name="wheelchair" instance=ExtResource("1_ot551")]
+
+[node name="Plane_014" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_014" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_014/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010109, 1.07432, 0.0318909)
+shape = SubResource("BoxShape3D_n5npb")

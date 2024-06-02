@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://epk7cq7ugf81"]
+
+[ext_resource type="PackedScene" uid="uid://csuryemoqif1f" path="res://assets/env/hospital_assets/hospital props/chair/chair.glb" id="1_rjr2f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_as7kh"]
+size = Vector3(1, 1.44559, 0.826065)
+
+[node name="chair" instance=ExtResource("1_rjr2f")]
+
+[node name="Chair-material_002" parent="." index="0"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chair-material_002" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair-material_002/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.713577, -0.0522079)
+shape = SubResource("BoxShape3D_as7kh")

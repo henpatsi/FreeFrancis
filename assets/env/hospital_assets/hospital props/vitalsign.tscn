@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwco4f1qerris"]
+
+[ext_resource type="PackedScene" uid="uid://c50qvhlfmiu40" path="res://assets/env/hospital_assets/hospital props/vital sign/vitalsign.glb" id="1_gxc2y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fl87c"]
+size = Vector3(0.731567, 3.4082, 0.677979)
+
+[node name="vitalsign" instance=ExtResource("1_gxc2y")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VitalsMonitor" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VitalsMonitor/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181274, 1.70313, 0.101929)
+shape = SubResource("BoxShape3D_fl87c")
