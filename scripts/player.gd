@@ -13,8 +13,8 @@ var delta_pos: Vector3 = Vector3.ZERO
 
 var move_input: Vector2
 
-@export var acceleration = 0.1
-@export var deceleration = 0.2
+@export var acceleration = 7
+@export var deceleration = 12
 @export var max_move_speed = 5.0
 @export var rotate_speed = 3.0
 
@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	handle_vertical_movement(delta)
-	handle_horizontal_movement()
+	handle_horizontal_movement(delta)
 	handle_rotation(delta)
 
 	move_and_slide()
@@ -56,13 +56,13 @@ func handle_vertical_movement(delta) -> void:
 		animation_tree.set("parameters/conditions/air", false)
 
 
-func handle_horizontal_movement() -> void:
+func handle_horizontal_movement(delta) -> void:
 	move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var move_dir := (transform.basis * Vector3(move_input.x, 0, move_input.y)).normalized()
 	if move_dir:
-		velocity.x = move_toward(velocity.x, move_dir.x * max_move_speed, acceleration)
+		velocity.x = move_toward(velocity.x, move_dir.x * max_move_speed, acceleration * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, deceleration)
+		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
 
 	if abs(velocity.x) > 0:
 		animation_tree.set("parameters/conditions/running", true)
@@ -79,7 +79,7 @@ func handle_rotation(delta) -> void:
 	if move_input.x > 0:
 		armature.rotation.y = lerp_angle(armature.rotation.y, 0, rotate_speed * delta)
 	elif move_input.x < 0:
-		armature.rotation.y = lerp_angle(armature.rotation.y, rad180, rotate_speed * delta)
+		armature.rotation.y = lerp_angle(armature.rotation.y, -rad180, rotate_speed * delta)
 
 
 func open_pause_menu() -> void:
