@@ -8,6 +8,7 @@ var triggered: bool = false
 @onready var original_x: float = position.x
 @export var reset_distance: float = 250
 
+@onready var sound_effect_players: Node3D = $SoundEffectPlayers
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,7 +22,8 @@ func _process(delta: float) -> void:
 
 func start_water() -> void:
 	triggered = true
-
+	for child in sound_effect_players.get_children():
+		child.play()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
