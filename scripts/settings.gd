@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 func set_starting_values():
 	mouse_sensitivity_value_label.text = str(Global.mouse_sensitivity_modifier).pad_decimals(1)
 	mouse_sensitivity_slider.value = Global.mouse_sensitivity_modifier
-	volume_value_label.text = str(Global.volume)
+	volume_value_label.text = str(round((Global.volume + 60) / 60 * 100))
 	volume_slider.value = Global.volume
 
 
@@ -36,6 +36,7 @@ func _on_mouse_sensitivity_slider_value_changed(value: float) -> void:
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	volume_value_label.text = str(round((value + 60) / 60 * 100))
+	print(value)
 	Global.volume = value
 	volume_changed.emit()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
