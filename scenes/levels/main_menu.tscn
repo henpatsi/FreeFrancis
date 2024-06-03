@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://by48vxpkphq6c"]
+[gd_scene load_steps=8 format=3 uid="uid://by48vxpkphq6c"]
 
 [ext_resource type="Texture2D" uid="uid://kr0taq2paa3o" path="res://assets/images/Pug_in_a_blanket_(Unsplash)_small.jpg" id="1_kk818"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ukxt7"]
@@ -11,6 +11,10 @@ font_size = 64
 font_color = Color(0.317647, 0.482353, 0.521569, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ug1ta"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_ukxt7")
@@ -52,8 +56,12 @@ text = "Settings
 layout_mode = 2
 texture_normal = ExtResource("2_q2gl7")
 texture_pressed = ExtResource("3_amps8")
-texture_hover = ExtResource("4_3x67x")
 stretch_mode = 5
+
+[node name="LoadingLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ug1ta")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

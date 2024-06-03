@@ -1,10 +1,29 @@
 [gd_scene load_steps=3 format=3 uid="uid://c81yqxiv0iy7x"]
 
-[ext_resource type="PackedScene" uid="uid://gw6o5nns472i" path="res://assets/env/hospital_assets/hosp_floor/Hosp_Floor.glb" id="1_1xtdx"]
 [ext_resource type="Material" uid="uid://exem748f1e3s" path="res://assets/env/hospital_assets/hosp_floor/Ground.tres" id="2_lnkal"]
 
-[node name="Hosp_Floor" instance=ExtResource("1_1xtdx")]
+[sub_resource type="ArrayMesh" id="ArrayMesh_cxsjd"]
+resource_name = "Hosp_Floor_Ground-material"
+_surfaces = [{
+"aabb": AABB(-1.31705, 0.0261581, -1.3148, 2.6341, 1.12411e-05, 2.62962),
+"attribute_data": PackedByteArray(136, 255, 248, 255, 136, 255, 6, 0, 6, 0, 248, 255, 6, 0, 6, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 3, 0, 0, 0, 2, 0),
+"material": ExtResource("2_lnkal"),
+"name": "Ground",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 64, 28, 254, 255, 84, 213, 255, 255, 109, 33, 254, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 255, 255, 44, 5, 0, 0, 84, 213, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170, 170)
+}]
+blend_shape_mode = 0
 
-[node name="Ground-material" parent="." index="0"]
+[node name="Hosp_Floor" type="Node3D"]
+
+[node name="Ground-material" type="MeshInstance3D" parent="."]
 transform = Transform3D(12.72, 0, 0, 0, 1, 0, 0, 0, 2.3, 0, 0, 0)
 material_override = ExtResource("2_lnkal")
+gi_mode = 0
+mesh = SubResource("ArrayMesh_cxsjd")
+skeleton = NodePath("")
