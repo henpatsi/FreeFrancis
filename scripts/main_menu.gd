@@ -11,8 +11,8 @@ func _ready():
 
 
 func _on_start_button_pressed():
-	loading_label.text = "Loading..."
-	await get_tree().create_timer(0.5).timeout
+	#loading_label.text = "Loading..."
+	#await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file(level_scene)
 
 
