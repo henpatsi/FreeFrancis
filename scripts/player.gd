@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 		open_pause_menu()
 	if Input.is_action_just_pressed("toggle_godmode"):
 		Global.godmode = !Global.godmode
+	if Input.is_action_just_pressed("mouse_left_click"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	delta_pos = self.position - last_pos
 	last_pos = self.position

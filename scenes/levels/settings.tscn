@@ -7,6 +7,7 @@ font_size = 42
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5s75v"]
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [node name="Settings" type="Node2D" node_paths=PackedStringArray("mouse_sensitivity_value_label", "mouse_sensitivity_slider", "volume_value_label", "volume_slider")]
@@ -95,13 +96,15 @@ max_value = 0.0
 [node name="BackButton" type="Button" parent="CenterContainer/SettingsVBox"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Back"
 
 [node name="Restart" type="Button" parent="."]
-offset_left = 1057.0
-offset_top = 23.0
-offset_right = 1122.0
+offset_left = 1043.0
+offset_top = 12.0
+offset_right = 1134.0
 offset_bottom = 54.0
+theme_override_font_sizes/font_size = 24
 text = "Restart"
 
 [connection signal="value_changed" from="CenterContainer/SettingsVBox/MouseSensitivity/MouseSensitivitySlider" to="." method="_on_mouse_sensitivity_slider_value_changed"]

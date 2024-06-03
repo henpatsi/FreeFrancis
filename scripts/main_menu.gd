@@ -1,6 +1,6 @@
 extends Node2D
 
-var loading_scene = "res://scenes/levels/loading.tscn"
+var loading_scene = preload("res://scenes/levels/loading.tscn")
 var settings_scene = preload("res://scenes/levels/settings.tscn")
 
 

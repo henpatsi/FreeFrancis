@@ -1,20 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://by48vxpkphq6c"]
+[gd_scene load_steps=4 format=3 uid="uid://by48vxpkphq6c"]
 
-[ext_resource type="Texture2D" uid="uid://kr0taq2paa3o" path="res://assets/images/Pug_in_a_blanket_(Unsplash)_small.jpg" id="1_kk818"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ukxt7"]
-[ext_resource type="Texture2D" uid="uid://c4yaf21tevspm" path="res://assets/images/Screenshot 2024-02-18 172154.png" id="2_q2gl7"]
-[ext_resource type="Texture2D" uid="uid://37bwxp3mjdvy" path="res://assets/images/Screenshot 2024-01-23 143242.png" id="3_amps8"]
-[ext_resource type="Texture2D" uid="uid://bmh43qxif0mh4" path="res://assets/images/Screenshot 2023-12-06 115855.png" id="4_3x67x"]
+[ext_resource type="Texture2D" uid="uid://dbj1h57bvbixt" path="res://assets/images/Menu02.png" id="2_wvdxo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_86vp3"]
 font_size = 64
-font_color = Color(0.317647, 0.482353, 0.521569, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ug1ta"]
-font_size = 32
-font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_ukxt7")
@@ -22,47 +14,65 @@ script = ExtResource("1_ukxt7")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1151.0
 offset_bottom = 648.0
-texture = ExtResource("1_kk818")
+texture = ExtResource("2_wvdxo")
+expand_mode = 2
 stretch_mode = 6
 
-[node name="ExitButton" type="TextureButton" parent="."]
-offset_right = 221.0
-offset_bottom = 195.0
-texture_normal = ExtResource("4_3x67x")
-texture_pressed = ExtResource("3_amps8")
-texture_hover = ExtResource("2_q2gl7")
-stretch_mode = 5
+[node name="StartButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = 81.0
+offset_right = 42.5
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Start"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-offset_right = 1151.0
-offset_bottom = 648.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "TO BE OR ASTRONOT TO BE?"
-label_settings = SubResource("LabelSettings_86vp3")
-
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
+[node name="SettingsButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = 162.0
+offset_right = 67.5
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
-text = "Settings
-"
+theme_override_font_sizes/font_size = 32
+text = "Settings"
 
-[node name="StartButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_q2gl7")
-texture_pressed = ExtResource("3_amps8")
-stretch_mode = 5
+[node name="ExitButton" type="Button" parent="Background"]
+offset_left = 19.0
+offset_top = 24.0
+offset_right = 90.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
 
-[node name="LoadingLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_ug1ta")
+[node name="TitleLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -436.5
+offset_top = 262.0
+offset_right = 436.5
+offset_bottom = 350.0
+grow_horizontal = 2
+text = "Hop Pop"
+label_settings = SubResource("LabelSettings_86vp3")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Background/ExitButton" to="." method="_on_exit_button_pressed"]

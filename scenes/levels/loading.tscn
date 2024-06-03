@@ -4,7 +4,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_86vp3"]
 font_size = 64
-font_color = Color(0.317647, 0.482353, 0.521569, 1)
+font_color = Color(0.164706, 0.419608, 0.490196, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
