@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://chsoij0qwbrec"]
+
+[ext_resource type="PackedScene" uid="uid://dgijxjeu2ykha" path="res://assets/env/sewer_props/pipe_straight.glb" id="1_qa344"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1q24y"]
+size = Vector3(4.37115, 0.820923, 1)
+
+[node name="pipe_straight" instance=ExtResource("1_qa344")]
+
+[node name="pipeStraight_001" parent="." index="0"]
+transform = Transform3D(0.8, 0, 0, 0, 1.2, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pipeStraight_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pipeStraight_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23642, -0.00897217, 0)
+shape = SubResource("BoxShape3D_1q24y")

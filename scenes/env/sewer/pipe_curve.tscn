@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy2t1mdlac6c2"]
+
+[ext_resource type="PackedScene" uid="uid://csbjd0mxtu0w5" path="res://assets/env/sewer_props/pipe_curve.glb" id="1_vwasn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfsh0"]
+size = Vector3(0.836029, 2.43799, 0.792908)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_334qw"]
+size = Vector3(2.51208, 0.842316, 0.83374)
+
+[node name="pipe_curve" instance=ExtResource("1_vwasn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pipebent1_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pipebent1_001/StaticBody3D" index="0"]
+transform = Transform3D(0.996906, -0.0785983, 0, 0.0785983, 0.996906, 0, 0, 0, 1, -0.111152, 1.03182, -9.15527e-05)
+shape = SubResource("BoxShape3D_hfsh0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="pipebent1_001/StaticBody3D" index="1"]
+transform = Transform3D(0.999513, 0.0312189, 0, -0.0312189, 0.999513, 0, 0, 0, 1, -1.32459, 1.90757, 0.0101318)
+shape = SubResource("BoxShape3D_334qw")

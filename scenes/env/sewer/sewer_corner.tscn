@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://drikgdc4avxmp"]
+
+[ext_resource type="PackedScene" uid="uid://du7wagq4a0ktl" path="res://assets/env/sewer/sewer_stair.glb" id="1_e8p2k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbcs1"]
+size = Vector3(4.6767, 11.1025, 5.16553)
+
+[node name="sewer_corner" instance=ExtResource("1_e8p2k")]
+
+[node name="sewerCross_004" parent="." index="0"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sewerCross_004" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sewerCross_004/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137329, -4.34521, -0.0012207)
+shape = SubResource("BoxShape3D_fbcs1")

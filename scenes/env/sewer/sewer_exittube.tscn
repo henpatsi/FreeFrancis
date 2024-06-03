@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://re61va6e51it"]
+
+[ext_resource type="PackedScene" path="res://assets/env/sewer/sewer_exittube.glb" id="1_wsvo7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mh33s"]
+size = Vector3(56.4076, 1.04028, 10.0353)
+
+[node name="sewer_exittube" instance=ExtResource("1_wsvo7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cylinder_040" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder_040/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527954, -5.47937, -0.0632019)
+shape = SubResource("BoxShape3D_mh33s")

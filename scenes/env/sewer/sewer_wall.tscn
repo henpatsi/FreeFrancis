@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkkspvcqf8e71"]
+
+[ext_resource type="PackedScene" uid="uid://kmnykt3ollnk" path="res://assets/env/sewer/sewer_wall.glb" id="1_6pc5u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0yomq"]
+size = Vector3(12.0735, 6.51831, 1.42139)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rj14"]
+size = Vector3(11.9641, 4.7942, 1.97046)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wick4"]
+size = Vector3(12.0029, 5.09229, 1.73047)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yuhse"]
+size = Vector3(11.9922, 3.5, 2)
+
+[node name="sewer_wall" instance=ExtResource("1_6pc5u")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sewerT_008" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sewerT_008/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199341, -3.36438, -2.75024)
+shape = SubResource("BoxShape3D_0yomq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="sewerT_008/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.829778, -0.558093, 0, 0.558093, 0.829778, -0.196411, 1.55643, -1.55125)
+shape = SubResource("BoxShape3D_0rj14")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="sewerT_008/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, -0.00457272, -0.99999, 0, 0.99999, -0.00457272, -0.177338, 4.19406, 3.6921)
+shape = SubResource("BoxShape3D_wick4")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="sewerT_008/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, -0.16983, 3.375, 0.649519)
+shape = SubResource("BoxShape3D_yuhse")

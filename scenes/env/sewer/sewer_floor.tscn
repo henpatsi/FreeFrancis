@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6pg4d3cc8rdn"]
+
+[ext_resource type="PackedScene" uid="uid://cuxv21ebhythr" path="res://assets/env/sewer/sewer_floor.glb" id="1_n20w6"]
+
+[node name="sewer_floor" instance=ExtResource("1_n20w6")]
+
+[node name="sewerfloor" parent="." index="0"]
+transform = Transform3D(0.813, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)

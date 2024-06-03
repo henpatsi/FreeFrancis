@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgg3wdp5hufb3"]
+
+[ext_resource type="PackedScene" uid="uid://c6sg36j1uplsq" path="res://assets/env/sewer/sewer_side.glb" id="1_psoax"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5e1x4"]
+size = Vector3(12.0195, 9.35202, 4.15771)
+
+[node name="sewer_side" instance=ExtResource("1_psoax")]
+
+[node name="sewerT_001" parent="." index="0"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sewerT_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sewerT_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258881, -3.10576, -1.12964)
+shape = SubResource("BoxShape3D_5e1x4")

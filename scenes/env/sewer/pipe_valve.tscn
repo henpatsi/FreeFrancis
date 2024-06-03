@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dupop578dnhl4"]
+
+[ext_resource type="PackedScene" uid="uid://dunuswy335usm" path="res://assets/env/sewer_props/pipe_valve.glb" id="1_c0gwr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1wipc"]
+size = Vector3(1.53467, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apy6"]
+size = Vector3(0.94577, 1.16895, 1)
+
+[node name="pipe_valve" instance=ExtResource("1_c0gwr")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="segmentT_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="segmentT_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0217285, 0, 0)
+shape = SubResource("BoxShape3D_1wipc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="segmentT_001/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128632, 1.08936, 0)
+shape = SubResource("BoxShape3D_2apy6")

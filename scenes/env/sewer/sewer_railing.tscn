@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi8xvil04pdnb"]
+
+[ext_resource type="PackedScene" uid="uid://ufsqacwndftf" path="res://assets/env/sewer/sewer_railing.glb" id="1_uphqy"]
+
+[node name="sewer_railing" instance=ExtResource("1_uphqy")]

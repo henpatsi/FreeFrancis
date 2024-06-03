@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dipgxuqxq1cs8"]
+
+[ext_resource type="PackedScene" uid="uid://1wbmgkgos0nq" path="res://assets/env/sewer_props/pipe_segment.glb" id="1_tifit"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_48y66"]
+size = Vector3(0.413147, 1, 1)
+
+[node name="pipe_segment" instance=ExtResource("1_tifit")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="segment" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="segment/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0062561, 0, 0)
+shape = SubResource("BoxShape3D_48y66")
