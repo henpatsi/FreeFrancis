@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0kw2jqadcsti"
-path.s3tc="res://.godot/imported/sewer_exittube_PipeTexture_ALB.png-5521822c30bfb981ee8a10f35f06e7de.s3tc.ctex"
+path="res://.godot/imported/sewer_exittube_PipeTexture_ALB.png-5521822c30bfb981ee8a10f35f06e7de.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/sewer/sewer_exittube_PipeTexture_ALB.png"
-dest_files=["res://.godot/imported/sewer_exittube_PipeTexture_ALB.png-5521822c30bfb981ee8a10f35f06e7de.s3tc.ctex"]
+dest_files=["res://.godot/imported/sewer_exittube_PipeTexture_ALB.png-5521822c30bfb981ee8a10f35f06e7de.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

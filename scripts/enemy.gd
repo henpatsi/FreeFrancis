@@ -41,7 +41,10 @@ func handle_rotation(delta) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		get_tree().call_deferred("change_scene_to_file", end_menu_scene)
+		if Global.godmode:
+			queue_free()
+		else:
+			get_tree().call_deferred("change_scene_to_file", end_menu_scene)
 	elif body.is_in_group("Immovable"):
 		return
 	else:

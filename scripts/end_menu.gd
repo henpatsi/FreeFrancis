@@ -1,7 +1,7 @@
 extends Node2D
 
 var main_menu_scene = "res://scenes/levels/main_menu.tscn"
-var level_scene = "res://scenes/levels/level_final.tscn"
+var loading_scene = "res://scenes/levels/loading.tscn"
 
 func _ready() -> void:
 	var timer_value_label = get_node_or_null("Timer/ValueLabel")
@@ -11,7 +11,7 @@ func _ready() -> void:
 		timer_value_label.text += " seconds"
 
 func _on_restart_pressed() -> void:
-	get_tree().change_scene_to_file(level_scene)
+	get_tree().change_scene_to_file(loading_scene)
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_scene)

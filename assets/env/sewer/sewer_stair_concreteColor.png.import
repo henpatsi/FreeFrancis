@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da5bgntl5dxak"
-path.s3tc="res://.godot/imported/sewer_stair_concreteColor.png-8435c4a74b7be4a3ea20d1f098012b0e.s3tc.ctex"
+path="res://.godot/imported/sewer_stair_concreteColor.png-8435c4a74b7be4a3ea20d1f098012b0e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/sewer/sewer_stair_concreteColor.png"
-dest_files=["res://.godot/imported/sewer_stair_concreteColor.png-8435c4a74b7be4a3ea20d1f098012b0e.s3tc.ctex"]
+dest_files=["res://.godot/imported/sewer_stair_concreteColor.png-8435c4a74b7be4a3ea20d1f098012b0e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

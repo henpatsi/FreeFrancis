@@ -36,7 +36,7 @@ func start_water() -> void:
 		child.play()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not Global.godmode:
 		body.reset_to_sewer_checkpoint()
 	if body.is_in_group("Enemy"):
 		body.queue_free()

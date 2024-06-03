@@ -1,21 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwc7ev4o0v6qj"]
+[gd_scene load_steps=3 format=3 uid="uid://bwc7ev4o0v6qj"]
 
 [ext_resource type="PackedScene" uid="uid://bnda4uog2cayl" path="res://assets/env/sewer/sewer_railing_corner.glb" id="1_i2ynd"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_krw6h"]
-size = Vector3(0.206116, 1.70355, 3.88422)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_iys7j"]
-size = Vector3(3.71295, 1.70679, 0.197693)
+size = Vector3(6.5937, 1.70679, 0.341197)
 
 [node name="sewer_railing_corner" instance=ExtResource("1_i2ynd")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="railingcorner_010" index="0"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="railingcorner_010/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0062561, 0.809235, 1.98257)
-shape = SubResource("BoxShape3D_krw6h")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="railingcorner_010/StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97922, 0.823853, 3.81314)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="railingcorner_010/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19514, 0.823853, 3.89266)
 shape = SubResource("BoxShape3D_iys7j")

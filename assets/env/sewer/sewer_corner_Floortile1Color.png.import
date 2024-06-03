@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca5mljypxcdi1"
-path.s3tc="res://.godot/imported/sewer_corner_Floortile1Color.png-605920d71788a2fea92ce66890550008.s3tc.ctex"
+path="res://.godot/imported/sewer_corner_Floortile1Color.png-605920d71788a2fea92ce66890550008.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/sewer/sewer_corner_Floortile1Color.png"
-dest_files=["res://.godot/imported/sewer_corner_Floortile1Color.png-605920d71788a2fea92ce66890550008.s3tc.ctex"]
+dest_files=["res://.godot/imported/sewer_corner_Floortile1Color.png-605920d71788a2fea92ce66890550008.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

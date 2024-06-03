@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 
 @export var next_scene_path: String
 

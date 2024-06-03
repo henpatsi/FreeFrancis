@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hb61w5syx7dv"
-path.s3tc="res://.godot/imported/pipe_straight_pipesColor.png-651923745d4e34024257c1d7bf2bfaec.s3tc.ctex"
+path="res://.godot/imported/pipe_straight_pipesColor.png-651923745d4e34024257c1d7bf2bfaec.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/sewer_props/pipe_straight_pipesColor.png"
-dest_files=["res://.godot/imported/pipe_straight_pipesColor.png-651923745d4e34024257c1d7bf2bfaec.s3tc.ctex"]
+dest_files=["res://.godot/imported/pipe_straight_pipesColor.png-651923745d4e34024257c1d7bf2bfaec.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

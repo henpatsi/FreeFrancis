@@ -32,6 +32,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		open_pause_menu()
+	if Input.is_action_just_pressed("toggle_godmode"):
+		Global.godmode = !Global.godmode
 	
 	delta_pos = self.position - last_pos
 	last_pos = self.position

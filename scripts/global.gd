@@ -6,3 +6,5 @@ var volume_db: float = -12
 
 # Stats
 var timer: float = 0
+
+var godmode: float = false

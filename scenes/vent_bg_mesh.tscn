@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdxh1fe01gw3p"]
+
+[ext_resource type="Texture2D" uid="uid://dddreb7tv73sy" path="res://assets/env/vent/background/metal_albedo.png" id="1_hgpus"]
+[ext_resource type="Texture2D" uid="uid://dg8r8o6eviqp7" path="res://assets/env/vent/background/metal_AO.png" id="2_nq43h"]
+[ext_resource type="Texture2D" uid="uid://c5p5gkds5ukhb" path="res://assets/env/vent/background/metal_normal.png" id="3_t3e3r"]
+[ext_resource type="Texture2D" uid="uid://dnwcksyj3gp16" path="res://assets/env/vent/background/metal_roughness.png" id="4_b6xfc"]
+[ext_resource type="Script" path="res://scripts/vent_bg_mesh.gd" id="5_l2m5w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oda63"]
+albedo_texture = ExtResource("1_hgpus")
+roughness_texture = ExtResource("4_b6xfc")
+normal_enabled = true
+normal_texture = ExtResource("3_t3e3r")
+ao_enabled = true
+ao_texture = ExtResource("2_nq43h")
+uv1_scale = Vector3(50, 10, 0)
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_81axp"]
+material = SubResource("StandardMaterial3D_oda63")
+size = Vector2(10, 10)
+
+[node name="Mesh" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 70, 10, -1.5)
+visible = false
+mesh = SubResource("PlaneMesh_81axp")
+script = ExtResource("5_l2m5w")

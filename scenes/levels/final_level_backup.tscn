@@ -1,0 +1,3660 @@
+[gd_scene load_steps=57 format=3 uid="uid://ds5h4i4p7ld3m"]
+
+[ext_resource type="PackedScene" uid="uid://bmlj3w4hb57tt" path="res://scenes/player.tscn" id="1_du6th"]
+[ext_resource type="PackedScene" uid="uid://ds7xvbkv3o7ih" path="res://scenes/enemy_still.tscn" id="2_05m6d"]
+[ext_resource type="PackedScene" uid="uid://cbldiw28dgjkt" path="res://scenes/objects/hospital/wheelchair.tscn" id="3_wh7ko"]
+[ext_resource type="PackedScene" uid="uid://hbdbouv3aagd" path="res://scenes/objects/hospital/gurney.tscn" id="4_arpjt"]
+[ext_resource type="PackedScene" uid="uid://bosakq6vm0lyh" path="res://scenes/objects/hospital/exitsign.tscn" id="5_0y22c"]
+[ext_resource type="PackedScene" uid="uid://dewh6aiva5unk" path="res://scenes/objects/hospital/foodtable.tscn" id="6_5pxfu"]
+[ext_resource type="PackedScene" uid="uid://epk7cq7ugf81" path="res://scenes/objects/hospital/chair.tscn" id="7_5f82s"]
+[ext_resource type="PackedScene" uid="uid://35ur40dltw6w" path="res://scenes/objects/hospital/cabinetlong.tscn" id="8_ugwok"]
+[ext_resource type="PackedScene" uid="uid://ea47t2gwgtpb" path="res://scenes/objects/hospital/iv_prop.tscn" id="9_upg26"]
+[ext_resource type="PackedScene" uid="uid://iqs62r6gqdm8" path="res://scenes/objects/grate.tscn" id="10_27upm"]
+[ext_resource type="PackedScene" uid="uid://cr1560ig8n1vb" path="res://scenes/env/hospital/hosp_wall.tscn" id="11_d1l7k"]
+[ext_resource type="PackedScene" uid="uid://c81yqxiv0iy7x" path="res://scenes/env/hospital/hosp_floor.tscn" id="12_c8s2t"]
+[ext_resource type="PackedScene" uid="uid://c48p6efhkloc3" path="res://scenes/env/hospital/hosp_seam.tscn" id="13_copm4"]
+[ext_resource type="PackedScene" uid="uid://c6ijjlq48uliu" path="res://scenes/env/hospital/hosp_doorway.tscn" id="14_xmvn1"]
+[ext_resource type="PackedScene" uid="uid://cafhk2gy5oe4k" path="res://scenes/env/hospital/hosp_door.tscn" id="15_v0igg"]
+[ext_resource type="Texture2D" uid="uid://dddreb7tv73sy" path="res://assets/env/vent/background/metal_albedo.png" id="16_ixeuv"]
+[ext_resource type="Texture2D" uid="uid://dg8r8o6eviqp7" path="res://assets/env/vent/background/metal_AO.png" id="17_dp873"]
+[ext_resource type="Texture2D" uid="uid://c5p5gkds5ukhb" path="res://assets/env/vent/background/metal_normal.png" id="18_tt4wr"]
+[ext_resource type="Texture2D" uid="uid://dnwcksyj3gp16" path="res://assets/env/vent/background/metal_roughness.png" id="19_3saum"]
+[ext_resource type="PackedScene" uid="uid://c0u24pdpglbr8" path="res://scenes/env/vent/vent_straight_1.tscn" id="20_uobry"]
+[ext_resource type="PackedScene" uid="uid://bmdfnu5e624vl" path="res://scenes/env/vent/vent_curved.tscn" id="21_66tvc"]
+[ext_resource type="PackedScene" uid="uid://bavvgb5ogeyvc" path="res://scenes/env/vent/vent_shortfan.tscn" id="22_cj1ma"]
+[ext_resource type="PackedScene" uid="uid://bu1x3tp4qu7cb" path="res://scenes/env/vent/vent_short_1.tscn" id="23_ja12m"]
+[ext_resource type="PackedScene" uid="uid://c0gi7tufy4y3m" path="res://scenes/sewer_water.tscn" id="24_us352"]
+[ext_resource type="PackedScene" uid="uid://d1u4p0slgvgot" path="res://scenes/enemy_trigger.tscn" id="25_8rts8"]
+[ext_resource type="PackedScene" uid="uid://7k2a24vulc0f" path="res://scenes/camera_unlock_trigger.tscn" id="26_8jlsw"]
+[ext_resource type="PackedScene" uid="uid://cjxvegl7xlr4f" path="res://scenes/water_trigger.tscn" id="27_t7d8l"]
+[ext_resource type="Script" path="res://scripts/goal.gd" id="28_6nq1k"]
+[ext_resource type="AudioStream" uid="uid://chbsx21dvcr6" path="res://assets/audio/sfx/Of Far Different Nature - Time Flies (CC-BY).ogg" id="29_e43lf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ybt6k"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_teg64"]
+sky_material = SubResource("ProceduralSkyMaterial_ybt6k")
+
+[sub_resource type="Environment" id="Environment_bpsru"]
+background_mode = 2
+sky = SubResource("Sky_teg64")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_305vl"]
+size = Vector3(3.2, 1.92175, 1.698)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1o1pv"]
+size = Vector3(2.4, 2.97363, 1.39343)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_82ub8"]
+points = PackedVector3Array(0, 0, 0, 0, 0, 2, 3, 0, 0, 3, 0, 2, 3, 1.5, 0, 3, 1.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haaiw"]
+albedo_color = Color(0.427451, 0.235294, 0.0862745, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lmnnl"]
+material = SubResource("StandardMaterial3D_haaiw")
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmdbe"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwvhv"]
+size = Vector3(131.201, 2, 5.25873)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pj6x6"]
+size = Vector3(125.999, 0.584961, 5.38855)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onxiy"]
+albedo_color = Color(0.698039, 0.698039, 0.698039, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vqtx5"]
+material = SubResource("StandardMaterial3D_onxiy")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4gqes"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oda63"]
+albedo_texture = ExtResource("16_ixeuv")
+roughness_texture = ExtResource("19_3saum")
+normal_enabled = true
+normal_texture = ExtResource("18_tt4wr")
+ao_enabled = true
+ao_texture = ExtResource("17_dp873")
+uv1_scale = Vector3(50, 10, 0)
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cpr6g"]
+material = SubResource("StandardMaterial3D_oda63")
+size = Vector2(200, 35)
+
+[sub_resource type="Gradient" id="Gradient_667wj"]
+colors = PackedColorArray(0.138704, 0.0559309, 0.00793219, 1, 0.298119, 0.155088, 0.0802709, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_05lv0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3yhh7"]
+color_ramp = SubResource("Gradient_667wj")
+noise = SubResource("FastNoiseLite_05lv0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlf8e"]
+albedo_texture = SubResource("NoiseTexture2D_3yhh7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a6pmf"]
+material = SubResource("StandardMaterial3D_rlf8e")
+size = Vector2(300, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5q5q"]
+material = SubResource("StandardMaterial3D_haaiw")
+size = Vector3(20, 20, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj65m"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mh3qu"]
+material = SubResource("StandardMaterial3D_mj65m")
+size = Vector3(1, 4.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwxxi"]
+albedo_color = Color(0.435294, 0.745098, 0.568627, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8whcn"]
+material = SubResource("StandardMaterial3D_mwxxi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ifq3"]
+size = Vector3(1, 6.75684, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bpsru")
+
+[node name="Player" parent="." instance=ExtResource("1_du6th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1461, 0.232022, -6.67572e-06)
+
+[node name="Skeleton3D" parent="Player/CharacterBody3D/rig_002" index="0"]
+bones/1/position = Vector3(-0.00026819, 0.0602393, 0.629643)
+bones/1/rotation = Quaternion(0.824033, 0.00678211, 0.0055208, 0.566474)
+bones/2/rotation = Quaternion(0.01557, 1.06091e-13, 3.71218e-09, 0.999879)
+bones/3/rotation = Quaternion(0.0947917, -0.00164919, -0.00287063, 0.995492)
+bones/4/rotation = Quaternion(0.15175, -0.00533558, -0.00241777, 0.988402)
+bones/5/rotation = Quaternion(0.107813, 0.00420989, 0.00164949, 0.994161)
+bones/6/rotation = Quaternion(0.0508361, -5.84839e-05, -2.94719e-06, 0.998707)
+bones/7/rotation = Quaternion(-0.364294, 0.00415216, 0.00168691, 0.931273)
+bones/8/position = Vector3(0.378032, -0.0835751, 0.760924)
+bones/8/rotation = Quaternion(0.397681, 0.607474, 0.128102, 0.675585)
+bones/8/scale = Vector3(1, 24.3205, 1)
+bones/9/position = Vector3(-0.415367, -0.111853, 0.760968)
+bones/9/rotation = Quaternion(0.384526, -0.590228, -0.148931, 0.693967)
+bones/9/scale = Vector3(1, 24.7036, 1)
+bones/10/position = Vector3(0.200992, -0.03576, 0.380267)
+bones/10/rotation = Quaternion(0.931137, -0.0232127, 0.0152223, -0.363613)
+bones/10/scale = Vector3(1, 13.4198, 1)
+bones/11/position = Vector3(-0.244755, -0.0540803, 0.396494)
+bones/11/rotation = Quaternion(0.904484, 0.163577, -0.155935, -0.36171)
+bones/11/scale = Vector3(1, 13.7582, 1)
+bones/13/position = Vector3(0, 0.0240531, -0.0153411)
+bones/13/rotation = Quaternion(0.234089, 0.00135271, 0.0086397, 0.972176)
+bones/15/rotation = Quaternion(0.145461, 0.00569646, -0.00700911, 0.989323)
+bones/17/rotation = Quaternion(0.680049, 8.74004e-08, 8.10682e-08, 0.733167)
+bones/18/rotation = Quaternion(-0.680049, -8.74005e-08, -8.10683e-08, 0.733167)
+bones/19/rotation = Quaternion(0.668551, 8.86519e-08, 7.96973e-08, 0.743666)
+bones/20/rotation = Quaternion(2.23518e-08, 1.44329e-14, 4.88498e-15, 1)
+bones/21/rotation = Quaternion(-2.6077e-08, 5.55111e-17, -5.2643e-15, 1)
+bones/22/rotation = Quaternion(-0.316009, -0.559118, -0.537635, 0.546327)
+bones/22/scale = Vector3(0.999999, 0.999999, 1)
+bones/23/rotation = Quaternion(-3.67872e-08, -4.19095e-08, -3.81843e-08, 1)
+bones/25/rotation = Quaternion(-3.39932e-08, -9.31325e-09, 7.4506e-09, 1)
+bones/26/rotation = Quaternion(0.929579, 0.0268409, -0.00617283, 0.367592)
+bones/26/scale = Vector3(0.996312, 0.996312, 0.996313)
+bones/27/rotation = Quaternion(0.158483, 4.23265e-07, -5.01801e-08, 0.987362)
+bones/27/scale = Vector3(1.00028, 1.00028, 1.00028)
+bones/28/rotation = Quaternion(-0.476154, -0.100257, -0.0320748, 0.873039)
+bones/28/scale = Vector3(1.00336, 1.00336, 1.00336)
+bones/30/scale = Vector3(1, 0.999999, 1)
+bones/31/rotation = Quaternion(-1.50758e-07, -8.4437e-08, 9.58175e-08, 1)
+bones/32/rotation = Quaternion(1.18627e-07, 5.11085e-07, -1.43856e-07, 1)
+bones/33/rotation = Quaternion(2.59024e-09, 4.92437e-08, -5.3784e-08, 1)
+bones/33/scale = Vector3(1.00336, 1.00336, 1.00336)
+bones/34/rotation = Quaternion(3.32657e-08, 4.65662e-10, 8.14905e-10, 1)
+bones/35/rotation = Quaternion(-7.62877e-08, -0.0532995, 1.59914e-08, 0.998579)
+bones/35/scale = Vector3(1.00336, 1.00336, 1.00336)
+bones/36/rotation = Quaternion(-5.00849e-09, 0.0324539, -1.14147e-08, 0.999473)
+bones/36/scale = Vector3(1, 1, 0.999999)
+bones/37/rotation = Quaternion(-4.34812e-08, -6.1118e-08, -1.97906e-09, 1)
+bones/37/scale = Vector3(1.0037, 1.0037, 1.0037)
+bones/38/scale = Vector3(1.0037, 1.0037, 1.0037)
+bones/39/rotation = Quaternion(-3.42843e-08, -2.48081e-07, -1.69967e-08, 1)
+bones/40/rotation = Quaternion(0.898052, -0.0708263, 0.152174, 0.406608)
+bones/40/scale = Vector3(0.981912, 0.981911, 0.981911)
+bones/41/rotation = Quaternion(0.423683, -3.87432e-07, 1.59094e-07, 0.90581)
+bones/42/rotation = Quaternion(-0.553183, 0.144822, -0.0188604, 0.820158)
+bones/42/scale = Vector3(1.01697, 1.01697, 1.01697)
+bones/44/scale = Vector3(1, 0.999999, 1)
+bones/45/rotation = Quaternion(-1.45519e-09, 7.6579e-08, -8.31e-08, 1)
+bones/46/rotation = Quaternion(3.69619e-08, -5.1873e-07, 1.2685e-07, 1)
+bones/47/rotation = Quaternion(-5.9372e-08, -4.86616e-08, 7.9395e-08, 1)
+bones/47/scale = Vector3(1.01697, 1.01697, 1.01697)
+bones/48/rotation = Quaternion(5.2736e-08, 9.31324e-10, -2.5495e-08, 1)
+bones/49/rotation = Quaternion(-8.94039e-08, 0.0793993, 1.99176e-08, 0.996843)
+bones/49/scale = Vector3(1.01697, 1.01697, 1.01697)
+bones/50/rotation = Quaternion(-1.08323e-08, -0.032454, -1.19971e-08, 0.999473)
+bones/50/scale = Vector3(0.999999, 1, 0.999999)
+bones/51/rotation = Quaternion(-4.62169e-08, 6.7521e-09, -2.12458e-08, 1)
+bones/51/scale = Vector3(1.01842, 1.01842, 1.01842)
+bones/52/scale = Vector3(1.01842, 1.01842, 1.01842)
+bones/54/rotation = Quaternion(0.999138, 0.0272621, 0.0303257, -0.00779712)
+bones/55/rotation = Quaternion(-0.668551, -8.99127e-08, -8.10999e-08, 0.743666)
+bones/56/rotation = Quaternion(-0.738192, -0.00691672, -0.0332018, 0.673737)
+bones/57/rotation = Quaternion(0.111945, 4.25729e-07, -2.80577e-08, 0.993714)
+bones/57/scale = Vector3(1, 0.999999, 0.999999)
+bones/58/rotation = Quaternion(-0.565837, -0.0591747, 0.00262136, 0.822387)
+bones/59/rotation = Quaternion(5.29691e-09, -1.60137e-07, 3.4603e-08, 1)
+bones/60/rotation = Quaternion(-0.0332606, 0.96876, -0.245613, -0.00842722)
+bones/62/rotation = Quaternion(-0.903559, -0.00783222, -0.0478994, 0.425705)
+bones/63/rotation = Quaternion(-0.0836904, -0.04037, -0.00339322, 0.995668)
+bones/63/scale = Vector3(0.996312, 0.996313, 0.996312)
+bones/64/rotation = Quaternion(0.158483, 4.23343e-07, -5.05425e-08, 0.987362)
+bones/64/scale = Vector3(1.00028, 1.00028, 1.00028)
+bones/65/rotation = Quaternion(0.929148, 0.0407226, 0.0289844, 0.366314)
+bones/67/rotation = Quaternion(0.929148, 0.0407226, 0.0289844, 0.366314)
+bones/67/scale = Vector3(1.00181, 0.99638, 1.00181)
+bones/69/rotation = Quaternion(0.158457, -0.0187839, 0.00300134, 0.987183)
+bones/70/rotation = Quaternion(1.1012e-09, -0.0208637, 2.23725e-09, 0.999782)
+bones/71/rotation = Quaternion(-0.47689, -0.0818516, -0.0221011, 0.874865)
+bones/71/scale = Vector3(0.998604, 0.999473, 1.00194)
+bones/73/rotation = Quaternion(0.999138, -0.0272624, -0.0303255, -0.00779712)
+bones/74/rotation = Quaternion(-0.668551, -8.99127e-08, -8.10999e-08, 0.743666)
+bones/75/rotation = Quaternion(-0.738192, 0.00691672, 0.0332018, 0.673737)
+bones/76/scale = Vector3(1, 0.999999, 0.999999)
+bones/79/rotation = Quaternion(0.0332606, 0.968761, -0.245613, 0.00842725)
+bones/80/rotation = Quaternion(3.20939e-16, 3.63213e-08, -4.65662e-10, 1)
+bones/81/rotation = Quaternion(-0.84948, 0.0326905, 0.0697702, 0.521965)
+bones/82/rotation = Quaternion(-0.224568, 0.192343, 0.0452663, 0.954214)
+bones/82/scale = Vector3(0.981912, 0.981912, 0.981912)
+bones/83/rotation = Quaternion(0.423683, -3.8515e-07, 1.61618e-07, 0.90581)
+bones/84/rotation = Quaternion(0.910362, -0.15047, -0.0299251, 0.384324)
+bones/85/rotation = Quaternion(-4.30155e-08, 6.7521e-09, 2.31085e-08, 1)
+bones/86/rotation = Quaternion(0.910362, -0.15047, -0.0299251, 0.384324)
+bones/86/scale = Vector3(1.00916, 0.981932, 1.00916)
+bones/87/rotation = Quaternion(-1.01056e-07, 0.0953139, 2.6948e-08, 0.995447)
+bones/88/rotation = Quaternion(0.42135, 0.0946104, -0.0441283, 0.90087)
+bones/88/scale = Vector3(0.999287, 0.985642, 1.01566)
+bones/89/rotation = Quaternion(1.91689e-08, 0.047006, -1.21812e-08, 0.998895)
+bones/90/rotation = Quaternion(-0.551662, 0.106098, -0.0450426, 0.826065)
+bones/90/scale = Vector3(0.992593, 0.995459, 1.01226)
+bones/92/rotation = Quaternion(0.01557, 1.14438e-13, 3.71217e-09, 0.999879)
+bones/93/rotation = Quaternion(3.72529e-09, -1.06027e-14, 2.92436e-17, 1)
+bones/94/rotation = Quaternion(-3.76158e-36, 1.44884e-14, -4.44089e-16, 1)
+bones/95/rotation = Quaternion(0.0728304, 0.00285067, -0.00350977, 0.997334)
+bones/96/rotation = Quaternion(0.696037, 8.55928e-08, 8.29739e-08, 0.718006)
+bones/97/rotation = Quaternion(-0.0583509, 0.00167375, 0.00151191, 0.998294)
+bones/98/rotation = Quaternion(0.0220327, -3.86555e-14, 5.25303e-09, 0.999757)
+bones/99/rotation = Quaternion(2.04891e-08, -1.07553e-16, 5.32605e-15, 1)
+bones/100/rotation = Quaternion(-0.641889, -0.000396228, -0.00450428, 0.766784)
+bones/101/rotation = Quaternion(0.750821, 1.57477e-07, 1.7901e-07, 0.660506)
+bones/102/rotation = Quaternion(0.107813, 0.00420989, 0.00164949, 0.994161)
+bones/103/rotation = Quaternion(0.0508361, -5.84839e-05, -2.94736e-06, 0.998707)
+bones/104/rotation = Quaternion(-0.364294, 0.00415216, 0.00168691, 0.931273)
+bones/105/rotation = Quaternion(-0.796924, 0.000752182, 0.00445838, 0.604063)
+bones/107/rotation = Quaternion(-0.904125, 0.00165319, 0.00420841, 0.427243)
+bones/108/rotation = Quaternion(0.704152, 1.07987e-05, -8.87321e-06, 0.71005)
+bones/109/rotation = Quaternion(-0.0262282, -4.00512e-15, -6.2533e-09, 0.999656)
+bones/110/rotation = Quaternion(1.49011e-08, 3.55271e-15, -5.314e-15, 1)
+bones/111/rotation = Quaternion(-0.0524906, -2.06095e-07, -8.31542e-06, 0.998621)
+bones/112/rotation = Quaternion(0.0246265, 1.19173e-07, 8.8071e-09, 0.999697)
+bones/113/rotation = Quaternion(5.96045e-08, 3.08642e-14, 3.55493e-14, 1)
+bones/114/rotation = Quaternion(-5.2154e-08, 1.55431e-15, -2.80392e-14, 1)
+bones/115/rotation = Quaternion(-0.53871, -0.504382, -0.360929, 0.570193)
+bones/116/rotation = Quaternion(0.132477, 0.698516, -0.67635, 0.19255)
+bones/117/rotation = Quaternion(0.056001, 0.0124416, 0.235364, 0.970213)
+bones/119/rotation = Quaternion(8.11645e-07, 2.29674e-06, 2.0666e-06, 1)
+bones/121/rotation = Quaternion(2.4779e-07, 6.95405e-07, 5.8234e-07, 1)
+bones/122/rotation = Quaternion(-3.12546e-07, -9.3301e-07, -7.83445e-07, 1)
+bones/124/rotation = Quaternion(-3.09832e-07, 8.5228e-05, -7.78384e-07, 1)
+bones/125/rotation = Quaternion(1.23982e-07, 3.12386e-07, 3.79106e-07, 1)
+bones/126/rotation = Quaternion(5.35079e-08, -0.323545, 8.23588e-08, 0.946213)
+bones/127/rotation = Quaternion(1.97906e-09, 4.47668e-07, 8.44009e-10, 1)
+bones/129/rotation = Quaternion(-0.10808, -0.0172266, -0.112633, 0.987591)
+bones/130/rotation = Quaternion(-0.352403, -0.180208, 0.594255, 0.700141)
+bones/131/rotation = Quaternion(0.453695, 0.683473, -0.365466, -0.439842)
+bones/132/rotation = Quaternion(0.056001, 0.0124416, 0.235364, 0.970213)
+bones/133/rotation = Quaternion(-0.0179948, -0.000170905, -0.00945848, 0.999793)
+bones/135/rotation = Quaternion(0.373125, 0.420159, -0.451849, 0.692876)
+bones/136/scale = Vector3(1.05308, 1.05308, 1.05308)
+bones/138/rotation = Quaternion(-0.310327, 0.433482, -0.615383, 0.580598)
+bones/140/rotation = Quaternion(-0.310327, 0.433482, -0.615383, 0.580598)
+bones/141/rotation = Quaternion(2.03921e-08, 0.32538, -2.27977e-08, 0.945583)
+bones/142/rotation = Quaternion(0.129214, 0.32538, 0.204835, 0.914043)
+bones/145/rotation = Quaternion(-0.0575025, 0.865825, 0.0479101, 0.494718)
+bones/146/rotation = Quaternion(0.0285909, -0.727453, -0.0605994, 0.682878)
+bones/152/rotation = Quaternion(0.0285909, -0.727453, -0.0605994, 0.682878)
+bones/155/rotation = Quaternion(0.0285909, -0.727453, -0.0605994, 0.682878)
+bones/160/rotation = Quaternion(2.83763e-09, 5.4075e-08, -8.73115e-10, 1)
+bones/161/rotation = Quaternion(0.0285897, -0.727452, -0.0605984, 0.682879)
+bones/162/rotation = Quaternion(1.86112e-07, -1.4186e-06, -1.48138e-06, 1)
+bones/164/rotation = Quaternion(-1.70577e-07, 2.21211e-06, 2.16917e-06, 1)
+bones/167/rotation = Quaternion(0.995605, -5.66701e-06, 0.093649, -5.42928e-07)
+bones/168/rotation = Quaternion(1.76078e-08, 2.35741e-09, -5.82075e-11, 1)
+bones/170/rotation = Quaternion(0.0285909, -0.727453, -0.0605994, 0.682878)
+bones/174/rotation = Quaternion(3.12138e-06, -3.25404e-06, -2.2864e-07, 1)
+bones/176/rotation = Quaternion(-2.59193e-06, 2.73855e-06, 6.61241e-08, 1)
+bones/178/rotation = Quaternion(-1.49593e-08, -4.19095e-09, 5.58795e-09, 1)
+bones/179/rotation = Quaternion(-1.16415e-10, 9.31325e-10, -3.72529e-09, 1)
+bones/181/scale = Vector3(1, 1, 0.999999)
+bones/182/rotation = Quaternion(-0.0383782, -0.731557, -0.00953583, 0.680632)
+bones/185/rotation = Quaternion(-0.0383782, -0.731557, -0.00953583, 0.680632)
+bones/188/rotation = Quaternion(-0.0383782, -0.731557, -0.00953593, 0.680632)
+bones/189/rotation = Quaternion(-8.8912e-09, -1.2471e-08, 5.12225e-09, 1)
+bones/190/rotation = Quaternion(-0.0383763, -0.731559, -0.00953752, 0.68063)
+bones/191/rotation = Quaternion(-1.04774e-09, 2.41698e-06, 2.69007e-06, 1)
+bones/197/rotation = Quaternion(1.59344e-09, -1.74623e-10, -5.52975e-10, 1)
+bones/199/rotation = Quaternion(-0.0383782, -0.731557, -0.00953583, 0.680632)
+bones/200/rotation = Quaternion(0.0225044, 0.851346, -0.0625129, 0.520381)
+bones/201/rotation = Quaternion(-0.064274, -0.769442, 0.035589, 0.634477)
+bones/201/scale = Vector3(1, 0.999999, 0.999999)
+bones/203/scale = Vector3(1, 0.999999, 1)
+bones/204/rotation = Quaternion(-0.064274, -0.769442, 0.035589, 0.634477)
+bones/204/scale = Vector3(1, 0.999999, 0.999999)
+bones/206/scale = Vector3(1, 0.999999, 1)
+bones/207/rotation = Quaternion(-0.0642743, -0.769442, 0.0355894, 0.634477)
+bones/208/rotation = Quaternion(-5.2387e-09, 4.36412e-08, -1.24565e-08, 1)
+bones/209/rotation = Quaternion(-0.0642731, -0.769443, 0.0355885, 0.634476)
+bones/210/rotation = Quaternion(6.3301e-08, 1.36577e-06, 1.49267e-06, 1)
+bones/213/scale = Vector3(1, 0.999999, 1)
+bones/214/rotation = Quaternion(-1.72368e-07, 8.2189e-07, 7.51345e-07, 1)
+bones/215/rotation = Quaternion(0.996667, 4.13626e-06, -0.0815764, -8.60282e-07)
+bones/216/rotation = Quaternion(2.89583e-09, 2.38651e-09, -9.31325e-10, 1)
+bones/217/rotation = Quaternion(-1.69166e-09, -5.8899e-09, 2.32831e-10, 1)
+bones/218/rotation = Quaternion(-0.064274, -0.769442, 0.035589, 0.634477)
+bones/218/scale = Vector3(1, 0.999999, 0.999999)
+bones/219/rotation = Quaternion(0.0760086, 0.831173, -0.109645, 0.53977)
+bones/220/rotation = Quaternion(-0.117574, -0.785226, 0.0764117, 0.603124)
+bones/220/scale = Vector3(0.999999, 1, 0.999999)
+bones/223/rotation = Quaternion(-0.117574, -0.785226, 0.0764117, 0.603124)
+bones/223/scale = Vector3(0.999999, 1, 0.999999)
+bones/226/rotation = Quaternion(-0.117574, -0.785226, 0.0764116, 0.603124)
+bones/227/rotation = Quaternion(-3.69328e-08, -2.25845e-08, 1.16415e-09, 1)
+bones/229/rotation = Quaternion(5.89879e-07, 2.43535e-06, 2.57464e-06, 1)
+bones/231/rotation = Quaternion(3.26807e-07, 1.75455e-06, 1.6723e-06, 1)
+bones/234/rotation = Quaternion(0.979864, -5.78593e-08, -0.199666, -3.99104e-07)
+bones/235/rotation = Quaternion(-9.8953e-10, -8.73115e-10, 3.14322e-09, 1)
+bones/236/rotation = Quaternion(2.32831e-10, -7.3487e-10, -4.65662e-10, 1)
+bones/237/rotation = Quaternion(-0.117574, -0.785226, 0.0764117, 0.603124)
+bones/237/scale = Vector3(0.999999, 1, 0.999999)
+bones/238/rotation = Quaternion(0.0760086, 0.831173, -0.109645, 0.53977)
+bones/240/rotation = Quaternion(0.264432, -0.69046, 0.665232, 0.103956)
+bones/241/rotation = Quaternion(0.00234489, 0.082386, -0.235207, 0.968445)
+bones/242/rotation = Quaternion(-0.0241916, 0.0279969, -0.0687226, 0.996949)
+bones/242/scale = Vector3(1, 0.999999, 1)
+bones/243/rotation = Quaternion(8.17935e-07, -2.28784e-06, -2.0666e-06, 1)
+bones/245/rotation = Quaternion(2.33224e-07, -6.58065e-07, -5.8915e-07, 1)
+bones/246/rotation = Quaternion(-3.07511e-07, 9.18195e-07, 7.8822e-07, 1)
+bones/247/rotation = Quaternion(-4.6973e-08, 0.0141758, -8.85977e-09, 0.9999)
+bones/248/rotation = Quaternion(-3.14765e-07, -8.53095e-05, 7.82893e-07, 1)
+bones/249/rotation = Quaternion(1.32713e-07, -4.37926e-07, -3.89089e-07, 1)
+bones/250/rotation = Quaternion(6.31435e-08, 0.426497, 2.03385e-08, 0.904489)
+bones/251/rotation = Quaternion(2.09547e-09, -4.09229e-07, 3.20142e-10, 1)
+bones/252/rotation = Quaternion(-6.9849e-09, 1.62981e-09, 1.22527e-08, 1)
+bones/253/rotation = Quaternion(-0.10808, 0.0172266, 0.112633, 0.987591)
+bones/254/rotation = Quaternion(-0.36411, 0.16454, -0.597245, 0.695449)
+bones/255/rotation = Quaternion(0.52456, -0.58166, 0.316718, -0.534975)
+bones/256/rotation = Quaternion(0.00234489, 0.082386, -0.235207, 0.968445)
+bones/257/rotation = Quaternion(-0.0179948, 0.000170905, 0.00945848, 0.999793)
+bones/258/rotation = Quaternion(-0.00597013, 0.0292862, -0.0776384, 0.996534)
+bones/259/rotation = Quaternion(0.366836, -0.426635, 0.453472, 0.691214)
+bones/260/scale = Vector3(1.07049, 1.07049, 1.07049)
+bones/262/rotation = Quaternion(-0.283606, -0.414553, 0.657286, 0.561862)
+bones/263/rotation = Quaternion(-1.53668e-08, -7.372e-08, 6.41155e-08, 1)
+bones/264/rotation = Quaternion(-0.283606, -0.414553, 0.657286, 0.561862)
+bones/265/rotation = Quaternion(1.19434e-08, -0.33867, -5.21784e-08, 0.940905)
+bones/266/rotation = Quaternion(0.102408, -0.338399, -0.211755, 0.91113)
+bones/267/rotation = Quaternion(-1.7032e-08, 0.0140903, -3.3616e-08, 0.999901)
+bones/268/rotation = Quaternion(-0.0232318, 0.0141037, -0.0690523, 0.997243)
+bones/269/rotation = Quaternion(0.0575024, 0.865825, 0.0479103, -0.494718)
+bones/270/rotation = Quaternion(0.0285909, 0.727453, 0.0605994, 0.682878)
+bones/273/scale = Vector3(1, 0.999999, 1)
+bones/276/rotation = Quaternion(0.0285909, 0.727453, 0.0605994, 0.682878)
+bones/280/scale = Vector3(1, 0.999999, 1)
+bones/284/rotation = Quaternion(-1.4079e-08, -2.73576e-09, 8.78935e-09, 1)
+bones/286/rotation = Quaternion(1.93628e-07, 1.38575e-06, 1.49372e-06, 1)
+bones/288/rotation = Quaternion(-1.7861e-07, -2.2092e-06, -2.16987e-06, 1)
+bones/291/rotation = Quaternion(0.995605, 5.66478e-06, -0.093649, -5.38285e-07)
+bones/292/rotation = Quaternion(1.15251e-08, -1.33877e-09, -5.82075e-10, 1)
+bones/293/rotation = Quaternion(-5.2387e-10, -4.59113e-09, -1.45519e-09, 1)
+bones/294/rotation = Quaternion(0.0285909, 0.727453, 0.0605994, 0.682878)
+bones/298/rotation = Quaternion(3.05078e-06, 3.25032e-06, 2.24915e-07, 1)
+bones/300/rotation = Quaternion(-2.67057e-06, -2.73529e-06, -6.65898e-08, 1)
+bones/302/rotation = Quaternion(1.11758e-08, 1.39698e-09, -3.72529e-09, 1)
+bones/303/rotation = Quaternion(7.82895e-08, 7.4506e-09, -5.55138e-17, 1)
+bones/304/scale = Vector3(1, 0.999999, 1)
+bones/305/scale = Vector3(1, 1, 0.999999)
+bones/306/rotation = Quaternion(-0.0383782, 0.731557, 0.00953582, 0.680632)
+bones/309/rotation = Quaternion(-0.0383782, 0.731557, 0.00953582, 0.680632)
+bones/312/rotation = Quaternion(-0.0383782, 0.731558, 0.00953593, 0.680632)
+bones/313/rotation = Quaternion(2.76487e-09, 6.50035e-08, -1.5134e-09, 1)
+bones/314/rotation = Quaternion(-0.0383763, 0.731559, 0.00953755, 0.68063)
+bones/315/rotation = Quaternion(-1.35333e-09, -2.48431e-06, -2.688e-06, 1)
+bones/319/rotation = Quaternion(3.16948e-07, -3.06484e-06, -2.81285e-06, 1)
+bones/320/rotation = Quaternion(0.999792, 9.89734e-10, 0.0203813, -2.03332e-08)
+bones/321/rotation = Quaternion(9.66975e-09, -7.567e-10, 8.14905e-10, 1)
+bones/322/rotation = Quaternion(5.0204e-10, -1.77443e-09, 1.23692e-10, 1)
+bones/323/rotation = Quaternion(-0.0383782, 0.731557, 0.00953582, 0.680632)
+bones/324/rotation = Quaternion(0.0225046, -0.851346, 0.0625127, 0.520381)
+bones/325/rotation = Quaternion(-0.0642738, 0.769443, -0.0355891, 0.634476)
+bones/327/scale = Vector3(1, 0.999999, 1)
+bones/328/rotation = Quaternion(-0.0642738, 0.769443, -0.0355891, 0.634476)
+bones/330/scale = Vector3(1, 0.999999, 1)
+bones/331/rotation = Quaternion(-0.0642743, 0.769442, -0.0355894, 0.634477)
+bones/332/rotation = Quaternion(-1.21945e-08, 1.34023e-08, 1.62982e-09, 1)
+bones/333/rotation = Quaternion(-0.0642731, 0.769443, -0.0355885, 0.634476)
+bones/337/scale = Vector3(1, 0.999999, 1)
+bones/338/rotation = Quaternion(-1.69661e-07, -8.1962e-07, -7.48085e-07, 1)
+bones/339/rotation = Quaternion(0.996667, -4.1399e-06, 0.0815764, -8.58192e-07)
+bones/340/rotation = Quaternion(8.73115e-11, -2.15369e-09, 2.32831e-10, 1)
+bones/342/rotation = Quaternion(-0.0642738, 0.769443, -0.0355891, 0.634476)
+bones/343/rotation = Quaternion(0.0760089, -0.831174, 0.109646, 0.539769)
+bones/344/scale = Vector3(1, 1, 0.999999)
+bones/347/scale = Vector3(1, 1, 0.999999)
+bones/350/rotation = Quaternion(-0.117574, 0.785226, -0.0764116, 0.603123)
+bones/352/rotation = Quaternion(-0.117572, 0.785227, -0.0764098, 0.603122)
+bones/355/rotation = Quaternion(3.33181e-07, -1.75619e-06, -1.67219e-06, 1)
+bones/357/rotation = Quaternion(7.7364e-07, -4.20946e-06, -3.54089e-06, 1)
+bones/358/rotation = Quaternion(0.979864, 6.21363e-08, 0.199666, -3.98985e-07)
+bones/359/rotation = Quaternion(1.0099e-08, -3.60887e-09, -5.55113e-17, 1)
+bones/360/rotation = Quaternion(2.32831e-10, -1.20563e-08, 1.16416e-10, 1)
+bones/361/scale = Vector3(1, 1, 0.999999)
+bones/362/rotation = Quaternion(0.0760089, -0.831174, 0.109646, 0.539769)
+bones/363/rotation = Quaternion(-6.70865e-08, 0.750821, 0.660506, 2.35695e-07)
+bones/364/rotation = Quaternion(-2.23518e-08, 2.60025e-14, -3.0426e-08, 1)
+bones/366/rotation = Quaternion(-2.23518e-08, 1.97852e-14, -3.0426e-08, 1)
+bones/367/rotation = Quaternion(-6.70865e-08, 0.750821, 0.660506, 2.35695e-07)
+bones/369/rotation = Quaternion(-0.53871, -0.504382, -0.360929, 0.570193)
+bones/371/rotation = Quaternion(1.11758e-08, 3.04201e-14, 9.2643e-15, 1)
+bones/374/rotation = Quaternion(3.25963e-09, -7.6834e-09, 2.56114e-09, 1)
+bones/375/position = Vector3(0.591313, 1.23818, -0.364552)
+bones/375/rotation = Quaternion(-0.392498, 0.00890023, -0.00491498, 0.919697)
+bones/376/rotation = Quaternion(0.981707, 1.32815e-08, 0.0477582, 0.184314)
+bones/379/rotation = Quaternion(3.25963e-09, 7.6834e-09, -2.56114e-09, 1)
+bones/380/position = Vector3(-0.588144, 1.25698, -0.3498)
+bones/380/rotation = Quaternion(-0.392498, 0.00890023, -0.00491499, 0.919697)
+bones/381/rotation = Quaternion(0.981707, -1.32815e-08, -0.0477582, 0.184314)
+bones/390/rotation = Quaternion(0.968761, 0.0332605, -0.00842751, -0.245613)
+bones/394/position = Vector3(0.189126, 0.129859, 0.307086)
+bones/394/rotation = Quaternion(-0.521906, 0.0070657, 0.00515268, 0.852958)
+bones/395/rotation = Quaternion(0.0139478, 8.00542e-11, -0.0164759, 0.999767)
+bones/404/rotation = Quaternion(0.968761, -0.0332605, 0.00842746, -0.245613)
+bones/408/position = Vector3(-0.175381, 0.129402, 0.313358)
+bones/408/rotation = Quaternion(-0.521906, 0.0070657, 0.00515268, 0.852958)
+bones/409/rotation = Quaternion(0.0139478, -8.00542e-11, 0.0164759, 0.999767)
+
+[node name="Bag2_joint" parent="Player/IVDrip/Joints" index="0"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 3.55271e-15, 0, 0.190339, 0.0607891)
+
+[node name="EnemyStill" parent="." instance=ExtResource("2_05m6d")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53.0539, 0, 0)
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="Hallway" type="Node3D" parent="Obstacles"]
+
+[node name="wheelchair" parent="Obstacles/Hallway" instance=ExtResource("3_wh7ko")]
+transform = Transform3D(0.977142, 0, -0.212587, 0, 1, 0, 0.212587, 0, 0.977142, 9.95007, 0.011658, 0.225273)
+
+[node name="wheelchair2" parent="Obstacles/Hallway" instance=ExtResource("3_wh7ko")]
+transform = Transform3D(0.890316, 0, 0.455343, 0, 1, 0, -0.455343, 0, 0.890316, 37.4002, 0.011658, -0.226029)
+
+[node name="gurney3" parent="Obstacles/Hallway" instance=ExtResource("4_arpjt")]
+transform = Transform3D(0.0658038, 0, 0.997833, 0, 1, 0, -0.997833, 0, 0.0658038, 56.3961, 0, 0.648807)
+
+[node name="gurney4" parent="Obstacles/Hallway" instance=ExtResource("4_arpjt")]
+transform = Transform3D(-0.254484, 0, -0.967077, 0, 1, 0, 0.967077, 0, -0.254484, 58.0696, 0, 1.4212)
+
+[node name="gurney5" parent="Obstacles/Hallway" instance=ExtResource("4_arpjt")]
+transform = Transform3D(0.928123, 0, 0.372275, 0, 1, 0, -0.372275, 0, 0.928123, 61.0773, 0, 0.607449)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Obstacles/Hallway/gurney5/FoodTable-material/StaticBody3D" index="1"]
+transform = Transform3D(0.713707, 0, -0.286909, 0, 0.769218, 0, 0.286909, 0, 0.713707, -0.216793, 0.354521, -0.132904)
+shape = SubResource("BoxShape3D_305vl")
+
+[node name="exitsign" parent="Obstacles/Hallway" instance=ExtResource("5_0y22c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.4831, 5.3328, -0.070312)
+
+[node name="exitsign2" parent="Obstacles/Hallway" instance=ExtResource("5_0y22c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.274091, 5.32968, -0.070312)
+
+[node name="foodtable" parent="Obstacles/Hallway" instance=ExtResource("6_5pxfu")]
+transform = Transform3D(-0.739032, 0, -0.673671, 0, 1, 0, 0.673671, 0, -0.739032, -21.1758, 0, 0.206929)
+
+[node name="chair" parent="Obstacles/Hallway" instance=ExtResource("7_5f82s")]
+transform = Transform3D(0.97208, 0, 0.23465, 0, 1, 0, -0.23465, 0, 0.97208, -34.1009, 0, -0.274186)
+
+[node name="chair6" parent="Obstacles/Hallway" instance=ExtResource("7_5f82s")]
+transform = Transform3D(0.959171, 0, -0.282827, 0, 1, 0, 0.282827, 0, 0.959171, -44.9009, 0, -0.274186)
+
+[node name="chair2" parent="Obstacles/Hallway" instance=ExtResource("7_5f82s")]
+transform = Transform3D(0.970148, 0, 0.242515, 0, 1, 0, -0.242515, 0, 0.970148, 15.6897, 0, 0.103977)
+
+[node name="chair3" parent="Obstacles/Hallway" instance=ExtResource("7_5f82s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84021, 0, -0.265256)
+
+[node name="chair4" parent="Obstacles/Hallway" instance=ExtResource("7_5f82s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04824, 0, -0.265256)
+
+[node name="chair5" parent="Obstacles/Hallway" instance=ExtResource("7_5f82s")]
+transform = Transform3D(0.958392, 0, -0.285454, 0, 1, 0, 0.285454, 0, 0.958392, 66.1253, 0, 0.158925)
+
+[node name="cabinetlong" parent="Obstacles/Hallway" instance=ExtResource("8_ugwok")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 0.801289, 0, 1, 0, -4.37114e-08, 71.6895, 0.111868, 0)
+
+[node name="Cabinet1-material_002" parent="Obstacles/Hallway/cabinetlong" index="0"]
+transform = Transform3D(1.2, 0, 3.55271e-15, 0, 1.2, 0, -3.55271e-15, 0, 1.2, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Obstacles/Hallway/cabinetlong/Cabinet1-material_002/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, -0.0135758, 1.46045, -0.206966)
+shape = SubResource("BoxShape3D_1o1pv")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Obstacles/Hallway/cabinetlong/Cabinet1-material_002/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, -0.0135759, 4.68463, -1.40756)
+shape = SubResource("BoxShape3D_1o1pv")
+
+[node name="Ramp" type="Node3D" parent="Obstacles/Hallway"]
+
+[node name="gurney2" parent="Obstacles/Hallway/Ramp" instance=ExtResource("4_arpjt")]
+transform = Transform3D(-0.974236, 0, -0.225529, 0, 1, 0, 0.225529, 0, -0.974236, 49.9669, 0, 0.155199)
+
+[node name="IVprop" parent="Obstacles/Hallway/Ramp" instance=ExtResource("9_upg26")]
+transform = Transform3D(0.080099, -0.940917, -0.329028, -0.0220815, -0.331683, 0.943133, -0.996542, -0.0682787, -0.0473442, 48.5687, 0.976855, 0.201262)
+
+[node name="RampBody" type="StaticBody3D" parent="Obstacles/Hallway/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2861, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Hallway/Ramp/RampBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0580559, -0.000406265, -0.78249)
+shape = SubResource("ConvexPolygonShape3D_82ub8")
+
+[node name="Vent" type="Node3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+
+[node name="Sewer" type="Node3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+
+[node name="SewerBox3" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -13, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox3"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox3/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox121" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -13, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox121"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox121/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox23" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -14, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox23"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox23/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox24" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox24"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox24/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox4" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox4"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox4/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox5" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox5"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox5/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox6" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox6"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox6/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox7" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox7"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox7/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox8" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox8"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox8/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox9" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox9"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox9/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox10" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox10"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox10/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox11" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox11"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox11/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox12" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox12"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox12/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox13" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox13"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox13/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox14" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox14"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox14/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox15" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox15"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox15/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox16" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox16"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox16/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox17" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox17"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox17/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox18" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox18"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox18/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox19" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox19"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox19/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox20" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox20"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox20/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox21" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox21"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox21/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox22" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox22"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox22/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox59" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox59"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox59/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox60" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox60"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox60/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox61" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox61"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox61/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox62" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox62"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox62/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox69" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox69"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox69/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox70" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox70"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox70/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox71" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox71"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox71/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox72" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox72"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox72/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox73" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox73"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox73/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox74" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox74"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox74/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox75" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox75"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox75/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox76" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox76"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox76/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox77" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox77"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox77/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox78" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox78"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox78/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox79" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox79"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox79/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox80" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox80"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox80/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox81" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox81"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox81/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox82" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox82"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox82/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox83" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox83"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox83/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox96" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox96"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox96/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox97" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox97"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox97/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox98" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox98"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox98/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox99" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox99"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox99/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox100" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox100"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox100/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox117" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox117"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox117/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox118" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox118"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox118/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox119" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox119"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox119/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox125" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox125"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox125/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox129" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox129"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox129/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox130" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox130"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox130/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox146" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox146"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox146/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox226" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox226"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox226/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox227" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox227"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox227/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox228" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox228"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox228/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox229" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox229"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox229/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox230" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox230"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox230/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox231" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox231"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox231/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox232" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox232"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox232/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox233" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox233"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox233/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox234" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox234"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox234/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox235" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox235"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox235/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox126" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox126"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox126/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox127" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox127"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox127/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox128" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox128"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox128/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox222" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox222"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox222/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox223" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox223"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox223/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox224" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox224"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox224/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox225" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox225"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox225/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox176" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox176"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox176/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox177" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox177"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox177/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox178" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox178"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox178/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox179" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox179"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox179/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox180" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox180"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox180/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox181" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox181"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox181/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox182" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox182"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox182/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox183" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox183"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox183/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox184" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox184"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox184/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox185" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox185"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox185/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox186" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox186"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox186/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox187" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox187"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox187/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox188" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox188"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox188/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox189" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox189"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox189/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox190" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox190"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox190/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox191" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox191"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox191/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox192" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox192"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox192/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox193" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox193"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox193/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox194" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox194"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox194/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox195" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox195"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox195/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox196" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 196.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox196"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox196/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox197" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox197"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox197/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox198" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox198"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox198/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox199" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox199"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox199/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox200" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox200"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox200/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox201" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 201.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox201"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox201/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox202" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox202"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox202/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox203" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox203"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox203/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox204" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox204"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox204/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox205" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox205"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox205/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox206" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox206"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox206/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox207" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox207"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox207/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox208" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.304, -18, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox208"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox208/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox209" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox209"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox209/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox210" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox210"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox210/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox215" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox215"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox215/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox214" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox214"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox214/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox25" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox25"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox25/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox26" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox26"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox26/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox27" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox27"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox27/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox28" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox28"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox28/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox29" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox29"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox29/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox30" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox30"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox30/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox31" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox31"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox31/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox32" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox32"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox32/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox33" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox33"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox33/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox34" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox34"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox34/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox35" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox35"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox35/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox36" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox36"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox36/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox37" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox37"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox37/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox38" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox38"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox38/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox39" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox39"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox39/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox40" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox40"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox40/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox41" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox41"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox41/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox64" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox64"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox64/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox65" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox65"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox65/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox66" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox66"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox66/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox67" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox67"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox67/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox84" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox84"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox84/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox85" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox85"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox85/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox86" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox86"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox86/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox87" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox87"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox87/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox88" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox88"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox88/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox89" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox89"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox89/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox90" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox90"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox90/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox91" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox91"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox91/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox92" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox92"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox92/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox95" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox95"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox95/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox103" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox103"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox103/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox104" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox104"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox104/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox105" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox105"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox105/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox106" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox106"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox106/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox107" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox107"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox107/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox108" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox108"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox108/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox111" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox111"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox111/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox112" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox112"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox112/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox113" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox113"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox113/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox114" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox114"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox114/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox131" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox131"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox131/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox132" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox132"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox132/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox133" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox133"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox133/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox134" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox134"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox134/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox135" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox135"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox135/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox136" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox136"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox136/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox137" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox137"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox137/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox138" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox138"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox138/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox139" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox139"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox139/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox140" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox140"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox140/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox141" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox141"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox141/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox148" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox148"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox148/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox149" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox149"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox149/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox150" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox150"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox150/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox151" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox151"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox151/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox152" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox152"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox152/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox153" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox153"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox153/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox154" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox154"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox154/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox155" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox155"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox155/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox156" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox156"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox156/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox157" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox157"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox157/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox158" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox158"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox158/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox159" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox159"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox159/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox160" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox160"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox160/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox161" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox161"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox161/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox162" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox162"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox162/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox163" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 196.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox163"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox163/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox164" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox164"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox164/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox165" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox165"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox165/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox166" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox166"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox166/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox167" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox167"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox167/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox168" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 201.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox168"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox168/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox169" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox169"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox169/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox170" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox170"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox170/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox171" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox171"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox171/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox172" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox172"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox172/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox173" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox173"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox173/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox174" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox174"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox174/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox175" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.304, -7, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox175"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox175/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox42" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.304, -8, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox42"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox42/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox43" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.304, -9, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox43"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox43/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox44" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.304, -10, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox44"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox44/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox47" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox47"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox47/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox48" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox48"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox48/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox49" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox49"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox49/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox50" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox50"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox50/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox53" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox53"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox53/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox56" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.304, -16, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox56"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox56/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox68" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox68"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox68/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox68/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox101" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.304, -15, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox101"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox101/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox101/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox57" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox57"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox57/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox58" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.304, -17, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox58"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox58/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox45" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox45"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox45/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox63" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.752, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox63"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox63/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox46" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox46"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox46/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox93" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -8, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox93"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox93/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox109" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -9, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox109"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox109/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox110" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -10, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox110"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox110/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox115" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox115"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox115/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox116" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.752, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox116"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox116/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox120" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox120"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox120/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox51" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.544, -8, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox51"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox51/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox52" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.544, -9, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox52"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox52/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox54" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.544, -10, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox54"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox54/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox55" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox55"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox55/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox94" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.096, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox94"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox94/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox102" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.096, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox102"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox102/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox142" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.066, -8, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox142"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox142/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox143" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.066, -9, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox143"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox143/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox144" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.066, -10, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox144"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox144/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox145" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.066, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox145"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox145/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox147" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.618, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox147"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox147/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox211" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox211"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox211/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox212" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.752, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox212"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox212/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox213" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox213"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox213/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox216" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox216"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox216/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox217" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.752, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox217"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox217/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox218" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox218"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox218/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox219" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.304, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox219"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox219/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox220" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.752, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox220"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox220/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="SewerBox221" type="MeshInstance3D" parent="Obstacles/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.856, -11, 0)
+mesh = SubResource("BoxMesh_lmnnl")
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody3D" parent="Obstacles/Sewer/SewerBox221"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Obstacles/Sewer/SewerBox221/StaticBody"]
+shape = SubResource("BoxShape3D_nmdbe")
+
+[node name="Grates" type="Node3D" parent="Obstacles"]
+
+[node name="Grate" parent="Obstacles/Grates" instance=ExtResource("10_27upm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.346, 6, 0)
+
+[node name="Grate4" parent="Obstacles/Grates" instance=ExtResource("10_27upm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.346, 0, 0)
+
+[node name="Grate3" parent="Obstacles/Grates" instance=ExtResource("10_27upm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.5131, 5.80713, -0.230897)
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="HospitalHallway" type="Node3D" parent="Building"]
+
+[node name="GroundCollider" type="StaticBody3D" parent="Building/HospitalHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/HospitalHallway/GroundCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1391, 0, -0.208344)
+shape = SubResource("BoxShape3D_qwvhv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Building/HospitalHallway/GroundCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62556, 7.19552, 0.605896)
+shape = SubResource("BoxShape3D_pj6x6")
+
+[node name="Roof" type="MeshInstance3D" parent="Building/HospitalHallway"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 5, 0)
+visible = false
+mesh = SubResource("PlaneMesh_vqtx5")
+skeleton = NodePath("../..")
+
+[node name="CorridorFront" type="Node3D" parent="Building/HospitalHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="CorridorSide1" type="Node3D" parent="Building/HospitalHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Hosp_Wall13" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.7012, 0, -6.26866)
+
+[node name="Hosp_Wall14" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.7012, 0, -16.7687)
+
+[node name="Hosp_Wall15" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.7012, 0, -27.2687)
+
+[node name="Hosp_Wall17" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.272, 0, -27.2687)
+
+[node name="Hosp_Wall20" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.272, 0, -37.7687)
+
+[node name="Hosp_Wall21" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -13.272, 0, -35.7687)
+
+[node name="Hosp_Wall18" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.272, 0, -16.7687)
+
+[node name="Hosp_Wall19" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.272, 0, -6.26866)
+
+[node name="Hosp_Wall16" parent="Building/HospitalHallway/CorridorSide1" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.91, -4.76837e-07, -32.5893)
+
+[node name="CorridorSide2" type="Node3D" parent="Building/HospitalHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5, 0, -0.5)
+
+[node name="Hosp_Wall13" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.7012, 0, -6.26866)
+
+[node name="Hosp_Wall22" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.2012, 0, -6.26866)
+
+[node name="Hosp_Wall24" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.7012, 0, -6.26866)
+
+[node name="Hosp_Wall14" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.7012, 0, -16.7687)
+
+[node name="Hosp_Wall15" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.7012, 0, -27.2687)
+
+[node name="Hosp_Wall17" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.77203, 0, -27.2687)
+
+[node name="Hosp_Wall20" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.77203, 0, -37.7687)
+
+[node name="Hosp_Wall21" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -13.272, 0, -35.7687)
+
+[node name="Hosp_Wall18" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.77203, 0, -16.7687)
+
+[node name="Hosp_Wall19" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.77203, 0, -6.26866)
+
+[node name="Hosp_Wall16" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.91, -4.76837e-07, -32.5893)
+
+[node name="Hosp_Wall23" parent="Building/HospitalHallway/CorridorSide2" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.4948, -4.76837e-07, -5.99539)
+
+[node name="WallStart" parent="Building/HospitalHallway" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.2666, 0, 7.17169)
+
+[node name="WallFront" type="Node3D" parent="Building/HospitalHallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.538361)
+
+[node name="Hosp_Wall" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -1)
+
+[node name="Hosp_Wall2" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5, 0, -1)
+
+[node name="Hosp_Wall4" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0671, 0, -1)
+
+[node name="Hosp_Wall21" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(0.599092, 0, 0, 0, 1, 0, 0, 0, 1, -16.7404, 0, -1)
+
+[node name="Hosp_Wall5" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
+
+[node name="Hosp_Wall6" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -1)
+
+[node name="Hosp_Wall7" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(0.651344, 0, 0, 0, 1, 0, 0, 0, 1, 14.0606, 0, -1)
+
+[node name="Hosp_Wall8" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5, 0, -1)
+
+[node name="Hosp_Wall9" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, -1)
+
+[node name="Hosp_Wall10" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5, 0, -1)
+
+[node name="Hosp_Wall11" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, -1)
+
+[node name="Hosp_Wall12" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, 0, -1)
+
+[node name="Hosp_Wall19" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 72.8747, 0, 4.04658)
+
+[node name="Hosp_Wall20" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 119.148, 0, 4.04658)
+
+[node name="Hosp_Wall22" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 123.611, 0, 4.04658)
+
+[node name="Hosp_Wall13" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 0, -1)
+
+[node name="Hosp_Wall14" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.5, 0, -1)
+
+[node name="Hosp_Wall15" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104, 0, -1)
+
+[node name="Hosp_Wall16" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.5, 0, -1)
+
+[node name="Hosp_Wall17" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.5, 0, -1)
+
+[node name="Hosp_Wall18" parent="Building/HospitalHallway/WallFront" instance=ExtResource("11_d1l7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 0, -1)
+
+[node name="Ceiling" type="Node3D" parent="Building/HospitalHallway"]
+
+[node name="Hosp_Floor10" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9627, 5.80327, -1.15983)
+
+[node name="Hosp_Floor9" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4627, 5.80327, -1.15983)
+
+[node name="Hosp_Floor12" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.4627, 5.80327, -20.6598)
+
+[node name="Hosp_Floor13" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.0373, 5.80327, -20.6598)
+
+[node name="Hosp_Floor14" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.5373, 5.80327, -20.6598)
+
+[node name="Hosp_Floor11" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0373, 5.80327, -1.15983)
+
+[node name="Hosp_Floor15" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5373, 5.80327, -1.15983)
+
+[node name="Hosp_Floor16" parent="Building/HospitalHallway/Ceiling" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.4392, 5.80327, -1.15983)
+
+[node name="Hosp_FloorFilling" type="MeshInstance3D" parent="Building/HospitalHallway/Ceiling"]
+transform = Transform3D(29.6161, 0, 0, 0, 0.463177, 0, 0, 0, 3.64871, 87.7276, 6.07416, 0)
+mesh = SubResource("BoxMesh_4gqes")
+
+[node name="Hosp_FloorFilling2" type="MeshInstance3D" parent="Building/HospitalHallway/Ceiling"]
+transform = Transform3D(29.6161, 0, 0, 0, 0.702515, 0, 0, 0, 7.46185, 138.427, 6.18119, 0.271057)
+mesh = SubResource("BoxMesh_4gqes")
+
+[node name="Hosp_FloorFilling3" type="MeshInstance3D" parent="Building/HospitalHallway/Ceiling"]
+transform = Transform3D(9.19758, 0, 0, 0, 0.702515, 0, 0, 0, 7.46185, 114.568, 6.18119, 0.271057)
+mesh = SubResource("BoxMesh_4gqes")
+
+[node name="Ceiling2" type="Node3D" parent="Building/HospitalHallway"]
+transform = Transform3D(-1, 8.9407e-08, 4.44089e-15, 8.57914e-16, -4.37114e-08, 1, 8.9407e-08, 1, 4.37114e-08, 14, 10.0083, -4)
+
+[node name="Hosp_Floor10" parent="Building/HospitalHallway/Ceiling2" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07502, 5.80327, -1.15983)
+
+[node name="Hosp_Floor9" parent="Building/HospitalHallway/Ceiling2" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5488, 5.80327, -1.15983)
+
+[node name="Hosp_Floor13" parent="Building/HospitalHallway/Ceiling2" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(4.9738e-14, -1, -4.37114e-08, 1, 4.9738e-14, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -56.2689, -10.928, -1.21223)
+
+[node name="Hosp_Floor11" parent="Building/HospitalHallway/Ceiling2" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.425, 5.80327, -1.15983)
+
+[node name="Hosp_Floor15" parent="Building/HospitalHallway/Ceiling2" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.925, 5.80327, -1.15983)
+
+[node name="Floor" type="Node3D" parent="Building/HospitalHallway"]
+
+[node name="Hosp_Floor" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4627, -0.00790489, 0.34017)
+
+[node name="Hosp_Floor2" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96266, -0.00790489, 0.34017)
+
+[node name="Hosp_Floor5" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.2233, -0.00790489, -19.423)
+
+[node name="Hosp_Floor6" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 34.0619, -0.00790489, -19.423)
+
+[node name="Hosp_Floor3" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5373, -0.00790489, 0.34017)
+
+[node name="Hosp_Floor7" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.2544, -0.00790489, -19.3573)
+
+[node name="Hosp_Floor4" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.0373, -0.00790489, 0.34017)
+
+[node name="Hosp_Floor8" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.456, -0.00790489, 0.34017)
+
+[node name="Hosp_Floor9" parent="Building/HospitalHallway/Floor" instance=ExtResource("12_c8s2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.296, -0.00790489, 0.34017)
+
+[node name="Seams" type="Node3D" parent="Building/HospitalHallway"]
+
+[node name="Hosp_Seam" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7639, 0, -1.47183)
+
+[node name="Hosp_Seam17" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.2499, 0, 2.52817)
+
+[node name="Hosp_Seam2" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2715, 0, -1.47183)
+
+[node name="Hosp_Seam3" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2715, 0, -1.47183)
+
+[node name="Hosp_Seam14" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7285, 0, -1.47183)
+
+[node name="Hosp_Seam15" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2285, 0, -1.47183)
+
+[node name="Hosp_Seam4" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7715, 0, -1.47183)
+
+[node name="Hosp_Seam9" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228474, 0, -1.47183)
+
+[node name="Hosp_Seam10" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7285, 0, -1.47183)
+
+[node name="Hosp_Seam11" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.2285, 0, -1.47183)
+
+[node name="Hosp_Seam12" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.7285, 0, -1.47183)
+
+[node name="Hosp_Seam13" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.2285, 0, -1.47183)
+
+[node name="Hosp_Seam18" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7253, 0, 0, 0, -4.37114e-08, 2.10676, 0, -1, -9.20895e-08, 72.939, 5.94821, 3.98748)
+
+[node name="Hosp_Seam5" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, -13.5856, 0, -1.47183)
+
+[node name="Hosp_Seam16" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, -50.246, 0, -1.47183)
+
+[node name="Hosp_Seam6" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, -10.3745, 0, -1.47183)
+
+[node name="Hosp_Seam7" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, 31.9144, 0, -1.47183)
+
+[node name="Hosp_Seam8" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7607, 0, 0, 0, 1, 0, 0, 0, 2.64263, 35.6255, 0, -1.47183)
+
+[node name="Hosp_Seam19" parent="Building/HospitalHallway/Seams" instance=ExtResource("13_copm4")]
+transform = Transform3D(1.7607, 0, 0, 0, 1.04639, 0, 0, 0, 2.64263, 72.7814, -0.0887895, -1.47183)
+
+[node name="Doorways" type="Node3D" parent="Building/HospitalHallway"]
+
+[node name="Hosp_DoorwayClosed" parent="Building/HospitalHallway/Doorways" instance=ExtResource("14_xmvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2666, -0.0429893, -1.53602)
+
+[node name="Hosp_Door2" parent="Building/HospitalHallway/Doorways/Hosp_DoorwayClosed" instance=ExtResource("15_v0igg")]
+transform = Transform3D(0.991416, 0, 0, 0, 0.991057, 0, 0, 0, 1, 0.732506, 0.0817754, 0)
+
+[node name="Hosp_DoorwayClosed3" parent="Building/HospitalHallway/Doorways" instance=ExtResource("14_xmvn1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.2511, -0.0429893, 0.0106685)
+
+[node name="Hosp_Door2" parent="Building/HospitalHallway/Doorways/Hosp_DoorwayClosed3" instance=ExtResource("15_v0igg")]
+transform = Transform3D(0.991416, 0, 0, 0, 0.991057, 0, 0, 0, 1, 0.732506, 0.0817754, 0)
+
+[node name="Hosp_DoorwayHalfOpen" parent="Building/HospitalHallway/Doorways" instance=ExtResource("14_xmvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3022, -0.0429893, -1.53602)
+
+[node name="Hosp_Door3" parent="Building/HospitalHallway/Doorways/Hosp_DoorwayHalfOpen" instance=ExtResource("15_v0igg")]
+transform = Transform3D(0.751288, 0, 0.652495, 0, 0.974519, 0, -0.646894, 0, 0.757793, 0.698355, 0.0817754, 0)
+
+[node name="Vent" type="Node3D" parent="Building"]
+
+[node name="background" type="Node3D" parent="Building/Vent"]
+
+[node name="Mesh2" type="MeshInstance3D" parent="Building/Vent/background"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 38.0538, 23.3287, -1.5)
+mesh = SubResource("PlaneMesh_cpr6g")
+
+[node name="vent_straight2" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 78.993, 7.061, -0.25)
+
+[node name="vent_straight6" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 76.393, 7.061, -0.25)
+
+[node name="vent_straight35" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(2.95434e-15, -1, -7.72173e-08, -6.75874e-08, -4.37114e-08, 1.76653, -1.54622, 0, -7.72173e-08, 69.72, 9.24114, -0.25)
+
+[node name="vent_straight8" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 71.393, 11.261, -0.25)
+
+[node name="vent_straight12" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 73.993, 11.261, -0.25)
+
+[node name="vent_straight13" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 76.593, 11.261, -0.25)
+
+[node name="vent_straight14" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 76.593, 11.261, -0.25)
+
+[node name="vent_straight3" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 81.593, 7.061, -0.25)
+
+[node name="vent_straight4" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 84.193, 7.061, -0.25)
+
+[node name="vent_straight5" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 86.793, 7.061, -0.25)
+
+[node name="vent_straight26" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 81.6145, 26.932, -0.25)
+
+[node name="vent_straight27" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 84.2145, 26.932, -0.25)
+
+[node name="vent_straight28" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 86.8145, 26.932, -0.25)
+
+[node name="vent_straight29" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 89.4145, 26.932, -0.25)
+
+[node name="vent_straight30" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 95.2926, 28.4906, -0.25)
+
+[node name="vent_straight33" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 96.8511, 18.0388, -0.25)
+
+[node name="vent_straight39" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 104.41, 11.9771, -0.25)
+
+[node name="vent_straight68" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 121.782, -12.1482, -0.25)
+
+[node name="vent_straight70" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 124.382, -12.1482, -0.25)
+
+[node name="vent_straight71" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 126.982, -12.1482, -0.25)
+
+[node name="vent_straight69" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128.523, -7.77717, -0.25)
+
+[node name="vent_straight72" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 125.923, -7.77717, -0.25)
+
+[node name="vent_straight42" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 107.205, 23.4801, -0.25)
+
+[node name="vent_straight54" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 110.463, 19.6559, -0.25)
+
+[node name="vent_straight31" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 97.8926, 28.4906, -0.25)
+
+[node name="vent_straight9" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 89.7177, 9.12533, -0.25)
+
+[node name="vent_straight10" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 89.7177, 11.7253, -0.25)
+
+[node name="vent_straight24" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 91.2759, 17.5563, -0.25)
+
+[node name="vent_straight25" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 91.2759, 20.1563, -0.25)
+
+[node name="vent_straight32" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 93.8759, 20.1563, -0.25)
+
+[node name="vent_straight34" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 99.785, 20.1563, -0.25)
+
+[node name="vent_straight36" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 102.297, 20.1563, -0.25)
+
+[node name="vent_straight37" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 102.297, 17.5563, -0.25)
+
+[node name="vent_straight38" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 102.297, 14.9563, -0.25)
+
+[node name="vent_straight40" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 107.52, 14.9563, -0.25)
+
+[node name="vent_straight43" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 15.1563, -0.25)
+
+[node name="vent_straight57" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 17.7563, -0.25)
+
+[node name="vent_straight44" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 12.5563, -0.25)
+
+[node name="vent_straight45" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 9.95634, -0.25)
+
+[node name="vent_straight46" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 7.35634, -0.25)
+
+[node name="vent_straight51" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 4.75634, -0.25)
+
+[node name="vent_straight52" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, 2.15634, -0.25)
+
+[node name="vent_straight59" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, -0.443661, -0.25)
+
+[node name="vent_straight60" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, -3.04366, -0.25)
+
+[node name="vent_straight65" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, -5.64366, -0.25)
+
+[node name="vent_straight66" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.684, -8.24366, -0.25)
+
+[node name="vent_straight47" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 15.1563, -0.25)
+
+[node name="vent_straight55" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 17.7563, -0.25)
+
+[node name="vent_straight56" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 20.3563, -0.25)
+
+[node name="vent_straight58" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 22.9563, -0.25)
+
+[node name="vent_straight80" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 25.5563, -0.25)
+
+[node name="vent_straight81" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 28.1563, -0.25)
+
+[node name="vent_straight82" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 30.7563, -0.25)
+
+[node name="vent_straight48" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 12.5563, -0.25)
+
+[node name="vent_straight49" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 9.95634, -0.25)
+
+[node name="vent_straight73" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 112.579, 28.2059, -0.274024)
+
+[node name="vent_straight74" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 114.322, 30.1345, -0.274024)
+
+[node name="vent_straight75" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 116.066, 32.0631, -0.274024)
+
+[node name="vent_straight76" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 117.404, 32.8443, -0.274024)
+
+[node name="vent_straight79" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 120.055, 32.8605, -0.274024)
+
+[node name="vent_straight77" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 110.835, 26.2774, -0.274024)
+
+[node name="vent_straight78" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 109.091, 24.3488, -0.274024)
+
+[node name="vent_straight83" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 115.184, 24.1965, -0.274024)
+
+[node name="vent_straight84" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 116.928, 26.1251, -0.274024)
+
+[node name="vent_straight85" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 113.44, 22.2679, -0.274024)
+
+[node name="vent_straight86" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-3.24236e-08, 0.741765, -0.67066, 2.93155e-08, -0.67066, -0.741765, -1, -4.37114e-08, 2.35788e-15, 111.697, 20.3393, -0.274024)
+
+[node name="vent_straight87" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(4.23093e-08, -0.967924, -0.251242, 1.09821e-08, -0.251242, 0.967924, -1, -4.37114e-08, 3.48519e-15, 118.721, 22.7198, -0.274024)
+
+[node name="vent_straight88" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(4.23093e-08, -0.967924, -0.251242, 1.09821e-08, -0.251242, 0.967924, -1, -4.37114e-08, 3.48519e-15, 119.374, 20.2032, -0.274024)
+
+[node name="vent_straight89" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(4.23093e-08, -0.967924, -0.251242, 1.09821e-08, -0.251242, 0.967924, -1, -4.37114e-08, 3.48519e-15, 118.068, 25.2364, -0.274024)
+
+[node name="vent_straight50" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 7.35634, -0.25)
+
+[node name="vent_straight53" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 4.75634, -0.25)
+
+[node name="vent_straight61" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 4.75634, -0.25)
+
+[node name="vent_straight62" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, 2.15634, -0.25)
+
+[node name="vent_straight63" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, -0.443661, -0.25)
+
+[node name="vent_straight64" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, -3.04366, -0.25)
+
+[node name="vent_straight67" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 122.989, -5.64366, -0.25)
+
+[node name="vent_straight41" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 107.52, 17.5563, -0.25)
+
+[node name="vent_straight15" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 83.5878, 12.5864, -0.25)
+
+[node name="vent_straight17" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 83.5878, 15.1864, -0.25)
+
+[node name="vent_straight18" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 83.5878, 17.7864, -0.25)
+
+[node name="vent_straight19" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 83.5878, 20.3864, -0.25)
+
+[node name="vent_straight16" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 79.5136, 13.3147, -0.25)
+
+[node name="vent_straight20" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 79.5136, 15.9147, -0.25)
+
+[node name="vent_straight21" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 79.5136, 18.5987, -0.25)
+
+[node name="vent_straight22" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 79.5136, 21.281, -0.25)
+
+[node name="vent_straight23" parent="Building/Vent" instance=ExtResource("20_uobry")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 79.5136, 23.9524, -0.25)
+
+[node name="vent_curved" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.0722, 7.36016, -0.25)
+
+[node name="vent_curved11" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.6889, 27.2488, -0.25)
+
+[node name="vent_curved14" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 101.51, 27.217, -0.25)
+
+[node name="vent_curved7" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.9576, 10.8186, -0.25)
+
+[node name="vent_curved27" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 123.641, -7.46328, -0.25)
+
+[node name="vent_curved26" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 122.341, 32.5414, -0.25)
+
+[node name="vent_curved6" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 90.9602, 15.2974, -0.25)
+
+[node name="vent_curved4" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.8722, 11.5516, -0.25)
+
+[node name="vent_curved25" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-1, -7.8162e-15, 8.74228e-08, 0, -1, -8.9407e-08, 8.74228e-08, -8.9407e-08, 1, 74.0833, 6.75524, -0.25)
+
+[node name="vent_curved16" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 94.5293, 18.3516, -0.25)
+
+[node name="vent_curved17" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.1293, 18.3516, -0.25)
+
+[node name="vent_curved12" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 93.0011, 28.1753, -0.25)
+
+[node name="vent_curved24" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 108.176, 19.3485, -0.250001)
+
+[node name="vent_curved13" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, 100.201, 28.1753, -0.25)
+
+[node name="vent_curved20" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, 104.402, 26.5899, -0.25)
+
+[node name="vent_curved5" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 90.0257, 13.9996, -0.25)
+
+[node name="vent_curved9" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 83.8983, 22.6664, -0.25)
+
+[node name="vent_curved10" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 79.8271, 26.2729, -0.25)
+
+[node name="vent_curved8" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 91.6005, 22.4332, -0.25)
+
+[node name="vent_curved15" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 93.5573, 22.438, -0.25)
+
+[node name="vent_curved18" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 100.094, 22.438, -0.25)
+
+[node name="vent_curved19" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 101.985, 22.438, -0.25)
+
+[node name="vent_curved21" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 105.374, 24.1344, -0.25)
+
+[node name="vent_curved22" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 102.611, 12.6397, -0.249999)
+
+[node name="vent_curved28" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 119.991, -11.4946, -0.249999)
+
+[node name="vent_curved23" parent="Building/Vent" instance=ExtResource("21_66tvc")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 107.217, 12.6397, -0.249999)
+
+[node name="vent_shortfan" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 82.6416, 17.1291, -0.25)
+
+[node name="vent_shortfan2" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 80.4528, 13.987, -0.25)
+
+[node name="vent_shortfan3" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 80.255, 20.3289, -0.25)
+
+[node name="ventilation_high014" parent="Building/Vent/vent_shortfan3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="vent_shortfan6" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 94.8078, 20.9289, -0.25)
+
+[node name="vent_shortfan8" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 102.842, 17.856, -0.25)
+
+[node name="ventilation_high014" parent="Building/Vent/vent_shortfan8" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="vent_shortfan9" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 103.256, 14.4284, -0.25)
+
+[node name="vent_shortfan10" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 130.324, -7.7716, -0.25)
+
+[node name="vent_shortfan11" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 129.787, -12.1451, -0.25)
+
+[node name="vent_shortfan5" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 84.8454, 23.3185, -0.25)
+
+[node name="vent_shortfan4" parent="Building/Vent" instance=ExtResource("22_cj1ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.1631, 23.2873, -0.25)
+
+[node name="vent_short1" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 92.581, 23.0881, -0.25)
+
+[node name="vent_short2" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 101.039, 23.0881, -0.25)
+
+[node name="vent_short7" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128.796, -12.1481, -0.25)
+
+[node name="vent_short6" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 119.674, -10.0471, -0.25)
+
+[node name="vent_short5" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 105.056, 25.6124, -0.25)
+
+[node name="vent_short4" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 106.239, 11.9737, -0.25)
+
+[node name="vent_short3" parent="Building/Vent" instance=ExtResource("23_ja12m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 102.962, 26.9007, -0.25)
+
+[node name="Sewer" type="Node3D" parent="Building"]
+
+[node name="Wall" type="MeshInstance3D" parent="Building/Sewer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 70.1002, -25, -1.01)
+mesh = SubResource("PlaneMesh_a6pmf")
+skeleton = NodePath("../../Vent")
+
+[node name="WaterWall" type="MeshInstance3D" parent="Building/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.593, -22.5095, 0)
+mesh = SubResource("BoxMesh_d5q5q")
+skeleton = NodePath("")
+
+[node name="WaterExit" type="MeshInstance3D" parent="Building/Sewer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.759, -15.2573, 0)
+mesh = SubResource("BoxMesh_mh3qu")
+skeleton = NodePath("../WaterWall")
+
+[node name="SewerWater" parent="Building/Sewer" instance=ExtResource("24_us352")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -16, 0)
+
+[node name="Areas" type="Node3D" parent="."]
+
+[node name="EnemyTrigger" parent="Areas" instance=ExtResource("25_8rts8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.7855, 2, 0)
+enemy_spawn_location = Vector3(-49, 0, 0)
+
+[node name="CameraUnlockTrigger" parent="Areas" node_paths=PackedStringArray("player_camera") instance=ExtResource("26_8jlsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6176, 4.97012, 9.53674e-07)
+player_camera = NodePath("../../Player/Camera3D")
+
+[node name="WaterTrigger" parent="Areas" node_paths=PackedStringArray("sewer_water") instance=ExtResource("27_t7d8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.336, -11.8455, 0)
+sewer_water = NodePath("../../Building/Sewer/SewerWater")
+
+[node name="SewerCheckpoint" type="Node3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121, -10, 0)
+
+[node name="Goal" type="MeshInstance3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.729, -17.4943, 0)
+mesh = SubResource("PlaneMesh_8whcn")
+skeleton = NodePath("../..")
+script = ExtResource("28_6nq1k")
+next_scene_path = "res://scenes/levels/end_menu.tscn"
+
+[node name="Area3D" type="Area3D" parent="Areas/Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Goal/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.37842, 0)
+shape = SubResource("BoxShape3D_0ifq3")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_e43lf")
+autoplay = true
+
+[node name="InstructionLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.171, 4.00419, -1.43379)
+text = "Move with A and D
+
+Jump by moving the
+mouse vertically"
+font_size = 64
+horizontal_alignment = 0
+
+[connection signal="body_entered" from="Areas/Goal/Area3D" to="Areas/Goal" method="_on_area_3d_body_entered"]
+
+[editable path="Player"]
+[editable path="Obstacles/Hallway/gurney3"]
+[editable path="Obstacles/Hallway/gurney5"]
+[editable path="Obstacles/Hallway/cabinetlong"]
+[editable path="Building/Vent/vent_shortfan3"]
+[editable path="Building/Vent/vent_shortfan8"]

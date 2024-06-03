@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://lct673sb4bpp"]
+
+[ext_resource type="Script" path="res://scripts/loading_screen.gd" id="1_aqacb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_86vp3"]
+font_size = 64
+font_color = Color(0.317647, 0.482353, 0.521569, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_aqacb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 425.0
+offset_top = 280.0
+offset_right = 725.0
+offset_bottom = 368.0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_86vp3")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

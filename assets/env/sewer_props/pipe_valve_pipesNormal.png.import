@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chocd1qf7ndo0"
-path.s3tc="res://.godot/imported/pipe_valve_pipesNormal.png-acc1dfcc93ff45600369d8e741787ad0.s3tc.ctex"
+path="res://.godot/imported/pipe_valve_pipesNormal.png-acc1dfcc93ff45600369d8e741787ad0.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/sewer_props/pipe_valve_pipesNormal.png"
-dest_files=["res://.godot/imported/pipe_valve_pipesNormal.png-acc1dfcc93ff45600369d8e741787ad0.s3tc.ctex"]
+dest_files=["res://.godot/imported/pipe_valve_pipesNormal.png-acc1dfcc93ff45600369d8e741787ad0.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=1
 compress/channel_pack=0

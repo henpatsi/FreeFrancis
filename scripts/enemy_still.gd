@@ -23,5 +23,5 @@ func handle_rotation(delta) -> void:
 		rotation.y = lerp_angle(rotation.y, rad180, rotate_speed * delta)
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not Global.godmode:
 		get_tree().call_deferred("change_scene_to_file", end_menu_scene)
