@@ -2,6 +2,8 @@ extends RigidBody3D
 
 @onready var character_body: CharacterBody3D = $"../Player/CharacterBody3D"
 
+@onready var move_object_sound_effect_player: AudioStreamPlayer3D = $MoveObjectSoundEffectPlayer
+
 @export var acceleration: float = 8
 @export var max_speed: float = 4
 @export var rotate_speed = 3.0
@@ -18,7 +20,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	
 	handle_movement(delta)
 	handle_rotation(delta)
 
@@ -40,11 +41,13 @@ func handle_rotation(delta) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		get_tree().change_scene_to_file(end_menu_scene)
+		get_tree().call_deferred("change_scene_to_file", end_menu_scene)
 	elif body.is_in_group("Immovable"):
 		return
 	else:
 		var body_parent = body.get_parent()
 		var target_position = body_parent.global_position + Vector3(0, 0, 3)
 		var tween = get_tree().create_tween()
+		move_object_sound_effect_player.play()
 		tween.tween_property(body_parent, "global_position", target_position, 1)
+		body.add_to_group("Immovable")

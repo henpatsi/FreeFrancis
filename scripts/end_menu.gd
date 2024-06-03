@@ -3,9 +3,8 @@ extends Node2D
 var main_menu_scene = "res://scenes/levels/main_menu.tscn"
 var level_scene = "res://scenes/levels/level_final.tscn"
 
-@onready var timer_value_label = $Timer/ValueLabel
-
 func _ready() -> void:
+	var timer_value_label = get_node_or_null("Timer/ValueLabel")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if timer_value_label:
 		timer_value_label.text = str(Global.timer).pad_decimals(2)
