@@ -6,7 +6,7 @@ var settings_scene = preload("res://scenes/levels/settings.tscn")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Global.volume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Global.volume_db)
 
 
 func _on_start_button_pressed():
