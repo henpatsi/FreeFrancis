@@ -4,9 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dbj1h57bvbixt" path="res://assets/images/Menu02.png" id="2_wvdxo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_86vp3"]
-font_size = 64
-outline_size = 12
+font_size = 50
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_ukxt7")
@@ -25,13 +28,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.5
-offset_top = 81.0
-offset_right = 42.5
-offset_bottom = 134.0
+offset_left = -45.5
+offset_top = 86.0
+offset_right = 39.5
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 30
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="Background"]
@@ -41,23 +44,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = 162.0
-offset_right = 67.5
-offset_bottom = 215.0
+offset_left = -63.5
+offset_top = 174.0
+offset_right = 61.5
+offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 30
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="Background"]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 24.0
-offset_right = 90.0
-offset_bottom = 77.0
-theme_override_font_sizes/font_size = 32
+offset_left = 29.0
+offset_top = 25.0
+offset_right = 100.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 30
 text = "Exit"
 
 [node name="TitleLabel" type="Label" parent="Background"]
@@ -70,7 +73,7 @@ offset_top = 262.0
 offset_right = 436.5
 offset_bottom = 350.0
 grow_horizontal = 2
-text = "Hop Pop"
+text = "Free Francis"
 label_settings = SubResource("LabelSettings_86vp3")
 horizontal_alignment = 1
 

@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dbj1h57bvbixt" path="res://assets/images/Menu02.png" id="2_gt8xf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_86vp3"]
-font_size = 64
-font_color = Color(0.17774, 0.533962, 0.530077, 1)
-outline_size = 12
+font_size = 50
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_aqacb")
@@ -34,6 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Loading..."
 label_settings = SubResource("LabelSettings_86vp3")
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

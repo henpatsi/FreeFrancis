@@ -4,9 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dbj1h57bvbixt" path="res://assets/images/Menu02.png" id="2_r4el2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8x6a"]
-font_size = 32
-outline_size = 8
+font_size = 30
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_xdwrq")
@@ -25,15 +28,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -562.5
-offset_top = -144.0
-offset_right = 562.5
-offset_bottom = 144.0
+offset_left = -487.0
+offset_top = -166.0
+offset_right = 491.0
+offset_bottom = 167.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "There wonce was an old old man with bad knees so he cant jump, luckily he is used to be an olympic swimmer so maybe he can find a way...
+text = "Diagnosed with a terminal illness, Francis, car salesman and part-time daredevil, refuses to spend his last days rotting away in the hospital. 
 
-Anyways, he always wanted to go to space and now he is dying and the doctors will not let him leave. But this is his final chance, his last stand..."
+Today he performs his last stunt. His great escape. 
+
+His last stand.
+"
 label_settings = SubResource("LabelSettings_o8x6a")
 autowrap_mode = 2
 
