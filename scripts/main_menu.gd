@@ -1,6 +1,6 @@
 extends Node2D
 
-var loading_scene = preload("res://scenes/levels/loading.tscn")
+var background_info_scene = "res://scenes/levels/background_info_screen.tscn"
 var settings_scene = preload("res://scenes/levels/settings.tscn")
 
 
@@ -10,7 +10,7 @@ func _ready():
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file(loading_scene)
+	get_tree().change_scene_to_file(background_info_scene)
 
 
 func _on_exit_button_pressed():

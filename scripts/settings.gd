@@ -7,7 +7,7 @@ extends Node2D
 
 var lock_mouse_on_exit = false
 
-var level_scene = "res://scenes/levels/level_final.tscn"
+var loading_scene = "res://scenes/levels/loading.tscn"
 
 signal volume_changed
 
@@ -55,4 +55,4 @@ func close_settings() -> void:
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	get_tree().change_scene_to_file(level_scene)
+	get_tree().change_scene_to_file(loading_scene)

@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://erq4ly36nybs"]
+[gd_scene load_steps=3 format=3 uid="uid://erq4ly36nybs"]
 
 [ext_resource type="Script" path="res://scripts/end_menu.gd" id="1_ip885"]
-[ext_resource type="Texture2D" uid="uid://kr0taq2paa3o" path="res://assets/images/Pug_in_a_blanket_(Unsplash)_small.jpg" id="2_vbo87"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_20xcj"]
-font_size = 32
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://ds3ooba47s7t4" path="res://assets/images/DeathScreen01.png" id="2_kfrob"]
 
 [node name="EndMenu" type="Node2D"]
 script = ExtResource("1_ip885")
@@ -13,25 +9,16 @@ script = ExtResource("1_ip885")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("2_vbo87")
+texture = ExtResource("2_kfrob")
+expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="."]
-offset_left = 34.0
-offset_top = 22.0
-offset_right = 362.0
-offset_bottom = 115.0
-text = "CAUGHT!
-NO SPACE FOR YOU :("
-label_settings = SubResource("LabelSettings_20xcj")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 818.0
-offset_top = 100.0
-offset_right = 914.0
-offset_bottom = 166.0
+offset_left = 1037.0
+offset_top = 14.0
+offset_right = 1133.0
+offset_bottom = 80.0
+theme_override_constants/separation = 10
 
 [node name="Restart" type="Button" parent="VBoxContainer"]
 layout_mode = 2

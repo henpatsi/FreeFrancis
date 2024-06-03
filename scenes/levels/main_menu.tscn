@@ -52,6 +52,7 @@ theme_override_font_sizes/font_size = 32
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="Background"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 24.0
 offset_right = 90.0
