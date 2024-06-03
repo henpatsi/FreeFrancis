@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmdgvrysu17nw"]
 
-[ext_resource type="Texture2D" uid="uid://kr0taq2paa3o" path="res://assets/images/Pug_in_a_blanket_(Unsplash)_small.jpg" id="1_sm2dm"]
 [ext_resource type="Script" path="res://scripts/end_menu.gd" id="1_xawui"]
+[ext_resource type="Texture2D" uid="uid://cbafyueswodq6" path="res://assets/images/EndScreen.png" id="2_44y5x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_20xcj"]
 font_size = 32
@@ -16,24 +16,25 @@ script = ExtResource("1_xawui")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_sm2dm")
+texture = ExtResource("2_44y5x")
+expand_mode = 2
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="."]
-offset_left = 34.0
-offset_top = 22.0
-offset_right = 362.0
-offset_bottom = 115.0
+offset_left = 137.0
+offset_top = 17.0
+offset_right = 465.0
+offset_bottom = 110.0
 text = "SPACE BABY!"
 label_settings = SubResource("LabelSettings_20xcj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 818.0
-offset_top = 100.0
-offset_right = 914.0
-offset_bottom = 166.0
+offset_left = 911.0
+offset_top = 48.0
+offset_right = 1007.0
+offset_bottom = 114.0
 
 [node name="Restart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -44,10 +45,10 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="Timer" type="HBoxContainer" parent="."]
-offset_left = 94.0
-offset_top = 98.0
-offset_right = 317.0
-offset_bottom = 121.0
+offset_left = 847.0
+offset_top = 15.0
+offset_right = 1070.0
+offset_bottom = 38.0
 alignment = 1
 
 [node name="Label" type="Label" parent="Timer"]
