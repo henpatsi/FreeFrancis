@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbdun63xc5wma"
-path.s3tc="res://.godot/imported/Hosp_Door2_Door_baseColor.png-8cf4f7832e8cd1ab093ae8c50d202aea.s3tc.ctex"
+path="res://.godot/imported/Hosp_Door2_Door_baseColor.png-8cf4f7832e8cd1ab093ae8c50d202aea.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/hospital_assets/hosp_door2/Hosp_Door2_Door_baseColor.png"
-dest_files=["res://.godot/imported/Hosp_Door2_Door_baseColor.png-8cf4f7832e8cd1ab093ae8c50d202aea.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hosp_Door2_Door_baseColor.png-8cf4f7832e8cd1ab093ae8c50d202aea.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

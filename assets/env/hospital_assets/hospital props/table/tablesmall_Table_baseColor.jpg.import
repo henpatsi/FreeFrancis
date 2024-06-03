@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://beh2r23nqc2w"
-path.s3tc="res://.godot/imported/tablesmall_Table_baseColor.jpg-cd7bbcb6123b98353f7b0f6b1d88ebe8.s3tc.ctex"
+path="res://.godot/imported/tablesmall_Table_baseColor.jpg-cd7bbcb6123b98353f7b0f6b1d88ebe8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/hospital_assets/hospital props/table/tablesmall_Table_baseColor.jpg"
-dest_files=["res://.godot/imported/tablesmall_Table_baseColor.jpg-cd7bbcb6123b98353f7b0f6b1d88ebe8.s3tc.ctex"]
+dest_files=["res://.godot/imported/tablesmall_Table_baseColor.jpg-cd7bbcb6123b98353f7b0f6b1d88ebe8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

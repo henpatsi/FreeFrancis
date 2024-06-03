@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btqghcu6jr0ck"
-path.s3tc="res://.godot/imported/foodtable_FoodTable_baseColor.jpg-47d18b440847d8c28bb47b777242c78f.s3tc.ctex"
+path="res://.godot/imported/foodtable_FoodTable_baseColor.jpg-47d18b440847d8c28bb47b777242c78f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/hospital_assets/hospital props/food table/foodtable_FoodTable_baseColor.jpg"
-dest_files=["res://.godot/imported/foodtable_FoodTable_baseColor.jpg-47d18b440847d8c28bb47b777242c78f.s3tc.ctex"]
+dest_files=["res://.godot/imported/foodtable_FoodTable_baseColor.jpg-47d18b440847d8c28bb47b777242c78f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

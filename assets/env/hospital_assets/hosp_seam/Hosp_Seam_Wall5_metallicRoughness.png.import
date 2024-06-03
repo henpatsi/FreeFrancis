@@ -3,23 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7d72cfdd4mrk"
-path.s3tc="res://.godot/imported/Hosp_Seam_Wall5_metallicRoughness.png-5f758be33c7f28564cf963db43c2eb3d.s3tc.ctex"
+path="res://.godot/imported/Hosp_Seam_Wall5_metallicRoughness.png-5f758be33c7f28564cf963db43c2eb3d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://assets/env/hospital_assets/hosp_seam/Hosp_Seam_Wall5_metallicRoughness.png"
-dest_files=["res://.godot/imported/Hosp_Seam_Wall5_metallicRoughness.png-5f758be33c7f28564cf963db43c2eb3d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hosp_Seam_Wall5_metallicRoughness.png-5f758be33c7f28564cf963db43c2eb3d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
