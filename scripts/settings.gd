@@ -36,7 +36,6 @@ func _on_mouse_sensitivity_slider_value_changed(value: float) -> void:
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	volume_value_label.text = str(round((value + 60) / 60 * 100))
-	print(value)
 	Global.volume_db = value
 	volume_changed.emit()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
