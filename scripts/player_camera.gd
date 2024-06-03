@@ -11,7 +11,7 @@ var unlock_speed: float = 2
 func _physics_process(delta: float) -> void:
 
 	smooth_unlock(delta)
-	follow_player(delta)
+	follow_player()
 
 
 func smooth_unlock(delta) -> void:
@@ -26,7 +26,7 @@ func smooth_unlock(delta) -> void:
 		y_locked = false
 
 
-func follow_player(delta: float) -> void:
+func follow_player() -> void:
 	target_position = character_body.position + player_offset
 	
 	if y_locked:

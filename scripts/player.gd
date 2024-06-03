@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 var settings_scene = preload("res://scenes/levels/settings.tscn")
 
+@onready var sewer_checkpoint: Node3D = $"/root/Level/Areas/SewerCheckpoint"
+
 @onready var player: Node3D = $".."
 
 @onready var armature: Node3D = $rig_002
@@ -101,3 +103,7 @@ func jump(force: float, max_force: float) -> void:
 	if not animation_tree.get("parameters/conditions/air"):
 		animation_state.travel("StartJump")
 		animation_tree.set("parameters/conditions/air", true)
+
+
+func reset_to_sewer_checkpoint():
+	global_position = sewer_checkpoint.position
