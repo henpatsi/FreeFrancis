@@ -117,9 +117,9 @@ func update_player_head_rotation() -> void:
 
 
 func try_destroy_object(hit: Dictionary) -> void:
-	if abs(move_amount.y) > 0.2 and hit.collider.is_in_group("PlayerDestructable"):
-		hit.collider.get_parent().destroy(move_amount.y)
-		hit.collider.get_parent().destroy(move_amount.y)
+	if hit.collider.is_in_group("PlayerDestructable"):
+		hit.collider.get_parent().try_destroy(move_amount.y)
+		hit.collider.get_parent().try_destroy(move_amount.y)
 
 
 func play_hit_sound() -> void:
