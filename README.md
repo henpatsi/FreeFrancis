@@ -1,5 +1,8 @@
 # FreeFrancis
 
+![sRZ1FT](https://github.com/henpatsi/FreeFrancis/assets/49587535/363b226f-b6a1-43dd-8b3d-a9c25cde1192)
+![byIyue](https://github.com/henpatsi/FreeFrancis/assets/49587535/59c59c89-f88c-4230-a8f8-a18e5bb4a3dc)
+
 Game made in one week using Godot for the 2024 GameDev.tv game jam with the theme of "Last Stand"
 
 Playable and downloadable on [itch.io](https://tupperwarefan.itch.io/freefrancis).
